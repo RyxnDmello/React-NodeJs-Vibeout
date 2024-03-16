@@ -1,0 +1,17 @@
+{
+  "name": "vibeout",
+  "version": "1.0.0",
+  "description": "Chat Application with Sentimental Analysis",
+  "main": "app.ts",
+  "scripts": {
+    "test": "cls && node --version && npm --version && npm list"
+  },
+  "keywords": [
+    "Chat",
+    "Social",
+    "Sentimental",
+    "Analysis"
+  ],
+  "author": "Ryan Nolasco D Mello",
+  "license": "ISC"
+}
