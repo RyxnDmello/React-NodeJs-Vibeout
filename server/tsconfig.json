@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "alwaysStrict": true,
+    "sourceMap": true,
+    "strict": true,
+
+    "target": "ES2022",
+    "module": "NodeNext",
+
+    "sourceRoot": "./src",
+    "mapRoot": "./src",
+    "outDir": "./src",
+    "rootDir": "./"
+  }
+}
