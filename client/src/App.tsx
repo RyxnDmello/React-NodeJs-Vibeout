@@ -1,9 +1,13 @@
+import Profiles from "./components/Profiles";
+import Messages from "./components/Messages";
+import Dashboard from "./components/Dashboard";
+
 export default function App() {
   return (
-    <>
-      <header></header>
-      <main></main>
-      <footer></footer>
-    </>
+    <main>
+      <Profiles />
+      <Messages />
+      <Dashboard />
+    </main>
   );
 }

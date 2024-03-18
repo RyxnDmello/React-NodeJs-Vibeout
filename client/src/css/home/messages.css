@@ -1,0 +1,175 @@
+/*---------------------------------------------------*/
+/*----------------- MESSAGES STYLES -----------------*/
+/*---------------------------------------------------*/
+
+#messages {
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: stretch;
+  display: grid;
+}
+
+/*------------------------------------*/
+/*-------------- HEADER --------------*/
+/*------------------------------------*/
+
+.messages-header {
+  background-color: #ffffff05;
+  grid-auto-flow: column;
+  justify-content: start;
+  padding: 0.5rem 2rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.messages-header-icon {
+  border-radius: 100%;
+  object-fit: cover;
+  aspect-ratio: 1;
+  width: 50px;
+}
+
+.messages-header-name {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #fff;
+}
+
+/*-------------------------------------*/
+/*------------ CHAT BUBBLE ------------*/
+/*-------------------------------------*/
+
+.message-bubbles {
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: center;
+  overflow-y: scroll;
+  padding: 0 1.5rem;
+  display: grid;
+  height: 500px;
+  gap: 0.5rem;
+}
+
+.message-bubbles::-webkit-scrollbar {
+  border-radius: 40px;
+  width: 2.5px;
+}
+
+.message-bubbles::-webkit-scrollbar-track {
+  background: #ffffff20;
+}
+
+.message-bubbles::-webkit-scrollbar-thumb {
+  background: #ffffffa0;
+  border-radius: 40px;
+}
+
+.message-bubble-wrapper {
+  grid-template-columns: auto;
+  justify-content: start;
+  align-items: center;
+  display: grid;
+}
+
+.message-bubble-wrapper.sent {
+  justify-content: end;
+}
+
+.message-bubble {
+  grid-template-columns: auto;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  align-items: center;
+  border-radius: 5px;
+  max-width: 50%;
+  display: grid;
+}
+
+.message-bubble-wrapper.sent .message-bubble {
+  background-color: #0000ffa0;
+  margin-left: auto;
+}
+
+.message-bubble-wrapper:not(.sent) .message-bubble {
+  background-color: #ffffff15;
+}
+
+.message-bubble-text {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.25px;
+  width: fit-content;
+  line-height: 1.4;
+  font-weight: 300;
+  font-size: 1rem;
+  color: #fff;
+}
+
+/*------------------------------------*/
+/*------------ CONTROLLER ------------*/
+/*------------------------------------*/
+
+.message-controller-wrapper {
+  background-color: #ffffff05;
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: center;
+  padding: 0 2rem;
+  display: grid;
+}
+
+.message-controller {
+  justify-content: stretch;
+  align-items: center;
+  flex-wrap: nowrap;
+  display: flex;
+  gap: 0.65rem;
+}
+
+.message-controller-input {
+  font-family: "Poppins", sans-serif;
+  border: 2px solid #ffffff25;
+  background-color: transparent;
+  background-color: #000015;
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
+  font-weight: 400;
+  font-size: 1rem;
+  outline: none;
+  color: #fff;
+  flex-grow: 1;
+}
+
+.message-controller-input::placeholder {
+  transition: opacity 300ms;
+}
+
+.message-controller-icon {
+  grid-template-columns: auto;
+  background-color: #9400d3;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  padding: 0.65rem;
+  display: grid;
+}
+
+.message-controller-icon-image {
+  translate: 1.5px 0;
+  width: 20px;
+}
+
+/*-----------------------------------------*/
+/*-------------- TRANSITIONS --------------*/
+/*-----------------------------------------*/
+
+.message-controller-input:hover::placeholder {
+  opacity: 0;
+}
+
+/*----------------------------------------*/
+/*-------------- END OF CSS --------------*/
+/*----------------------------------------*/

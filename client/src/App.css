@@ -1,0 +1,29 @@
+@import url("./css/fonts.css");
+
+@import url("./css/home/messages.css");
+
+* {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #000015;
+  position: relative;
+  overflow: hidden;
+  z-index: -1;
+}
+
+main {
+  grid-template-columns: 25% 50% 25%;
+  justify-content: stretch;
+  align-items: stretch;
+  height: 100dvh;
+  display: grid;
+}
+
+a {
+  text-decoration: none;
+}
