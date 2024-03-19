@@ -1,9 +1,29 @@
+import { useState, useEffect } from "react";
+import { Socket } from "socket.io-client";
+
 import Sender from "../images/messages/sender.png";
 
 import Bubble from "./Messages/Bubble";
 import Controller from "./Messages/Controller";
 
-export default function Messages() {
+export default function Messages({ socket }: { socket: Socket }) {
+  const [messages, setMessages] = useState<string[]>([]);
+  const [message, onHandleSetMessage] = useState<string>("");
+
+  const onHandleSendMessage = () => {
+    if (message === "") return;
+
+    socket.emit("sendMessage", message);
+    setMessages([...messages, message]);
+    onHandleSetMessage("");
+  };
+
+  useEffect(() => {
+    socket.on("messages", (message) => {
+      setMessages([...messages, message]);
+    });
+  }, [socket, messages]);
+
   const className = "message";
 
   return (
@@ -14,12 +34,17 @@ export default function Messages() {
       </div>
 
       <div className={`${className}-bubbles`}>
-        {Array.from({ length: 20 }, (_, i) => (
-          <Bubble key={i} message="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores, nisi?" isSent={i % 2 === 0} />
+        {messages.map((value, i) => (
+          <Bubble key={i} message={value} isSent={false} />
         ))}
       </div>
 
-      <Controller placeholder="Message..." />
+      <Controller
+        value={message}
+        placeholder="Message..."
+        onSetMessage={onHandleSetMessage}
+        onSendMessage={onHandleSendMessage}
+      />
     </section>
   );
 }
