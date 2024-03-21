@@ -1,0 +1,77 @@
+/*--------------------------------------------------*/
+/*----------------- PROFILE STYLES -----------------*/
+/*--------------------------------------------------*/
+
+#profiles {
+  border-right: 2px solid #ffffff10;
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: start;
+  display: grid;
+}
+
+.profiles-wrapper {
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: start;
+  display: grid;
+  gap: 2rem;
+}
+
+/*--------------------------------*/
+/*------------ HEADER ------------*/
+/*--------------------------------*/
+
+.profiles-header {
+  border-bottom: 2px solid #ffffff10;
+  background-color: #ffffff05;
+  justify-content: start;
+  grid-auto-flow: column;
+  align-items: center;
+  padding: 0 2rem;
+  display: grid;
+  height: 85px;
+  gap: 1rem;
+}
+
+.profiles-logo {
+  font-family: "Truculenta", sans-serif;
+  font-size: 1.85rem;
+  font-weight: 300;
+  color: #fff;
+}
+
+/*--------------------------------*/
+/*------------ SEARCH ------------*/
+/*--------------------------------*/
+
+.profiles-search {
+  justify-content: center;
+  grid-auto-flow: column;
+  align-items: center;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.profiles-search-bar {
+  font-family: "Poppins", sans-serif;
+  padding: 0.5rem 1rem 0.4rem 1rem;
+  background-color: #0000ff40;
+  letter-spacing: 0.5px;
+  border-radius: 40px;
+  font-weight: 300;
+  line-height: 1;
+  outline: none;
+  color: #fff;
+  border: none;
+  width: 280px;
+}
+
+.profiles-search-bar::placeholder {
+  color: #ffffffa0;
+  font-size: 0.85rem;
+}
+
+/*------------------------------------------*/
+/*--------------- END OF CSS ---------------*/
+/*------------------------------------------*/

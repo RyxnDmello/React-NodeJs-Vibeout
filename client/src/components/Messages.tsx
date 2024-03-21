@@ -24,19 +24,21 @@ export default function Messages({ socket }: { socket: Socket }) {
     });
   }, [socket, messages]);
 
-  const className = "message";
+  const className = "messages";
 
   return (
-    <section id="messages">
-      <div className="messages-header">
-        <img className="messages-header-icon" src={Sender} />
-        <h4 className="messages-header-name">Sydney Sweeny</h4>
+    <section id={className}>
+      <div className={`${className}-header`}>
+        <img className={`${className}-header-icon`} src={Sender} />
+        <h4 className={`${className}-header-name`}>Sydney Sweeny</h4>
       </div>
 
-      <div className={`${className}-bubbles`}>
-        {messages.map((value, i) => (
-          <Bubble key={i} message={value} isSent={false} />
-        ))}
+      <div className={`${className}-bubbles-stream`}>
+        <div className={`${className}-bubbles`}>
+          {messages.map((value, i) => (
+            <Bubble key={i} message={value} isSent />
+          ))}
+        </div>
       </div>
 
       <Controller

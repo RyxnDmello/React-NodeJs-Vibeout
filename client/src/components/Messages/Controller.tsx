@@ -6,7 +6,7 @@ export default function Input({
   onSetMessage,
   onSendMessage,
 }: IInput) {
-  const className = "message-controller";
+  const className = "messages-controller";
 
   return (
     <div className={`${className}-wrapper`}>

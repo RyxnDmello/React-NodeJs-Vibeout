@@ -1,5 +1,6 @@
 @import url("./css/fonts.css");
 
+@import url("./css/home/profiles.css");
 @import url("./css/home/messages.css");
 
 * {
@@ -12,7 +13,6 @@
 body {
   background-color: #000015;
   position: relative;
-  overflow: hidden;
   z-index: -1;
 }
 
