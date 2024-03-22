@@ -3,7 +3,7 @@
 /*--------------------------------------------------*/
 
 #profiles {
-  border-right: 2px solid #ffffff10;
+  border-right: 2px solid #ffffff25;
   grid-template-columns: auto;
   justify-content: stretch;
   align-items: start;
@@ -23,7 +23,7 @@
 /*--------------------------------*/
 
 .profiles-header {
-  border-bottom: 2px solid #ffffff10;
+  border-bottom: 2px solid #ffffff25;
   background-color: #ffffff05;
   justify-content: start;
   grid-auto-flow: column;
@@ -56,7 +56,7 @@
 .profiles-search-bar {
   font-family: "Poppins", sans-serif;
   padding: 0.5rem 1rem 0.4rem 1rem;
-  background-color: #0000ff40;
+  background-color: #ffffff10;
   letter-spacing: 0.5px;
   border-radius: 40px;
   font-weight: 300;
@@ -70,6 +70,100 @@
 .profiles-search-bar::placeholder {
   color: #ffffffa0;
   font-size: 0.85rem;
+}
+
+/*--------------------------------*/
+/*------------- CHAT -------------*/
+/*--------------------------------*/
+
+.profiles-chats {
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: start;
+  overflow-y: scroll;
+  height: 500px;
+  display: grid;
+}
+
+.profiles-chats-wrapper {
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: center;
+  display: grid;
+}
+
+.profiles-chats::-webkit-scrollbar {
+  display: none;
+}
+
+.profiles-chat-wrapper {
+  transition: background-color 300ms;
+  grid-template-columns: auto;
+  padding: 1rem 0 1rem 2rem;
+  justify-content: left;
+  align-items: center;
+  position: relative;
+  display: grid;
+}
+
+.profiles-chat-wrapper.selected {
+  background-color: #ffffff05;
+}
+
+.profiles-chat-wrapper.selected:before {
+  background-color: #0000ff;
+  position: absolute;
+  height: 100%;
+  content: "";
+  width: 4px;
+  left: 0;
+}
+
+.profiles-chat {
+  justify-content: center;
+  grid-auto-flow: column;
+  align-items: center;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.profiles-chat-icon {
+  border-radius: 100%;
+  object-fit: cover;
+  aspect-ratio: 1;
+  width: 60px;
+}
+
+.profiles-chat-details {
+  grid-template-columns: auto;
+  justify-content: left;
+  align-items: center;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.profiles-chat-name {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1;
+  color: #fff;
+}
+
+.profiles-chat-email {
+  font-family: "Poppins", sans-serif;
+  color: #ffffff65;
+  font-size: 0.8rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+/*-------------------------------------*/
+/*------------ TRANSITIONS ------------*/
+/*-------------------------------------*/
+
+.profiles-chat-wrapper:hover {
+  background-color: #ffffff05;
 }
 
 /*------------------------------------------*/

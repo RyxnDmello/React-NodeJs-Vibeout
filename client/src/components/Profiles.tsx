@@ -1,4 +1,12 @@
+import { useState } from "react";
+
+import Chat from "./Profiles/Chat";
+
 export default function Profiles() {
+  const [room, setRoom] = useState<string>("");
+
+  const onHandleSetRoom = (room: string) => setRoom(room);
+
   const className = "profiles";
 
   return (
@@ -16,6 +24,19 @@ export default function Profiles() {
             type="text"
           />
         </form>
+
+        <div className={`${className}-chats`}>
+          <div className={`${className}-chats-wrapper`}>
+            {Array.from({ length: 10 }, (_, i) => (
+              <Chat
+                key={i}
+                room={`${i}`}
+                isSelected={`${i}` === room}
+                onSelectChat={onHandleSetRoom}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
