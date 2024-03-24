@@ -60,7 +60,7 @@
 }
 
 .messages-bubbles-stream::-webkit-scrollbar-track {
-  background: #ffffff20;
+  background-color: #ffffff20;
 }
 
 .messages-bubbles-stream::-webkit-scrollbar-thumb {

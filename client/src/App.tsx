@@ -1,24 +1,31 @@
+import { useState, useEffect } from "react";
 import io from "socket.io-client";
-import { useEffect } from "react";
 
-import Profiles from "./components/Profiles";
+import { IChat } from "./interfaces/Chat";
+
+import Chats from "./components/Chats";
 import Messages from "./components/Messages";
 import Dashboard from "./components/Dashboard";
 
 const socket = io("http://localhost:8080");
 
 export default function App() {
-  useEffect(() => {
-    socket.on("connect", () => console.log("User Connected"));
-    socket.on("disconnect", () => console.log("User Disconnected"));
+  const [chats, setChats] = useState<IChat[]>([]);
+  const [chat, setChat] = useState<IChat | undefined>();
 
-    socket.emit("joinRoom", "123");
+  const onSelectChat = (chat: IChat) => {
+    socket.emit("joinRoom", chat.room);
+    setChat(chat);
+  };
+
+  useEffect(() => {
+    socket.on("chats", (chats) => setChats(chats));
   }, []);
 
   return (
     <main>
-      <Profiles />
-      <Messages socket={socket} />
+      <Chats room={chat?.room} chats={chats} onSelectChat={onSelectChat} />
+      <Messages chat={chat} socket={socket} />
       <Dashboard />
     </main>
   );

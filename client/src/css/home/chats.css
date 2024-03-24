@@ -2,7 +2,7 @@
 /*----------------- PROFILE STYLES -----------------*/
 /*--------------------------------------------------*/
 
-#profiles {
+#chats {
   border-right: 2px solid #ffffff25;
   grid-template-columns: auto;
   justify-content: stretch;
@@ -10,7 +10,7 @@
   display: grid;
 }
 
-.profiles-wrapper {
+.chats-wrapper {
   grid-template-columns: auto;
   justify-content: stretch;
   align-items: start;
@@ -22,7 +22,7 @@
 /*------------ HEADER ------------*/
 /*--------------------------------*/
 
-.profiles-header {
+.chats-header {
   border-bottom: 2px solid #ffffff25;
   background-color: #ffffff05;
   justify-content: start;
@@ -34,7 +34,7 @@
   gap: 1rem;
 }
 
-.profiles-logo {
+.chats-logo {
   font-family: "Truculenta", sans-serif;
   font-size: 1.85rem;
   font-weight: 300;
@@ -45,7 +45,7 @@
 /*------------ SEARCH ------------*/
 /*--------------------------------*/
 
-.profiles-search {
+.chats-search {
   justify-content: center;
   grid-auto-flow: column;
   align-items: center;
@@ -53,7 +53,7 @@
   gap: 0.5rem;
 }
 
-.profiles-search-bar {
+.chats-search-bar {
   font-family: "Poppins", sans-serif;
   padding: 0.5rem 1rem 0.4rem 1rem;
   background-color: #ffffff10;
@@ -67,16 +67,16 @@
   width: 280px;
 }
 
-.profiles-search-bar::placeholder {
+.chats-search-bar::placeholder {
   color: #ffffffa0;
   font-size: 0.85rem;
 }
 
-/*--------------------------------*/
-/*------------- CHAT -------------*/
-/*--------------------------------*/
+/*---------------------------------*/
+/*------------- CARDS -------------*/
+/*---------------------------------*/
 
-.profiles-chats {
+.chats-cards {
   grid-template-columns: auto;
   justify-content: stretch;
   align-items: start;
@@ -85,18 +85,22 @@
   display: grid;
 }
 
-.profiles-chats-wrapper {
+.chats-cards::-webkit-scrollbar {
+  display: none;
+}
+
+.chats-cards-wrapper {
   grid-template-columns: auto;
   justify-content: stretch;
   align-items: center;
   display: grid;
 }
 
-.profiles-chats::-webkit-scrollbar {
-  display: none;
-}
+/*--------------------------------*/
+/*------------- CARD -------------*/
+/*--------------------------------*/
 
-.profiles-chat-wrapper {
+.chats-card-wrapper {
   transition: background-color 300ms;
   grid-template-columns: auto;
   padding: 1rem 0 1rem 2rem;
@@ -106,11 +110,28 @@
   display: grid;
 }
 
-.profiles-chat-wrapper.selected {
+.chats-card-wrapper::after {
+  background-color: #ffffff15;
+  border-radius: 40px;
+  position: absolute;
+  bottom: -0.75px;
+  margin: 0 auto;
+  height: 1.5px;
+  content: "";
+  width: 25%;
+  right: 0;
+  left: 0;
+}
+
+.chats-card-wrapper:last-of-type::after {
+  display: none;
+}
+
+.chats-card-wrapper.selected {
   background-color: #ffffff05;
 }
 
-.profiles-chat-wrapper.selected:before {
+.chats-card-wrapper.selected::before {
   background-color: #0000ff;
   position: absolute;
   height: 100%;
@@ -119,7 +140,7 @@
   left: 0;
 }
 
-.profiles-chat {
+.chats-card {
   justify-content: center;
   grid-auto-flow: column;
   align-items: center;
@@ -127,14 +148,14 @@
   gap: 0.85rem;
 }
 
-.profiles-chat-icon {
+.chats-card-icon {
   border-radius: 100%;
   object-fit: cover;
   aspect-ratio: 1;
   width: 60px;
 }
 
-.profiles-chat-details {
+.chats-card-details {
   grid-template-columns: auto;
   justify-content: left;
   align-items: center;
@@ -142,7 +163,7 @@
   gap: 0.35rem;
 }
 
-.profiles-chat-name {
+.chats-card-name {
   font-family: "Poppins", sans-serif;
   font-size: 1.2rem;
   font-weight: 300;
@@ -150,7 +171,7 @@
   color: #fff;
 }
 
-.profiles-chat-email {
+.chats-card-email {
   font-family: "Poppins", sans-serif;
   color: #ffffff65;
   font-size: 0.8rem;
@@ -162,7 +183,7 @@
 /*------------ TRANSITIONS ------------*/
 /*-------------------------------------*/
 
-.profiles-chat-wrapper:hover {
+.chats-card-wrapper:hover {
   background-color: #ffffff05;
 }
 

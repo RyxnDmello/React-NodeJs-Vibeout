@@ -1,16 +1,13 @@
-export default function Bubble({ message, isSent }: IBubble) {
-  const className = "message-bubble";
+import { IBubble } from "../../interfaces/Message";
+
+export default function Bubble({ text, isSent }: IBubble) {
+  const className = "messages-bubble";
 
   return (
     <div className={`${className}-wrapper ${isSent && "sent"}`}>
       <div className={className}>
-        <p className="message-bubble-text">{message}</p>
+        <p className={`${className}-text`}>{text}</p>
       </div>
     </div>
   );
-}
-
-interface IBubble {
-  message: string;
-  isSent: boolean;
 }
