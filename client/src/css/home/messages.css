@@ -40,9 +40,9 @@
   color: #fff;
 }
 
-/*-------------------------------------*/
-/*------------ CHAT BUBBLE ------------*/
-/*-------------------------------------*/
+/*--------------------------------------*/
+/*----------- MESSAGE STREAM -----------*/
+/*--------------------------------------*/
 
 .messages-bubbles-stream {
   grid-template-columns: auto;
@@ -76,6 +76,22 @@
   gap: 0.85rem;
 }
 
+.messages-bubbles-day {
+  font-family: "Truculenta", sans-serif;
+  background-color: #ffffff10;
+  padding: 0.25rem 1.25rem;
+  letter-spacing: 0.5px;
+  border-radius: 40px;
+  color: #ffffffdf;
+  font-weight: 300;
+  font-size: 1rem;
+  margin: 0 auto;
+}
+
+/*--------------------------------------*/
+/*----------- MESSAGE BUBBLE -----------*/
+/*--------------------------------------*/
+
 .messages-bubble-wrapper {
   grid-template-columns: auto;
   justify-content: start;
@@ -90,31 +106,45 @@
 .messages-bubble {
   grid-template-columns: auto;
   justify-content: center;
-  padding: 0.5rem 1rem;
   align-items: center;
-  border-radius: 40px;
   display: grid;
-}
-
-.messages-bubble-wrapper.sent .messages-bubble {
-  background-color: #0000ffa0;
-  border-top-right-radius: 0px;
-  margin-left: auto;
-}
-
-.messages-bubble-wrapper:not(.sent) .messages-bubble {
-  background-color: #ffffff15;
-  border-top-left-radius: 0px;
+  gap: 0.25rem;
 }
 
 .messages-bubble-text {
   font-family: "Poppins", sans-serif;
   letter-spacing: 0.25px;
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
   width: fit-content;
   line-height: 1.4;
   font-weight: 300;
   font-size: 1rem;
   color: #fff;
+}
+
+.messages-bubble-wrapper.sent .messages-bubble-text {
+  background-color: #0000ffa0;
+  border-top-right-radius: 0px;
+  margin-left: auto;
+}
+
+.messages-bubble-wrapper:not(.sent) .messages-bubble-text {
+  background-color: #ffffff15;
+  border-top-left-radius: 0px;
+}
+
+.messages-bubble-time {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+  color: #ffffffa0;
+  font-size: 0.65rem;
+  padding: 0 0.5rem;
+  font-weight: 300;
+}
+
+.messages-bubble-wrapper.sent .messages-bubble-time {
+  text-align: right;
 }
 
 /*------------------------------------*/

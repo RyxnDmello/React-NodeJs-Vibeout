@@ -11,7 +11,7 @@ export default function Card({
 }: ICard) {
   const className = "chats-card";
 
-  const onHandleSelectChat = () => {
+  const onHandleSelectCard = () => {
     onSelectCard({
       room: room,
       email: email,
@@ -23,7 +23,7 @@ export default function Card({
   return (
     <div
       className={`${className}-wrapper ${isSelected && "selected"}`}
-      onClick={onHandleSelectChat}
+      onClick={onHandleSelectCard}
     >
       <div className={className}>
         <img className={`${className}-icon`} src={Profile} />

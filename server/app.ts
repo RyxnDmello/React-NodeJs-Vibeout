@@ -72,7 +72,6 @@ io.on("connection", (socket) => {
   });
 
   socket.on("sendMessage", (message) => {
-    console.log(message);
     socket.in(message.room).emit("messages", message);
   });
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { IMessageable, IMessage } from "../interfaces/Message";
+import { getDate, getTime } from "../utils/DateTime";
 
 import Sender from "../images/messages/sender.png";
 
@@ -17,8 +18,8 @@ export default function Messages({ chat, socket }: IMessageable) {
     const message: IMessage = {
       room: chat.room,
       email: chat.email,
+      time: getTime(),
       text: text,
-      date: new Date(Date.now()).toISOString(),
     };
 
     socket.emit("sendMessage", message);
@@ -46,12 +47,12 @@ export default function Messages({ chat, socket }: IMessageable) {
 
       <div className={`${className}-bubbles-stream`}>
         <div className={`${className}-bubbles`}>
+          {messages.length > 0 && (
+            <p className={`${className}-bubbles-day`}>{getDate()}</p>
+          )}
+
           {messages.map((value, i) => (
-            <Bubble
-              key={i}
-              text={value.text}
-              isSent={value.email === chat?.email}
-            />
+            <Bubble key={i} {...value} isSent={value.email === chat?.email} />
           ))}
         </div>
       </div>

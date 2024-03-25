@@ -11,11 +11,12 @@ export interface IMessage {
   room?: string;
   email?: string;
   text: string;
-  date: string;
+  time: string;
 }
 
 export interface IBubble {
   text: string;
+  time: string;
   isSent: boolean;
 }
 
