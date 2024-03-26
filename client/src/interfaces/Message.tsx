@@ -7,6 +7,12 @@ export interface IMessageable {
   socket: Socket;
 }
 
+export interface IProfile {
+  image: string;
+  email: string;
+  username: string;
+}
+
 export interface IMessage {
   room?: string;
   email?: string;

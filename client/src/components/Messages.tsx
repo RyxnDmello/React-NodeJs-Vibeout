@@ -7,6 +7,7 @@ import Sender from "../images/messages/sender.png";
 
 import Bubble from "./Messages/Bubble";
 import Controller from "./Messages/Controller";
+import Profile from "./Messages/Profile";
 
 export default function Messages({ chat, socket }: IMessageable) {
   const [messages, setMessages] = useState<IMessage[]>([]);
@@ -38,11 +39,15 @@ export default function Messages({ chat, socket }: IMessageable) {
   return (
     <section id={className}>
       <div className={`${className}-header`}>
-        <img className={`${className}-header-icon`} src={Sender} />
-
-        <h4 className={`${className}-header-name`}>
-          {chat === undefined ? "Live Chat" : chat.username}
-        </h4>
+        {chat ? (
+          <Profile
+            image={Sender}
+            username={chat?.username}
+            email={chat?.email}
+          />
+        ) : (
+          <p className={`${className}-header-warning`}>Live Chat</p>
+        )}
       </div>
 
       <div className={`${className}-bubbles-stream`}>

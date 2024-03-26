@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { IChatable, IChat } from "../interfaces/Chat";
 
+import Logo from "./common/Logo";
 import Card from "./Chats/Card";
 
 export default function Chats({ room, chats, onSelectChat }: IChatable) {
@@ -21,7 +22,7 @@ export default function Chats({ room, chats, onSelectChat }: IChatable) {
     <section id={className}>
       <div className={`${className}-wrapper`}>
         <div className={`${className}-header`}>
-          <h2 className={`${className}-logo`}>Vibeout</h2>
+          <Logo />
         </div>
 
         <form className={`${className}-search`} action="/search" method="post">

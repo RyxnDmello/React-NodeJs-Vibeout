@@ -25,19 +25,46 @@
   gap: 1rem;
 }
 
-.messages-header-icon {
+/*--------------------------------------*/
+/*------------ CHAT PROFILE ------------*/
+/*--------------------------------------*/
+
+.messages-profile {
+  justify-content: center;
+  grid-auto-flow: column;
+  align-items: center;
+  display: grid;
+  gap: 1rem;
+}
+
+.messages-profile-image {
   border-radius: 100%;
   object-fit: cover;
   aspect-ratio: 1;
-  width: 50px;
+  width: 52.5px;
 }
 
-.messages-header-name {
+.messages-profile-details {
+  grid-template-columns: auto;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.messages-profile-name,
+.messages-profile-email {
   font-family: "Poppins", sans-serif;
   letter-spacing: 0.5px;
   font-size: 1.25rem;
   font-weight: 300;
+  line-height: 1;
   color: #fff;
+}
+
+.messages-profile-email {
+  color: #ffffff50;
+  font-size: 0.8rem;
 }
 
 /*--------------------------------------*/
