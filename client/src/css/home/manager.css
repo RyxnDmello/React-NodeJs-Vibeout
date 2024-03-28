@@ -1,0 +1,102 @@
+/*----------------------------------------------*/
+/*--------------- MANAGER STYLES ---------------*/
+/*----------------------------------------------*/
+
+#manager {
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: start;
+  display: grid;
+}
+
+.manager-wrapper {
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: start;
+  display: grid;
+  gap: 2rem;
+}
+
+/*------------------------------------*/
+/*-------------- HEADER --------------*/
+/*------------------------------------*/
+
+.manager-header {
+  border-bottom: 2px solid #ffffff25;
+  border-left: 2px solid #ffffff25;
+  background-color: #ffffff05;
+  justify-content: start;
+  grid-auto-flow: column;
+  align-items: center;
+  padding: 0 2rem;
+  display: grid;
+  height: 85px;
+  gap: 1rem;
+}
+
+.manager-header-title {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #fff;
+}
+
+/*----------------------------------------*/
+/*-------------- CONTROLLER --------------*/
+/*----------------------------------------*/
+
+.manager-controller {
+  justify-content: center;
+  grid-auto-flow: column;
+  align-items: center;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.manager-input {
+  font-family: "Poppins", sans-serif;
+  padding: 0.4rem 1rem 0.4rem 1rem;
+  background-color: #ffffff10;
+  letter-spacing: 0.5px;
+  border-radius: 40px;
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1;
+  color: #fff;
+  outline: none;
+  width: 250px;
+  border: none;
+}
+
+.manager-input::placeholder {
+  color: #ffffffa0;
+  font-size: 0.85rem;
+}
+
+.manager-button {
+  background-color: #c00050;
+  border-radius: 40px;
+  padding: 0.4rem;
+  display: flex;
+}
+
+.manager-button-icon {
+  width: 20px;
+}
+
+/*--------------------------------------*/
+/*-------------- PROJECTS --------------*/
+/*--------------------------------------*/
+
+.manager-projects-wrapper {
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: start;
+  height: 500px;
+  display: grid;
+}
+
+/*--------------------------------------------*/
+/*---------------- END OF CSS ----------------*/
+/*--------------------------------------------*/

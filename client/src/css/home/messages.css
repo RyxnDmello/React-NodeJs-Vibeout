@@ -25,6 +25,14 @@
   gap: 1rem;
 }
 
+.messages-header-title {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #fff;
+}
+
 /*--------------------------------------*/
 /*------------ CHAT PROFILE ------------*/
 /*--------------------------------------*/

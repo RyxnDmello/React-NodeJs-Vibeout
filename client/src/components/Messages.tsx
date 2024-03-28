@@ -46,18 +46,22 @@ export default function Messages({ chat, socket }: IMessageable) {
             email={chat?.email}
           />
         ) : (
-          <p className={`${className}-header-warning`}>Live Chat</p>
+          <h4 className={`${className}-header-title`}>Live Chat</h4>
         )}
       </div>
 
       <div className={`${className}-bubbles-stream`}>
         <div className={`${className}-bubbles`}>
           {messages.length > 0 && (
-            <p className={`${className}-bubbles-day`}>{getDate()}</p>
+            <p className={`${className}-bubbles-date`}>{getDate()}</p>
           )}
 
-          {messages.map((value, i) => (
-            <Bubble key={i} {...value} isSent={value.email === chat?.email} />
+          {messages.map((message, i) => (
+            <Bubble
+              key={i}
+              {...message}
+              isSent={message.email === chat?.email}
+            />
           ))}
         </div>
       </div>

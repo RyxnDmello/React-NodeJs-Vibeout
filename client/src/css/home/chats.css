@@ -69,7 +69,7 @@
 /*------------- CARDS -------------*/
 /*---------------------------------*/
 
-.chats-cards {
+.chats-cards-wrapper {
   grid-template-columns: auto;
   justify-content: stretch;
   align-items: start;
@@ -78,11 +78,11 @@
   display: grid;
 }
 
-.chats-cards::-webkit-scrollbar {
+.chats-cards-wrapper::-webkit-scrollbar {
   display: none;
 }
 
-.chats-cards-wrapper {
+.chats-cards {
   grid-template-columns: auto;
   justify-content: stretch;
   align-items: center;

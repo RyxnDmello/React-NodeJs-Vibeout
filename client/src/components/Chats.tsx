@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { IChatable, IChat } from "../interfaces/Chat";
 
-import Logo from "./common/Logo";
+import Logo from "./Common/Logo";
 import Card from "./Chats/Card";
 
 export default function Chats({ room, chats, onSelectChat }: IChatable) {
@@ -35,8 +35,8 @@ export default function Chats({ room, chats, onSelectChat }: IChatable) {
           />
         </form>
 
-        <div className={`${className}-cards`}>
-          <div className={`${className}-cards-wrapper`}>
+        <div className={`${className}-cards-wrapper`}>
+          <div className={`${className}-cards`}>
             {(filter ?? chats).map((chat) => (
               <Card
                 {...chat}

@@ -3,6 +3,7 @@
 
 @import url("./css/home/chats.css");
 @import url("./css/home/messages.css");
+@import url("./css/home/manager.css");
 
 * {
   scroll-behavior: smooth;

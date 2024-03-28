@@ -5,7 +5,7 @@ import { IChat } from "./interfaces/Chat";
 
 import Chats from "./components/Chats";
 import Messages from "./components/Messages";
-import Dashboard from "./components/Dashboard";
+import Manager from "./components/Manager";
 
 const socket = io("http://localhost:8080");
 
@@ -26,7 +26,7 @@ export default function App() {
     <main>
       <Chats room={chat?.room} chats={chats} onSelectChat={onSelectChat} />
       <Messages chat={chat} socket={socket} />
-      <Dashboard />
+      <Manager />
     </main>
   );
 }
