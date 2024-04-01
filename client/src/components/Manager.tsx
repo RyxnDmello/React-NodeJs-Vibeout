@@ -1,5 +1,7 @@
 import CreateIcon from "../images/buttons/create.svg";
 
+import Project from "./Manager/Project";
+
 export default function Manager() {
   const className = "manager";
 
@@ -23,7 +25,13 @@ export default function Manager() {
         </div>
       </div>
 
-      <div className={`${className}-projects-wrapper`}></div>
+      <div className={`${className}-projects-wrapper`}>
+        <div className={`${className}-projects`}>
+          {Array.from({ length: 20 }, (_, i) => (
+            <Project key={i} />
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

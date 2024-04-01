@@ -1,6 +1,8 @@
+import { Socket } from "socket.io-client";
+
 export interface IChatable {
   room?: string;
-  chats: IChat[];
+  socket: Socket;
   onSelectChat: (chat: IChat) => void;
 }
 

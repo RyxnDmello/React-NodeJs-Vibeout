@@ -92,9 +92,76 @@
 .manager-projects-wrapper {
   grid-template-columns: auto;
   justify-content: stretch;
+  padding: 1rem 1.5rem;
+  overflow-y: scroll;
   align-items: start;
   height: 500px;
   display: grid;
+}
+
+.manager-projects-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.manager-projects {
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: center;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.manager-project {
+  box-shadow: 0 0 20px #00000080;
+  border: 2px solid #ffffff15;
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: center;
+  border-radius: 5px;
+  display: grid;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.manager-project-row {
+  justify-content: space-between;
+  grid-auto-flow: column;
+  align-items: start;
+  display: grid;
+}
+
+/*-------------------------------------*/
+/*-------------- DETAILS --------------*/
+/*-------------------------------------*/
+
+.manager-project-details {
+  grid-template-columns: auto;
+  justify-content: start;
+  align-items: center;
+  display: grid;
+}
+
+.manager-project-name {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+  font-weight: 300;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.manager-project-description {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+  color: #ffffffa0;
+  font-size: 0.8rem;
+  font-weight: 200;
+}
+
+.manager-project-type {
+  background-color: #ff0000a0;
+  border-radius: 100%;
+  aspect-ratio: 1;
+  width: 10px;
 }
 
 /*--------------------------------------------*/

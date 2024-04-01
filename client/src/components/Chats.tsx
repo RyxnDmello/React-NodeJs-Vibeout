@@ -1,20 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { IChatable, IChat } from "../interfaces/Chat";
 
 import Logo from "./Common/Logo";
 import Card from "./Chats/Card";
 
-export default function Chats({ room, chats, onSelectChat }: IChatable) {
-  const [filter, setFilter] = useState<IChat[] | undefined>(undefined);
+export default function Chats({ room, socket, onSelectChat }: IChatable) {
+  const [chats, setChats] = useState<IChat[]>([]);
+  const [filter, setFilter] = useState<IChat[]>([]);
 
   const onHandleFilterChats = (prompt: string) => {
     const filter: IChat[] = chats.filter((chat) =>
-      chat.username.startsWith(prompt)
+      chat.username.toLowerCase().startsWith(prompt.toLowerCase())
     );
 
-    setFilter(filter.length === 0 ? undefined : filter);
+    setFilter(filter);
   };
+
+  useEffect(() => {
+    socket.on("chats", (chats) => setChats(chats));
+  }, [socket]);
 
   const className = "chats";
 
@@ -37,7 +42,7 @@ export default function Chats({ room, chats, onSelectChat }: IChatable) {
 
         <div className={`${className}-cards-wrapper`}>
           <div className={`${className}-cards`}>
-            {(filter ?? chats).map((chat) => (
+            {(filter.length === 0 ? chats : filter).map((chat) => (
               <Card
                 {...chat}
                 key={chat.room}

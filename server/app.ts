@@ -66,7 +66,7 @@ io.on("connection", (socket) => {
 
   socket.emit("chats", dummyChats);
 
-  socket.on("joinRoom", (room) => {
+  socket.on("room", (room) => {
     console.log(`User ID: ${socket.id} | Room ID: ${room}`);
     socket.join(room);
   });
