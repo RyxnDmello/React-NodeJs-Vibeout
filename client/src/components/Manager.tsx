@@ -27,7 +27,7 @@ export default function Manager() {
 
       <div className={`${className}-projects-wrapper`}>
         <div className={`${className}-projects`}>
-          {Array.from({ length: 20 }, (_, i) => (
+          {Array.from({ length: 0 }, (_, i) => (
             <Project key={i} />
           ))}
         </div>
