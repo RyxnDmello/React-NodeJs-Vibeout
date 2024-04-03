@@ -1,8 +1,19 @@
+import { useState } from "react";
+
+import { IProject } from "../interfaces/Manager";
+
 import CreateIcon from "../images/buttons/create.svg";
 
 import Project from "./Manager/Project";
 
 export default function Manager() {
+  const [projects, setProjects] = useState<IProject[]>([]);
+  const [project, setProject] = useState<IProject | undefined>(undefined);
+
+  const handleSelectProject = (project: IProject | undefined) => {
+    setProject(project);
+  };
+
   const className = "manager";
 
   return (
@@ -27,8 +38,12 @@ export default function Manager() {
 
       <div className={`${className}-projects-wrapper`}>
         <div className={`${className}-projects`}>
-          {Array.from({ length: 0 }, (_, i) => (
-            <Project key={i} />
+          {projects.map((project, i) => (
+            <Project
+              key={i}
+              {...project}
+              onSelectProject={handleSelectProject}
+            />
           ))}
         </div>
       </div>

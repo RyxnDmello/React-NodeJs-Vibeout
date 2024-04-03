@@ -149,16 +149,16 @@
 .manager-project-name {
   font-family: "Poppins", sans-serif;
   letter-spacing: 0.5px;
+  font-size: 1.25rem;
   font-weight: 300;
-  font-size: 1rem;
   color: #fff;
 }
 
-.manager-project-description {
+.manager-project-about {
   font-family: "Poppins", sans-serif;
   letter-spacing: 0.5px;
   color: #ffffff80;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 300;
 }
 
@@ -180,15 +180,16 @@
   overflow: hidden;
   flex-grow: 1;
   height: 4px;
+  --fill: 50%;
 }
 
 .manager-project-progress-bar::before {
   background-color: #fff;
   border-radius: 40px;
   position: absolute;
+  width: var(--fill);
   height: 100%;
   content: "";
-  width: 50%;
   left: 0;
 }
 

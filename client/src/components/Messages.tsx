@@ -13,7 +13,7 @@ export default function Messages({ chat, socket }: IMessageable) {
   const [messages, setMessages] = useState<IMessage[]>([]);
   const [text, setText] = useState<string>("");
 
-  const onHandleSendMessage = () => {
+  const handleSendMessage = () => {
     if (chat === undefined || text === "") return;
 
     const message: IMessage = {
@@ -70,7 +70,7 @@ export default function Messages({ chat, socket }: IMessageable) {
         value={text}
         label="Message..."
         onSetText={setText}
-        onSendMessage={onHandleSendMessage}
+        onSendMessage={handleSendMessage}
       />
     </section>
   );
