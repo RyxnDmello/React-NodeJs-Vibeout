@@ -5,7 +5,7 @@
 <h1 align="center">❤️ MERN APPLICATION</h1>
 
 # 📂 Vibeout
-Vibeout is a **Chat Web Application** that redefines chatting with its sleek, modern interface designed for effortless communication. Utilizing advanced _Sentiment Analysis_, it fosters a deeper understanding of emotions, ensuring every message _resonates authentically_. With robust user authentication and encryption protocols, Vibeout prioritizes security, safeguarding user data and privacy at every exchange. Engage in meaningful conversations with confidence, as Vibeout seamlessly blends cutting-edge technology with intuitive design for an _unparalleled_ chatting experience.
+Vibeout is a **Chat & Collaboration Web Application** that redefines chatting with its sleek, modern interface designed for effortless communication. Our interface ensures seamless interaction, while robust security measures prioritize your privacy at every turn. Going beyond traditional chatting platforms, Vibeout seamlessly integrates powerful _Project Management_ features, empowering users to establish objectives, track progress, and collaborate seamlessly. With Vibeout's intuitive design, managing projects becomes a breeze. Clients can effortlessly create objectives, assign tasks, and monitor their completion in real-time.
 
 <hr>
 
@@ -15,6 +15,7 @@ Vibeout is a **Chat Web Application** that redefines chatting with its sleek, mo
 - ✅ MVC Structured Business Logic - Express.js
 - ✅ User Authentication System - Mongoose ODM
 - ✅ User Account Encryption - BCrypt & Mongoose
+- ✅ Structured & Organized Codebase - TypeScript
 
 <hr>
 
