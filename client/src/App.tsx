@@ -21,7 +21,7 @@ export default function App() {
     <main>
       <Chats room={chat?.room} socket={socket} onSelectChat={onSelectChat} />
       <Messages chat={chat} socket={socket} />
-      <Manager />
+      <Manager room={chat?.room} socket={socket} />
     </main>
   );
 }

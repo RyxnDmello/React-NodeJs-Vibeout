@@ -1,10 +1,3 @@
-import { Socket } from "socket.io-client";
-
-export interface IManageable {
-  room?: string;
-  socket: Socket;
-}
-
 export interface IProject {
   id: string;
   name: string;

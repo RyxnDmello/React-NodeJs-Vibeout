@@ -1,18 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import { IProject } from "../interfaces/Manager";
+import { IManageable, IProject } from "../interfaces/Manager";
 
 import CreateIcon from "../images/buttons/create.svg";
 
 import Project from "./Manager/Project";
 
-export default function Manager() {
+export default function Manager({ room, socket }: IManageable) {
   const [projects, setProjects] = useState<IProject[]>([]);
   const [project, setProject] = useState<IProject | undefined>(undefined);
 
   const handleSelectProject = (project: IProject | undefined) => {
     setProject(project);
   };
+
+  useEffect(() => {
+    socket.emit("getProjects", room);
+    socket.on("projects", (projects) => setProjects(projects));
+  }, [room, socket]);
 
   const className = "manager";
 

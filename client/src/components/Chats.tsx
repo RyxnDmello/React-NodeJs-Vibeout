@@ -9,7 +9,7 @@ export default function Chats({ room, socket, onSelectChat }: IChatable) {
   const [chats, setChats] = useState<IChat[]>([]);
   const [filter, setFilter] = useState<IChat[]>([]);
 
-  const onHandleFilterChats = (prompt: string) => {
+  const handleFilterChats = (prompt: string) => {
     const filter: IChat[] = chats.filter((chat) =>
       chat.username.toLowerCase().startsWith(prompt.toLowerCase())
     );
@@ -32,7 +32,7 @@ export default function Chats({ room, socket, onSelectChat }: IChatable) {
 
         <form className={`${className}-search`} action="/search" method="post">
           <input
-            onChange={(event) => onHandleFilterChats(event.target.value)}
+            onChange={(event) => handleFilterChats(event.target.value)}
             className={`${className}-search-bar`}
             placeholder="Search"
             name="search"
