@@ -26,13 +26,13 @@ export const chats: IChat[] = [
     username: "Aditya Singh",
   },
   {
-    room: "40",
+    room: "50",
     image: "",
     email: "chirag@gmail.com",
     username: "Chirag Gupta",
   },
   {
-    room: "50",
+    room: "60",
     image: "",
     email: "jerson@gmail.com",
     username: "Jerson Braganza",

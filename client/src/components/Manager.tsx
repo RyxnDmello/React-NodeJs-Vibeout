@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 import { IManageable, IProject } from "../interfaces/Manager";
 
@@ -6,7 +7,7 @@ import CreateIcon from "../images/buttons/create.svg";
 
 import Project from "./Manager/Project";
 
-export default function Manager({ room, socket }: IManageable) {
+export default function Manager({ room }: IManageable) {
   const [projects, setProjects] = useState<IProject[]>([]);
   const [project, setProject] = useState<IProject | undefined>(undefined);
 
@@ -15,9 +16,18 @@ export default function Manager({ room, socket }: IManageable) {
   };
 
   useEffect(() => {
-    socket.emit("getProjects", room);
-    socket.on("projects", (projects) => setProjects(projects));
-  }, [room, socket]);
+    const requestProjects = async () => {
+      if (room === undefined) return;
+
+      const response = await axios.post("http://localhost:8080/projects", {
+        room: room,
+      });
+
+      setProjects(await response.data);
+    };
+
+    requestProjects();
+  }, [room]);
 
   const className = "manager";
 

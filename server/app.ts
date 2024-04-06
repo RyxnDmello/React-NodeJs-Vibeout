@@ -7,6 +7,8 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import cors from "cors";
 
+import { IProject } from "./interfaces/Manager";
+
 import { chats } from "./data/chats";
 import { projects } from "./data/projects";
 
@@ -31,6 +33,14 @@ const io: Server = new Server(server, {
   },
 });
 
+app.post("/projects", (req, res) => {
+  const query: IProject[] = projects.filter(
+    (project) => project.id === req.body.room
+  );
+
+  res.send(query);
+});
+
 io.on("connection", (socket) => {
   console.log(`User Connected: ${socket.id}`);
 
@@ -43,11 +53,6 @@ io.on("connection", (socket) => {
 
   socket.on("sendMessage", (message) => {
     socket.in(message.room).emit("messages", message);
-  });
-
-  socket.on("getProjects", (room) => {
-    const selectedProjects = projects.filter((project) => project.id === room);
-    socket.emit("projects", selectedProjects);
   });
 
   socket.on("disconnect", () => console.log(`User Disconnected: ${socket.id}`));
