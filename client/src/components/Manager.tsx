@@ -23,7 +23,7 @@ export default function Manager({ room }: IManageable) {
         room: room,
       });
 
-      setProjects(await response.data);
+      setProjects(response.data);
     };
 
     requestProjects();

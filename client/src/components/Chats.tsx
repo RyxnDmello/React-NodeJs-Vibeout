@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 import { IChatable, IChat } from "../interfaces/Chat";
 
 import Logo from "./Common/Logo";
 import Card from "./Chats/Card";
 
-export default function Chats({ room, socket, onSelectChat }: IChatable) {
+export default function Chats({ room, onSelectChat }: IChatable) {
   const [chats, setChats] = useState<IChat[]>([]);
   const [filter, setFilter] = useState<IChat[]>([]);
 
@@ -18,8 +19,13 @@ export default function Chats({ room, socket, onSelectChat }: IChatable) {
   };
 
   useEffect(() => {
-    socket.on("chats", (chats) => setChats(chats));
-  }, [socket]);
+    const requestChats = async () => {
+      const response = await axios.get("http://localhost:8080/chats");
+      setChats(response.data);
+    };
+
+    requestChats();
+  }, []);
 
   const className = "chats";
 

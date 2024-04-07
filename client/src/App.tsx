@@ -19,9 +19,9 @@ export default function App() {
 
   return (
     <main>
-      <Chats room={chat?.room} socket={socket} onSelectChat={onSelectChat} />
+      <Chats room={chat?.room} onSelectChat={onSelectChat} />
       <Messages chat={chat} socket={socket} />
-      <Manager room={chat?.room} socket={socket} />
+      <Manager room={chat?.room} />
     </main>
   );
 }

@@ -1,50 +1,40 @@
 import dotenv from "dotenv";
-dotenv.config();
-
 import Express, { Application } from "express";
 import { json, urlencoded } from "body-parser";
 import { createServer } from "http";
 import { Server } from "socket.io";
 import cors from "cors";
 
-import { IProject } from "./interfaces/Manager";
+import chatsRouter from "./routes/Chats";
+import projectsRouter from "./routes/Projects";
 
-import { chats } from "./data/chats";
-import { projects } from "./data/projects";
+dotenv.config();
 
 const app: Application = Express();
+const server = createServer(app);
+
+const io: Server = new Server(server, {
+  cors: {
+    origin: process.env.CLIENT_CORS,
+    methods: ["GET", "POST"],
+  },
+});
 
 app.use(urlencoded({ extended: true }));
 app.use(json());
 
 app.use(
   cors({
-    origin: "http://localhost:8085",
+    origin: process.env.CLIENT_CORS,
     methods: ["GET", "POST"],
   })
 );
 
-const server = createServer(app);
-
-const io: Server = new Server(server, {
-  cors: {
-    origin: "http://localhost:8085",
-    methods: ["GET", "POST"],
-  },
-});
-
-app.post("/projects", (req, res) => {
-  const query: IProject[] = projects.filter(
-    (project) => project.id === req.body.room
-  );
-
-  res.send(query);
-});
+app.use("/chats", chatsRouter);
+app.use("/projects", projectsRouter);
 
 io.on("connection", (socket) => {
   console.log(`User Connected: ${socket.id}`);
-
-  socket.emit("chats", chats);
 
   socket.on("room", (room) => {
     console.log(`User ID: ${socket.id} | Room ID: ${room}`);
