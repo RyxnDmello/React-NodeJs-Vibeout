@@ -17,3 +17,9 @@ export interface IObjective {
   isCompleted: boolean;
   priority: "high" | "medium" | "low";
 }
+
+export enum State {
+  CREATE,
+  PROJECTS,
+  OBJECTIVES,
+}

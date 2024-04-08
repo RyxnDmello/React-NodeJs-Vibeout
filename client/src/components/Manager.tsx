@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import { IManageable, IProject } from "../interfaces/Manager";
-
-import CreateIcon from "../images/buttons/create.svg";
+import { IManageable, IProject, State } from "../interfaces/Manager";
 
 import Project from "./Manager/Project";
+import Form from "./Manager/Form";
 
 export default function Manager({ room }: IManageable) {
   const [projects, setProjects] = useState<IProject[]>([]);
   const [project, setProject] = useState<IProject | undefined>(undefined);
+  const [state, setState] = useState<State>(State.PROJECTS);
 
   const handleSelectProject = (project: IProject | undefined) => {
+    console.log(project);
+
     setProject(project);
   };
 
@@ -23,6 +25,7 @@ export default function Manager({ room }: IManageable) {
         room: room,
       });
 
+      setState(response.data.length === 0 ? State.CREATE : State.PROJECTS);
       setProjects(response.data);
     };
 
@@ -35,32 +38,31 @@ export default function Manager({ room }: IManageable) {
     <section id={className}>
       <div className={`${className}-wrapper`}>
         <div className={`${className}-header`}>
-          <h4 className={`${className}-header-title`}>Manager</h4>
+          <h4
+            className={`${className}-header-title`}
+            onClick={() => setState(State.CREATE)}
+          >
+            Manager
+          </h4>
         </div>
-      </div>
 
-      <div className={`${className}-controller`}>
-        <input
-          className={`${className}-input`}
-          placeholder="Project"
-          type="text"
-        />
+        {room && state !== State.PROJECTS && (
+          <Form room={room!} project={project!} state={state} />
+        )}
 
-        <div className={`${className}-button`}>
-          <img className={`${className}-button-icon`} src={CreateIcon} />
-        </div>
-      </div>
-
-      <div className={`${className}-projects-wrapper`}>
-        <div className={`${className}-projects`}>
-          {projects.map((project, i) => (
-            <Project
-              key={i}
-              {...project}
-              onSelectProject={handleSelectProject}
-            />
-          ))}
-        </div>
+        {room && state === State.PROJECTS && (
+          <div className={`${className}-projects-wrapper`}>
+            <div className={`${className}-projects`}>
+              {projects.map((project, i) => (
+                <Project
+                  key={i}
+                  {...project}
+                  onSelectProject={handleSelectProject}
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
