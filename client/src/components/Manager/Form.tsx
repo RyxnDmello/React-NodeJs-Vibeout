@@ -1,14 +1,8 @@
 import { FormEvent, useRef } from "react";
 
-import { IProject, State } from "../../interfaces/Manager";
+import { ManagerState, IProject } from "../../interfaces/Manager";
 
-import Clear from "../../images/buttons/clear.svg";
-
-export default function Form({
-  room,
-  project,
-  state = State.CREATE,
-}: IForm) {
+export default function Form({ room, project, state }: IForm) {
   const name = useRef<HTMLInputElement>(null);
   const about = useRef<HTMLInputElement>(null);
   const description = useRef<HTMLTextAreaElement>(null);
@@ -34,11 +28,9 @@ export default function Form({
   return (
     <form
       className={className}
-      onSubmit={
-        state === State.CREATE ? handleCreateProject : handleAddObjective
-      }
+      onSubmit={state === "PROJECTS" ? handleCreateProject : handleAddObjective}
     >
-      {state === State.CREATE && (
+      {state === "DEFAULT" && (
         <h4 className={`${className}-title`}>Create A Project</h4>
       )}
 
@@ -52,7 +44,7 @@ export default function Form({
           type="text"
         />
 
-        {state === State.CREATE && (
+        {state === "DEFAULT" && (
           <input
             className={`${className}-input`}
             value={about.current?.value}
@@ -63,15 +55,15 @@ export default function Form({
           />
         )}
 
-        {state === State.OBJECTIVES && (
+        {state === "OBJECTIVES" && (
           <textarea
             className={`${className}-input`}
             value={description.current?.value}
             placeholder="Description"
+            name="description"
             ref={description}
-            name="about"
             rows={3}
-          ></textarea>
+          />
         )}
       </div>
 
@@ -81,19 +73,11 @@ export default function Form({
         <div className={`${className}-priorities low`}></div>
       </div>
 
-      <div className={`${className}-buttons`}>
-        <button className={`${className}-button`} type="submit">
-          <p className={`${className}-button-label`}>
-            Add {state === State.CREATE ? "Project" : "Objective"}
-          </p>
-        </button>
-
-        <button className={`${className}-button`} type="reset">
-          <img className={`${className}-button-icon`} src={Clear} />
-        </button>
-      </div>
-
-      <hr className={`${className}-divider`} />
+      <button className={`${className}-button`} type="submit">
+        <p className={`${className}-button-label`}>
+          Add {state === "DEFAULT" ? "Project" : "Objective"}
+        </p>
+      </button>
     </form>
   );
 }
@@ -101,5 +85,5 @@ export default function Form({
 interface IForm {
   room: string;
   project: IProject;
-  state?: State;
+  state: ManagerState;
 }

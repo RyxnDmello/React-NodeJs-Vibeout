@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import { IManageable, IProject, State } from "../interfaces/Manager";
+import { ManagerState, IManageable, IProject } from "../interfaces/Manager";
 
-import Project from "./Manager/Project";
+import Navbar from "./Manager/Navbar";
 import Form from "./Manager/Form";
+import Project from "./Manager/Project";
 
 export default function Manager({ room }: IManageable) {
   const [projects, setProjects] = useState<IProject[]>([]);
   const [project, setProject] = useState<IProject | undefined>(undefined);
-  const [state, setState] = useState<State>(State.PROJECTS);
+  const [state, setState] = useState<ManagerState>("PROJECTS");
 
   const handleSelectProject = (project: IProject | undefined) => {
-    console.log(project);
-
+    setState("OBJECTIVES");
     setProject(project);
   };
 
@@ -25,7 +25,7 @@ export default function Manager({ room }: IManageable) {
         room: room,
       });
 
-      setState(response.data.length === 0 ? State.CREATE : State.PROJECTS);
+      setState(response.data.length === 0 ? "DEFAULT" : "PROJECTS");
       setProjects(response.data);
     };
 
@@ -38,19 +38,18 @@ export default function Manager({ room }: IManageable) {
     <section id={className}>
       <div className={`${className}-wrapper`}>
         <div className={`${className}-header`}>
-          <h4
-            className={`${className}-header-title`}
-            onClick={() => setState(State.CREATE)}
-          >
-            Manager
-          </h4>
+          <h4 className={`${className}-header-title`}>Manager</h4>
         </div>
 
-        {room && state !== State.PROJECTS && (
+        {room && projects.length > 0 && (
+          <Navbar state={state} onSwitchState={setState} />
+        )}
+
+        {state !== "PROJECTS" && (
           <Form room={room!} project={project!} state={state} />
         )}
 
-        {room && state === State.PROJECTS && (
+        {state === "PROJECTS" && (
           <div className={`${className}-projects-wrapper`}>
             <div className={`${className}-projects`}>
               {projects.map((project, i) => (

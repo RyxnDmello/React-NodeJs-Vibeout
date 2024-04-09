@@ -18,8 +18,4 @@ export interface IObjective {
   priority: "high" | "medium" | "low";
 }
 
-export enum State {
-  CREATE,
-  PROJECTS,
-  OBJECTIVES,
-}
+export type ManagerState = "DEFAULT" | "PROJECTS" | "OBJECTIVES";
