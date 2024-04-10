@@ -45,11 +45,11 @@ export default function Manager({ room }: IManageable) {
           <Navbar state={state} onSwitchState={setState} />
         )}
 
-        {state !== "PROJECTS" && (
+        {room && state !== "PROJECTS" && (
           <Form room={room!} project={project!} state={state} />
         )}
 
-        {state === "PROJECTS" && (
+        {room && state === "PROJECTS" && (
           <div className={`${className}-projects-wrapper`}>
             <div className={`${className}-projects`}>
               {projects.map((project, i) => (

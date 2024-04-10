@@ -1,76 +1,61 @@
-import { FormEvent, useRef } from "react";
+import { useState } from "react";
 
-import { ManagerState, IProject } from "../../interfaces/Manager";
+import { ManagerState, Priority, IProject } from "../../interfaces/Manager";
+
+import Input from "./Form/Input";
+import Option from "./Form/Option";
 
 export default function Form({ room, project, state }: IForm) {
-  const name = useRef<HTMLInputElement>(null);
-  const about = useRef<HTMLInputElement>(null);
-  const description = useRef<HTMLTextAreaElement>(null);
+  const [priority, setPriority] = useState<Priority | undefined>(undefined);
 
-  const handleCreateProject = (event: FormEvent) => {
-    event.preventDefault();
+  const handleSetPriority = (priority: Priority) => setPriority(priority);
 
+  const handleSubmit = () => {
+    setPriority("medium");
     console.log(room);
-    console.log(name.current?.value);
-    console.log(about.current?.value);
-  };
-
-  const handleAddObjective = (event: FormEvent) => {
-    event.preventDefault();
-
-    console.log(project?.id);
-    console.log(name.current?.value);
-    console.log(about.current?.value);
+    console.log(project);
   };
 
   const className = "manager-form";
 
   return (
-    <form
-      className={className}
-      onSubmit={state === "PROJECTS" ? handleCreateProject : handleAddObjective}
-    >
+    <form className={className} onSubmit={() => handleSubmit()}>
       {state === "DEFAULT" && (
         <h4 className={`${className}-title`}>Create A Project</h4>
       )}
 
       <div className={`${className}-inputs`}>
-        <input
-          className={`${className}-input`}
-          value={name.current?.value}
-          placeholder="Name"
-          ref={name}
-          name="name"
-          type="text"
-        />
+        <Input label="Name" name="name" value={undefined!} />
 
         {state === "DEFAULT" && (
-          <input
-            className={`${className}-input`}
-            value={about.current?.value}
-            placeholder="About"
-            name="about"
-            ref={about}
-            type="text"
-          />
+          <Input label="About" name="about" value={undefined!} />
         )}
 
         {state === "OBJECTIVES" && (
-          <textarea
-            className={`${className}-input`}
-            value={description.current?.value}
-            placeholder="Description"
-            name="description"
-            ref={description}
-            rows={3}
-          />
+          <Input label="Description" name="description" value={undefined!} />
         )}
       </div>
 
-      <div className={`${className}-priorities`}>
-        <div className={`${className}-priorities high`}></div>
-        <div className={`${className}-priorities medium`}></div>
-        <div className={`${className}-priorities low`}></div>
+      <div className={`${className}-priority`}>
+        <div className={`${className}-priority-title`}>Priority</div>
+
+        <div className={`${className}-priority-options`}>
+          <Option
+            isSelected={priority === "high"}
+            onSelect={handleSetPriority}
+            priority="high"
+          />
+          <Option
+            isSelected={priority === "medium"}
+            onSelect={handleSetPriority}
+            priority="medium"
+          />
+          <Option
+            isSelected={priority === "low"}
+            onSelect={handleSetPriority}
+            priority="low"
+          />
+        </div>
       </div>
 
       <button className={`${className}-button`} type="submit">

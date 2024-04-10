@@ -7,7 +7,7 @@ export interface IProject {
   name: string;
   about: string;
   objectives: IObjective[];
-  priority: "high" | "medium" | "low";
+  priority: Priority;
 }
 
 export interface IObjective {
@@ -15,7 +15,8 @@ export interface IObjective {
   name: string;
   description: string;
   isCompleted: boolean;
-  priority: "high" | "medium" | "low";
+  priority: Priority;
 }
 
+export type Priority = "high" | "medium" | "low";
 export type ManagerState = "DEFAULT" | "PROJECTS" | "OBJECTIVES";
