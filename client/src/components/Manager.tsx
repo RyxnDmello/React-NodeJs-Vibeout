@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import { ManagerState, IManageable, IProject } from "../interfaces/Manager";
+import { State, IManageable, IProject } from "../interfaces/Manager";
 
 import Navbar from "./Manager/Navbar";
 import Form from "./Manager/Form";
@@ -10,7 +10,7 @@ import Project from "./Manager/Project";
 export default function Manager({ room }: IManageable) {
   const [projects, setProjects] = useState<IProject[]>([]);
   const [project, setProject] = useState<IProject | undefined>(undefined);
-  const [state, setState] = useState<ManagerState>("PROJECTS");
+  const [state, setState] = useState<State>("PROJECTS");
 
   const handleSelectProject = (project: IProject | undefined) => {
     setState("OBJECTIVES");

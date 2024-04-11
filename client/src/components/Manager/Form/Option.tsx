@@ -4,9 +4,12 @@ export default function Option({ priority, isSelected, onSelect }: IOption) {
   const className = "manager-form-priority-option";
 
   return (
-    <div
+    <input
       className={`${className} ${priority} ${isSelected && "selected"}`}
       onClick={() => onSelect(priority)}
+      value={priority}
+      name="priority"
+      type="radio"
     />
   );
 }

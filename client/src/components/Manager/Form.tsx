@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { ManagerState, Priority, IProject } from "../../interfaces/Manager";
+import { IForm, Priority } from "../../interfaces/Manager";
 
 import Input from "./Form/Input";
 import Option from "./Form/Option";
@@ -45,11 +45,13 @@ export default function Form({ room, project, state }: IForm) {
             onSelect={handleSetPriority}
             priority="high"
           />
+
           <Option
             isSelected={priority === "medium"}
             onSelect={handleSetPriority}
             priority="medium"
           />
+
           <Option
             isSelected={priority === "low"}
             onSelect={handleSetPriority}
@@ -65,10 +67,4 @@ export default function Form({ room, project, state }: IForm) {
       </button>
     </form>
   );
-}
-
-interface IForm {
-  room: string;
-  project: IProject;
-  state: ManagerState;
 }

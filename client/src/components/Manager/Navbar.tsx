@@ -1,4 +1,4 @@
-import { ManagerState } from "../../interfaces/Manager";
+import { INavbar } from "../../interfaces/Manager";
 
 import Create from "../../images/manager/create.svg";
 import Explore from "../../images/manager/explore.svg";
@@ -36,9 +36,4 @@ export default function Navbar({ state, onSwitchState: onSetState }: INavbar) {
       )}
     </nav>
   );
-}
-
-interface INavbar {
-  state: ManagerState;
-  onSwitchState: (state: ManagerState) => void;
 }

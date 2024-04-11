@@ -178,6 +178,7 @@
   border: 2px solid transparent;
   aspect-ratio: 1 / 1;
   border-radius: 40px;
+  appearance: none;
   width: 20px;
 }
 

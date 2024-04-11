@@ -6,17 +6,28 @@ export interface IProject {
   id: string;
   name: string;
   about: string;
-  objectives: IObjective[];
   priority: Priority;
+  objectives: IObjective[];
 }
 
 export interface IObjective {
   id: string;
   name: string;
   description: string;
-  isCompleted: boolean;
   priority: Priority;
+  isCompleted: boolean;
+}
+
+export interface INavbar {
+  state: State;
+  onSwitchState: (state: State) => void;
+}
+
+export interface IForm {
+  state: State;
+  room: string;
+  project: IProject;
 }
 
 export type Priority = "high" | "medium" | "low";
-export type ManagerState = "DEFAULT" | "PROJECTS" | "OBJECTIVES";
+export type State = "DEFAULT" | "PROJECTS" | "OBJECTIVES";
