@@ -6,7 +6,7 @@ export default function Option({ priority, isSelected, onSelect }: IOption) {
   return (
     <input
       className={`${className} ${priority} ${isSelected && "selected"}`}
-      onClick={() => onSelect(priority)}
+      onClick={onSelect}
       value={priority}
       name="priority"
       type="radio"
@@ -17,5 +17,5 @@ export default function Option({ priority, isSelected, onSelect }: IOption) {
 interface IOption {
   priority: Priority;
   isSelected: boolean;
-  onSelect: (priority: Priority) => void;
+  onSelect: (event: React.MouseEvent<HTMLInputElement>) => void;
 }

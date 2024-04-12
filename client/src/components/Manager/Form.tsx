@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useFormik, FormikValues } from "formik";
+import { v4 as unique } from "uuid";
 
 import { IForm, Priority } from "../../interfaces/Manager";
+import { IProjectSchema, ProjectValidation } from "../../interfaces/Schema";
 
 import Input from "./Form/Input";
 import Option from "./Form/Option";
@@ -8,31 +11,59 @@ import Option from "./Form/Option";
 export default function Form({ room, project, state }: IForm) {
   const [priority, setPriority] = useState<Priority | undefined>(undefined);
 
-  const handleSetPriority = (priority: Priority) => setPriority(priority);
-
-  const handleSubmit = () => {
-    setPriority("medium");
-    console.log(room);
-    console.log(project);
+  const initialValues: IProjectSchema = {
+    id: "",
+    name: "",
+    about: "",
+    priority: undefined,
+    objectives: [],
   };
+
+  const { values, errors, handleSubmit, handleChange } =
+    useFormik<FormikValues>({
+      initialValues: initialValues,
+      validationSchema: ProjectValidation,
+      validate: () => {
+        console.log(errors);
+      },
+      onSubmit: (values: FormikValues) => {
+        values.id = unique();
+        console.log(values);
+      },
+    });
 
   const className = "manager-form";
 
   return (
-    <form className={className} onSubmit={() => handleSubmit()}>
+    <form className={className} onSubmit={handleSubmit}>
       {state === "DEFAULT" && (
         <h4 className={`${className}-title`}>Create A Project</h4>
       )}
 
       <div className={`${className}-inputs`}>
-        <Input label="Name" name="name" value={undefined!} />
+        <Input
+          onChange={handleChange}
+          value={values.name}
+          label="Name"
+          name="name"
+        />
 
         {state === "DEFAULT" && (
-          <Input label="About" name="about" value={undefined!} />
+          <Input
+            onChange={handleChange}
+            value={values.about}
+            label="About"
+            name="about"
+          />
         )}
 
         {state === "OBJECTIVES" && (
-          <Input label="Description" name="description" value={undefined!} />
+          <Input
+            value={values.description}
+            onChange={handleChange}
+            label="Description"
+            name="description"
+          />
         )}
       </div>
 
@@ -42,19 +73,19 @@ export default function Form({ room, project, state }: IForm) {
         <div className={`${className}-priority-options`}>
           <Option
             isSelected={priority === "high"}
-            onSelect={handleSetPriority}
+            onSelect={handleChange}
             priority="high"
           />
 
           <Option
             isSelected={priority === "medium"}
-            onSelect={handleSetPriority}
+            onSelect={handleChange}
             priority="medium"
           />
 
           <Option
             isSelected={priority === "low"}
-            onSelect={handleSetPriority}
+            onSelect={handleChange}
             priority="low"
           />
         </div>
