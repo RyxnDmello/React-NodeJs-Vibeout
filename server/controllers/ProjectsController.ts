@@ -10,3 +10,7 @@ export const projects = (req: Request, res: Response) => {
 
   res.send(query);
 };
+
+export const add = (req: Request, res: Response) => {
+  console.log(req.body);
+};

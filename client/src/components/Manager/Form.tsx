@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useFormik, FormikValues } from "formik";
-import { v4 as unique } from "uuid";
+import { useFormik } from "formik";
+import axios from "axios";
 
 import { IForm, Priority } from "../../interfaces/Manager";
-import { IProjectSchema, ProjectValidation } from "../../interfaces/Schema";
+import { IManagerSchema, ManagerValidation } from "../../interfaces/Schema";
 
 import Input from "./Form/Input";
 import Option from "./Form/Option";
@@ -11,26 +11,30 @@ import Option from "./Form/Option";
 export default function Form({ room, project, state }: IForm) {
   const [priority, setPriority] = useState<Priority | undefined>(undefined);
 
-  const initialValues: IProjectSchema = {
-    id: "",
-    name: "",
-    about: "",
-    priority: undefined,
-    objectives: [],
+  const handleSetPriority = (event: React.MouseEvent<HTMLInputElement>) => {
+    setPriority(event.currentTarget.value as Priority);
+    handleChange(event);
   };
 
-  const { values, errors, handleSubmit, handleChange } =
-    useFormik<FormikValues>({
+  const initialValues: IManagerSchema = {
+    name: "",
+    description: "",
+    priority: undefined,
+  };
+
+  const { values, handleSubmit, handleChange, resetForm } =
+    useFormik<IManagerSchema>({
       initialValues: initialValues,
-      validationSchema: ProjectValidation,
-      validate: () => {
-        console.log(errors);
-      },
-      onSubmit: (values: FormikValues) => {
-        values.id = unique();
-        console.log(values);
+      validationSchema: ManagerValidation,
+      onSubmit: async () => {
+        await axios.post("http://localhost:8080/projects/add", values);
       },
     });
+
+  const handleResetForm = () => {
+    setPriority(undefined);
+    resetForm();
+  };
 
   const className = "manager-form";
 
@@ -48,23 +52,12 @@ export default function Form({ room, project, state }: IForm) {
           name="name"
         />
 
-        {state === "DEFAULT" && (
-          <Input
-            onChange={handleChange}
-            value={values.about}
-            label="About"
-            name="about"
-          />
-        )}
-
-        {state === "OBJECTIVES" && (
-          <Input
-            value={values.description}
-            onChange={handleChange}
-            label="Description"
-            name="description"
-          />
-        )}
+        <Input
+          onChange={handleChange}
+          value={values.description}
+          label="Description"
+          name="description"
+        />
       </div>
 
       <div className={`${className}-priority`}>
@@ -73,25 +66,29 @@ export default function Form({ room, project, state }: IForm) {
         <div className={`${className}-priority-options`}>
           <Option
             isSelected={priority === "high"}
-            onSelect={handleChange}
+            onSelect={handleSetPriority}
             priority="high"
           />
 
           <Option
             isSelected={priority === "medium"}
-            onSelect={handleChange}
+            onSelect={handleSetPriority}
             priority="medium"
           />
 
           <Option
             isSelected={priority === "low"}
-            onSelect={handleChange}
+            onSelect={handleSetPriority}
             priority="low"
           />
         </div>
       </div>
 
-      <button className={`${className}-button`} type="submit">
+      <button
+        className={`${className}-button`}
+        onClick={handleResetForm}
+        type="submit"
+      >
         <p className={`${className}-button-label`}>
           Add {state === "DEFAULT" ? "Project" : "Objective"}
         </p>
