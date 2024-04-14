@@ -7,6 +7,7 @@ import cors from "cors";
 
 import chatsRouter from "./routes/Chats";
 import projectsRouter from "./routes/Projects";
+import objectivesRouter from "./routes/Objectives";
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ app.use(
 
 app.use("/chats", chatsRouter);
 app.use("/projects", projectsRouter);
+app.use("/objectives", objectivesRouter);
 
 io.on("connection", (socket) => {
   console.log(`User Connected: ${socket.id}`);

@@ -1,10 +1,10 @@
 import { Router } from "express";
 
-import { projects, add } from "../controllers/ProjectsController";
+import { projects, create } from "../controllers/ProjectsController";
 
-const router = Router();
+const router: Router = Router();
 
 router.post("/", projects);
-router.post("/add", add);
+router.post("/create", create);
 
 export default router;

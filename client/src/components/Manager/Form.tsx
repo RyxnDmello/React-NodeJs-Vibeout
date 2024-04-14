@@ -22,18 +22,29 @@ export default function Form({ room, project, state }: IForm) {
     priority: undefined,
   };
 
-  const { values, handleSubmit, handleChange, resetForm } =
-    useFormik<IManagerSchema>({
-      initialValues: initialValues,
-      validationSchema: ManagerValidation,
-      onSubmit: async () => {
-        await axios.post("http://localhost:8080/projects/add", values);
-      },
-    });
+  const { values, handleSubmit, handleChange } = useFormik<IManagerSchema>({
+    initialValues: initialValues,
+    validationSchema: ManagerValidation,
+    onSubmit: async () => {
+      state === "DEFAULT"
+        ? await handleCreateProject()
+        : await handleAddObjective();
+    },
+  });
 
-  const handleResetForm = () => {
-    setPriority(undefined);
-    resetForm();
+  const handleCreateProject = async () => {
+    await axios.post("http://localhost:8080/projects/create", {
+      room: room,
+      project: values,
+    });
+  };
+
+  const handleAddObjective = async () => {
+    await axios.post("http://localhost:8080/objectives/add", {
+      room: room,
+      project: project,
+      objective: values,
+    });
   };
 
   const className = "manager-form";
@@ -84,11 +95,7 @@ export default function Form({ room, project, state }: IForm) {
         </div>
       </div>
 
-      <button
-        className={`${className}-button`}
-        onClick={handleResetForm}
-        type="submit"
-      >
+      <button className={`${className}-button`} type="submit">
         <p className={`${className}-button-label`}>
           Add {state === "DEFAULT" ? "Project" : "Objective"}
         </p>

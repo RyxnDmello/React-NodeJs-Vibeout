@@ -175,15 +175,17 @@
 }
 
 .manager-form-priority-option {
+  transition: width 300ms, background-color 300ms;
   border: 2px solid transparent;
-  aspect-ratio: 1 / 1;
   border-radius: 40px;
   appearance: none;
+  flex-grow: 1;
+  height: 20px;
   width: 20px;
 }
 
 .manager-form-priority-option.selected {
-  border-color: #fff;
+  width: 80px;
 }
 
 .manager-form-priority-option.high {
@@ -196,6 +198,18 @@
 
 .manager-form-priority-option.low {
   background-color: #008f50;
+}
+
+.manager-form-priority-option.selected.high {
+  background-color: #ff0033;
+}
+
+.manager-form-priority-option.selected.medium {
+  background-color: #001eff;
+}
+
+.manager-form-priority-option.selected.low {
+  background-color: #00c06d;
 }
 
 /*-------------------------------------*/
