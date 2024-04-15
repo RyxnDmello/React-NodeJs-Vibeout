@@ -9,6 +9,17 @@
   display: grid;
 }
 
+#manager {
+  --high: #ff002baf;
+  --highlighted-high: #ff0033;
+
+  --medium: #0000ffaf;
+  --highlighted-medium: #001eff;
+
+  --low: #008f50;
+  --highlighted-low: #00c06d;
+}
+
 .manager-wrapper {
   grid-template-columns: auto;
   justify-content: stretch;
@@ -189,27 +200,27 @@
 }
 
 .manager-form-priority-option.high {
-  background-color: #ff002baf;
+  background-color: var(--high);
 }
 
 .manager-form-priority-option.medium {
-  background-color: #0000ffaf;
+  background-color: var(--medium);
 }
 
 .manager-form-priority-option.low {
-  background-color: #008f50;
+  background-color: var(--low);
 }
 
 .manager-form-priority-option.selected.high {
-  background-color: #ff0033;
+  background-color: var(--highlighted-high);
 }
 
 .manager-form-priority-option.selected.medium {
-  background-color: #001eff;
+  background-color: var(--highlighted-medium);
 }
 
 .manager-form-priority-option.selected.low {
-  background-color: #00c06d;
+  background-color: var(--highlighted-low);
 }
 
 /*-------------------------------------*/
@@ -232,11 +243,11 @@
   color: #fff;
 }
 
-/*-----------------------------------------*/
-/*---------------- PROJECT ----------------*/
-/*-----------------------------------------*/
+/*----------------------------------------*/
+/*---------------- STREAM ----------------*/
+/*----------------------------------------*/
 
-.manager-projects-wrapper {
+.manager-stream-wrapper {
   grid-template-columns: auto;
   justify-content: stretch;
   padding: 1rem 1.5rem;
@@ -247,17 +258,25 @@
   display: grid;
 }
 
-.manager-projects-wrapper::-webkit-scrollbar {
+.manager-stream-wrapper.objectives {
+  height: 325px;
+}
+
+.manager-stream-wrapper::-webkit-scrollbar {
   display: none;
 }
 
-.manager-projects {
+.manager-stream {
   grid-template-columns: auto;
   justify-content: stretch;
   align-items: center;
   display: grid;
   gap: 0.85rem;
 }
+
+/*-----------------------------------------*/
+/*---------------- PROJECT ----------------*/
+/*-----------------------------------------*/
 
 .manager-project {
   box-shadow: 0 0 20px #00000080;
@@ -347,6 +366,97 @@
   font-size: 0.85rem;
   font-weight: 300;
   color: #fff;
+}
+
+/*-----------------------------------------*/
+/*--------------- OBJECTIVE ---------------*/
+/*-----------------------------------------*/
+
+.manager-objective {
+  border: 2px solid #ffffff25;
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: center;
+  border-radius: 5px;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.manager-objective-details {
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: center;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.manager-objective-name {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1;
+  color: #fff;
+}
+
+.manager-objective-description {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.25px;
+  font-size: 0.85rem;
+  color: #ffffff65;
+  line-height: 1.25;
+  font-weight: 300;
+}
+
+/*------------------------------------------------*/
+/*------------- OBJECTIVE CONTROLLER -------------*/
+/*------------------------------------------------*/
+
+.manager-objective-controller {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+}
+
+.manager-objective-buttons {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.manager-objective-button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.manager-objective-button-icon {
+  width: 25px;
+}
+
+/*----------------------------------------------*/
+/*------------- OBJECTIVE PRIORITY -------------*/
+/*----------------------------------------------*/
+
+.manager-objective-priority {
+  border-radius: 40px;
+  flex-grow: 0.5;
+  height: 6.5px;
+}
+
+.manager-objective-priority.high {
+  background-color: var(--highlighted-high);
+}
+
+.manager-objective-priority.medium {
+  background-color: var(--highlighted-medium);
+}
+
+.manager-objective-priority.low {
+  background-color: var(--highlighted-low);
 }
 
 /*-----------------------------------------*/

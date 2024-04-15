@@ -6,6 +6,7 @@ import { State, IManageable, IProject } from "../interfaces/Manager";
 import Navbar from "./Manager/Navbar";
 import Form from "./Manager/Form";
 import Project from "./Manager/Project";
+import Objective from "./Manager/Objective";
 
 export default function Manager({ room }: IManageable) {
   const [projects, setProjects] = useState<IProject[]>([]);
@@ -49,16 +50,29 @@ export default function Manager({ room }: IManageable) {
           <Form room={room!} project={project!} state={state} />
         )}
 
-        {room && state === "PROJECTS" && (
-          <div className={`${className}-projects-wrapper`}>
-            <div className={`${className}-projects`}>
-              {projects.map((project, i) => (
-                <Project
-                  key={i}
-                  {...project}
-                  onSelectProject={handleSelectProject}
-                />
-              ))}
+        {room && state !== "DEFAULT" && (
+          <div className={`${className}-stream-wrapper ${state.toLowerCase()}`}>
+            <div className={`${className}-stream`}>
+              {state === "OBJECTIVES" &&
+                Array.from({ length: 10 }, (_, i) => (
+                  <Objective
+                    key={i}
+                    id={`${i}`}
+                    name="Develop Server"
+                    description="Implement Express.js Implement Express.js Implement Express.js Implement Express.jsImplement Express.js"
+                    isCompleted={false}
+                    priority={i % 2 === 0 ? "high" : "medium"}
+                  />
+                ))}
+
+              {state === "PROJECTS" &&
+                projects.map((project, i) => (
+                  <Project
+                    key={i}
+                    {...project}
+                    onSelectProject={handleSelectProject}
+                  />
+                ))}
             </div>
           </div>
         )}
