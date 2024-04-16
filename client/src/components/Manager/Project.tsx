@@ -25,7 +25,7 @@ export default function Project({
 
   useEffect(() => {
     const completed: number = objectives.filter(
-      (objective) => objective.isCompleted
+      (objective) => objective.completed
     ).length;
 
     setPercentage(

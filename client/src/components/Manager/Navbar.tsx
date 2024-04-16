@@ -5,16 +5,21 @@ import Explore from "../../images/manager/explore.svg";
 
 import Button from "./Navbar/Button";
 
-export default function Navbar({ state, onSwitchState: onSetState }: INavbar) {
+export default function Navbar({
+  state,
+  mode,
+  onSwitchState,
+  onSwitchMode,
+}: INavbar) {
   const className = "manager-navbar";
 
   const handleSwitchState = () => {
-    if (state === "PROJECTS") {
-      onSetState("DEFAULT");
-      return;
-    }
+    onSwitchState(state === "PROJECTS" ? "OBJECTIVES" : "PROJECTS");
+    onSwitchMode("VIEWING");
+  };
 
-    onSetState("PROJECTS");
+  const handleSwitchMode = () => {
+    onSwitchMode(mode === "VIEWING" ? "EDITING" : "VIEWING");
   };
 
   return (
@@ -34,6 +39,8 @@ export default function Navbar({ state, onSwitchState: onSetState }: INavbar) {
           image={Create}
         />
       )}
+
+      <Button onClick={handleSwitchMode} image={Create} label="Edit" />
     </nav>
   );
 }

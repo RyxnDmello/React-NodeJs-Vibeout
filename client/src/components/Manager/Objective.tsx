@@ -5,11 +5,16 @@ import Delete from "../../images/manager/delete.svg";
 
 import Button from "./Objective/Button";
 
-export default function Objective({ name, description, priority }: IObjective) {
+export default function Objective({
+  name,
+  description,
+  priority,
+  completed,
+}: IObjective) {
   const className = "manager-objective";
 
   return (
-    <form className={className}>
+    <form className={`${className} ${completed && "completed"}`}>
       <div className={`${className}-details`}>
         <h4 className={`${className}-name`}>{name}</h4>
         <p className={`${className}-description`}>{description}</p>
@@ -17,7 +22,7 @@ export default function Objective({ name, description, priority }: IObjective) {
 
       <div className={`${className}-controller`}>
         <div className={`${className}-buttons`}>
-          <Button icon={Complete} action="complete" />
+          {!completed && <Button icon={Complete} action="complete" />}
           <Button icon={Delete} action="delete" />
         </div>
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import { State, IManageable, IProject } from "../interfaces/Manager";
+import { State, Mode, IManageable, IProject } from "../interfaces/Manager";
 
 import Navbar from "./Manager/Navbar";
 import Form from "./Manager/Form";
@@ -12,6 +12,7 @@ export default function Manager({ room }: IManageable) {
   const [projects, setProjects] = useState<IProject[]>([]);
   const [project, setProject] = useState<IProject | undefined>(undefined);
   const [state, setState] = useState<State>("PROJECTS");
+  const [mode, setMode] = useState<Mode>("VIEWING");
 
   const handleSelectProject = (project: IProject | undefined) => {
     setState("OBJECTIVES");
@@ -26,7 +27,7 @@ export default function Manager({ room }: IManageable) {
         room: room,
       });
 
-      setState(response.data.length === 0 ? "DEFAULT" : "PROJECTS");
+      response.data.length === 0 && setState("DEFAULT");
       setProjects(response.data);
     };
 
@@ -43,15 +44,20 @@ export default function Manager({ room }: IManageable) {
         </div>
 
         {room && projects.length > 0 && (
-          <Navbar state={state} onSwitchState={setState} />
+          <Navbar
+            mode={mode}
+            state={state}
+            onSwitchMode={setMode}
+            onSwitchState={setState}
+          />
         )}
 
-        {room && state !== "PROJECTS" && (
-          <Form room={room!} project={project!} state={state} />
+        {room && (
+          <Form room={room!} project={project!} state={state} mode={mode} />
         )}
 
-        {room && state !== "DEFAULT" && (
-          <div className={`${className}-stream-wrapper ${state.toLowerCase()}`}>
+        {room && (
+          <div className={`${className}-stream-wrapper ${mode.toLowerCase()}`}>
             <div className={`${className}-stream`}>
               {state === "OBJECTIVES" &&
                 Array.from({ length: 10 }, (_, i) => (
@@ -60,7 +66,7 @@ export default function Manager({ room }: IManageable) {
                     id={`${i}`}
                     name="Develop Server"
                     description="Implement Express.js Implement Express.js Implement Express.js Implement Express.jsImplement Express.js"
-                    isCompleted={false}
+                    completed={true}
                     priority={i % 2 === 0 ? "high" : "medium"}
                   />
                 ))}

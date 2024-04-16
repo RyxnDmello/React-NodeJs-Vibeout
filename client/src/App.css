@@ -18,6 +18,10 @@ body {
   z-index: -1;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 main {
   grid-template-columns: 25% 50% 25%;
   justify-content: stretch;
