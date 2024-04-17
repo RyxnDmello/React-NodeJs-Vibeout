@@ -25,7 +25,6 @@
   justify-content: stretch;
   align-items: start;
   display: grid;
-  gap: 2rem;
 }
 
 /*------------------------------------*/
@@ -60,9 +59,18 @@
 .manager-navbar {
   justify-content: space-between;
   grid-auto-flow: column;
+  margin: 2rem 0 1rem 0;
   align-items: center;
   padding: 0 2rem;
   display: grid;
+}
+
+.manager-navbar-title {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #fff;
 }
 
 .manager-navbar-button {
@@ -122,7 +130,6 @@
 
 .manager-form-divider {
   border-bottom: 2px solid #ffffff25;
-  margin: 2rem auto 0 auto;
   border-radius: 40px;
   border-right: none;
   border-left: none;
@@ -262,7 +269,6 @@
   grid-template-columns: auto;
   justify-content: stretch;
   padding: 1rem 1.5rem;
-  margin-top: -1.25rem;
   overflow-y: scroll;
   align-items: start;
   height: 500px;
@@ -270,7 +276,8 @@
 }
 
 .manager-stream-wrapper.editing {
-  height: 265px;
+  margin-top: 1.25rem;
+  height: 325px;
 }
 
 .manager-stream-wrapper::-webkit-scrollbar {

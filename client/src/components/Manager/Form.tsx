@@ -52,9 +52,9 @@ export default function Form({ room, project, state, mode }: IForm) {
   return (
     <div className={`${className}-wrapper ${mode.toLocaleLowerCase()}`}>
       <form className={className} onSubmit={handleSubmit}>
-        <h4 className={`${className}-title`}>
-          {state === "PROJECTS" ? "Create A Project" : "Add Objective"}
-        </h4>
+        {state === "DEFAULT" && (
+          <h4 className={`${className}-title`}>Create A Project</h4>
+        )}
 
         <div className={`${className}-inputs`}>
           <Input

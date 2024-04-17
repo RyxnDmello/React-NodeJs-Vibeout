@@ -1,7 +1,7 @@
 import { INavbar } from "../../interfaces/Manager";
 
-import Create from "../../images/manager/create.svg";
 import Explore from "../../images/manager/explore.svg";
+import Edit from "../../images/manager/editing.svg";
 
 import Button from "./Navbar/Button";
 
@@ -24,23 +24,21 @@ export default function Navbar({
 
   return (
     <nav className={className}>
-      {state !== "PROJECTS" && (
-        <Button
-          onClick={handleSwitchState}
-          label="Explore Projects"
-          image={Explore}
-        />
-      )}
-
       {state === "PROJECTS" && (
+        <h4 className={`${className}-title`}>Projects</h4>
+      )}
+
+      {state === "OBJECTIVES" && (
         <Button
+          image={Explore}
+          label="Explore Projects"
           onClick={handleSwitchState}
-          label="Create A Project"
-          image={Create}
         />
       )}
 
-      <Button onClick={handleSwitchMode} image={Create} label="Edit" />
+      {state !== "DEFAULT" && (
+        <Button image={Edit} onClick={handleSwitchMode} />
+      )}
     </nav>
   );
 }

@@ -27,7 +27,9 @@ export default function Manager({ room }: IManageable) {
         room: room,
       });
 
-      response.data.length === 0 && setState("DEFAULT");
+      setState(response.data.length === 0 ? "DEFAULT" : "PROJECTS");
+      setMode(response.data.length === 0 ? "EDITING" : "VIEWING");
+
       setProjects(response.data);
     };
 
@@ -43,7 +45,7 @@ export default function Manager({ room }: IManageable) {
           <h4 className={`${className}-header-title`}>Manager</h4>
         </div>
 
-        {room && projects.length > 0 && (
+        {room && (
           <Navbar
             mode={mode}
             state={state}
@@ -56,7 +58,7 @@ export default function Manager({ room }: IManageable) {
           <Form room={room!} project={project!} state={state} mode={mode} />
         )}
 
-        {room && (
+        {room && state !== "DEFAULT" && (
           <div className={`${className}-stream-wrapper ${mode.toLowerCase()}`}>
             <div className={`${className}-stream`}>
               {state === "OBJECTIVES" &&
@@ -66,7 +68,7 @@ export default function Manager({ room }: IManageable) {
                     id={`${i}`}
                     name="Develop Server"
                     description="Implement Express.js Implement Express.js Implement Express.js Implement Express.jsImplement Express.js"
-                    completed={true}
+                    completed={false}
                     priority={i % 2 === 0 ? "high" : "medium"}
                   />
                 ))}
