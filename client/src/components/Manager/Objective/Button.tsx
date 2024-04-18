@@ -1,14 +1,14 @@
-export default function Button({ icon, action }: IButton) {
+export default function Button({ icon, onClick }: IButton) {
   const className = "manager-objective-button";
 
   return (
-    <button className={className} type="submit" name="action" value={action}>
+    <div className={className} onClick={onClick}>
       <img className={`${className}-icon`} src={icon} />
-    </button>
+    </div>
   );
 }
 
 interface IButton {
   icon: string;
-  action: "complete" | "delete";
+  onClick: () => void;
 }

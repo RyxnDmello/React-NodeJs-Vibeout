@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { IProject } from "../../interfaces/Manager";
 
 export default function Project({
-  id,
+  pid,
   name,
   about,
   priority,
@@ -15,7 +15,7 @@ export default function Project({
 
   const handleSelectProject = () => {
     onSelectProject({
-      id,
+      pid,
       name,
       about,
       objectives,

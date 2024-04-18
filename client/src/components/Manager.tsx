@@ -62,21 +62,19 @@ export default function Manager({ room }: IManageable) {
           <div className={`${className}-stream-wrapper ${mode.toLowerCase()}`}>
             <div className={`${className}-stream`}>
               {state === "OBJECTIVES" &&
-                Array.from({ length: 10 }, (_, i) => (
+                project?.objectives.map((objective) => (
                   <Objective
-                    key={i}
-                    id={`${i}`}
-                    name="Develop Server"
-                    description="Implement Express.js Implement Express.js Implement Express.js Implement Express.jsImplement Express.js"
-                    completed={false}
-                    priority={i % 2 === 0 ? "high" : "medium"}
+                    key={objective.oid}
+                    room={room}
+                    pid={project.pid}
+                    {...objective}
                   />
                 ))}
 
               {state === "PROJECTS" &&
-                projects.map((project, i) => (
+                projects.map((project) => (
                   <Project
-                    key={i}
+                    key={project.pid}
                     {...project}
                     onSelectProject={handleSelectProject}
                   />

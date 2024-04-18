@@ -1,5 +1,10 @@
+export interface IRoom {
+  room: string;
+  projects: IProject[];
+}
+
 export interface IProject {
-  id: string;
+  pid: string;
   name: string;
   about: string;
   objectives: IObjective[];
@@ -7,9 +12,9 @@ export interface IProject {
 }
 
 export interface IObjective {
-  id: string;
+  oid: string;
   name: string;
   description: string;
-  isCompleted: boolean;
+  completed: boolean;
   priority: "high" | "medium" | "low";
 }

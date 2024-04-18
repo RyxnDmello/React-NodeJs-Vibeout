@@ -3,7 +3,7 @@ export interface IManageable {
 }
 
 export interface IProject {
-  id: string;
+  pid: string;
   name: string;
   about: string;
   priority: Priority;
@@ -11,7 +11,7 @@ export interface IProject {
 }
 
 export interface IObjective {
-  id: string;
+  oid: string;
   name: string;
   description: string;
   priority: Priority;
