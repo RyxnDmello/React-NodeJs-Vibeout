@@ -1,0 +1,19 @@
+@import url("./messenger/chats.css");
+@import url("./messenger/messages.css");
+@import url("./messenger/manager.css");
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+main {
+  grid-template-columns: 25% 50% 25%;
+  justify-content: stretch;
+  align-items: stretch;
+  height: 100dvh;
+  display: grid;
+}
+
+a {
+  text-decoration: none;
+}

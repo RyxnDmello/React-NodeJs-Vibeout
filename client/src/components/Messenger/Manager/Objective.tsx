@@ -1,9 +1,9 @@
 import axios from "axios";
 
-import { IObjective } from "../../interfaces/Manager";
+import { IObjective } from "../../../interfaces/messenger/Manager";
 
-import Complete from "../../images/manager/complete.svg";
-import Delete from "../../images/manager/delete.svg";
+import Complete from "../../../images/manager/complete.svg";
+import Delete from "../../../images/manager/delete.svg";
 
 import Button from "./Objective/Button";
 

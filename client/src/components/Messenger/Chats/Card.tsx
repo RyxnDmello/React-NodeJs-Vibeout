@@ -1,6 +1,6 @@
-import { ICard } from "../../interfaces/Chat";
+import { ICard } from "../../../interfaces/messenger/Chat";
 
-import Profile from "../../images/chats/profile.png";
+import Profile from "../../../images/chats/profile.png";
 
 export default function Card({
   room,

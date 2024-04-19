@@ -2,8 +2,11 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import axios from "axios";
 
-import { IForm, Priority } from "../../interfaces/Manager";
-import { IManagerSchema, ManagerValidation } from "../../interfaces/Schema";
+import { IForm, Priority } from "../../../interfaces/messenger/Manager";
+import {
+  IManagerSchema,
+  ManagerValidation,
+} from "../../../interfaces/messenger/Schema";
 
 import Input from "./Form/Input";
 import Option from "./Form/Option";

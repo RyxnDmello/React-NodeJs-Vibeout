@@ -1,11 +1,11 @@
 import { useState } from "react";
 import io from "socket.io-client";
 
-import { IChat } from "./interfaces/Chat";
+import { IChat } from "../interfaces/messenger/Chat";
 
-import Chats from "./components/Chats";
-import Messages from "./components/Messages";
-import Manager from "./components/Manager";
+import Chats from "../components/Messenger/Chats";
+import Messages from "../components/Messenger/Messages";
+import Manager from "../components/Messenger/Manager";
 
 const socket = io("http://localhost:8080");
 

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import { IChatable, IChat } from "../interfaces/Chat";
+import { IChatable, IChat } from "../../interfaces/messenger/Chat";
 
-import Logo from "./Common/Logo";
+import Logo from "../Common/Logo";
 import Card from "./Chats/Card";
 
 export default function Chats({ room, onSelectChat }: IChatable) {

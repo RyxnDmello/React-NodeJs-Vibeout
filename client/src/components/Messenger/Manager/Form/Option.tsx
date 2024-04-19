@@ -1,4 +1,4 @@
-import { Priority } from "../../../interfaces/Manager";
+import { Priority } from "../../../../interfaces/messenger/Manager";
 
 export default function Option({ priority, isSelected, onSelect }: IOption) {
   const className = "manager-form-priority-option";

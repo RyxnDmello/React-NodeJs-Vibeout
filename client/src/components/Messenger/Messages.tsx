@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
-import { IMessageable, IMessage } from "../interfaces/Message";
-import { getDate, getTime } from "../utils/DateTime";
+import { IMessageable, IMessage } from "../../interfaces/messenger/Message";
+import { getDate, getTime } from "../../utils/DateTime";
 
-import Sender from "../images/messages/sender.png";
+import Sender from "../../images/messages/sender.png";
 
 import Bubble from "./Messages/Bubble";
 import Controller from "./Messages/Controller";

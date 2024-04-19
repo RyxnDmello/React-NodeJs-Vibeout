@@ -1,7 +1,7 @@
-import { INavbar } from "../../interfaces/Manager";
+import { INavbar } from "../../../interfaces/messenger/Manager";
 
-import Explore from "../../images/manager/explore.svg";
-import Edit from "../../images/manager/editing.svg";
+import Explore from "../../../images/manager/explore.svg";
+import Edit from "../../../images/manager/editing.svg";
 
 import Button from "./Navbar/Button";
 

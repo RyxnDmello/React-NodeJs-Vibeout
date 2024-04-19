@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-import { IProject } from "../../interfaces/Manager";
+import { IProject } from "../../../interfaces/messenger/Manager";
 
 export default function Project({
   pid,

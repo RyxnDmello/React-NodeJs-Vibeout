@@ -1,6 +1,6 @@
-import Send from "../../images/buttons/send.svg";
+import Send from "../../../images/buttons/send.svg";
 
-import { IController } from "../../interfaces/Message";
+import { IController } from "../../../interfaces/messenger/Message";
 
 export default function Input({
   value,

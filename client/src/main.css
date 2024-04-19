@@ -1,0 +1,17 @@
+@import url("./css/common/fonts.css");
+@import url("./css/common/logo.css");
+
+@import url("./css/messenger.css");
+
+* {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #000010;
+  position: relative;
+  z-index: -1;
+}
