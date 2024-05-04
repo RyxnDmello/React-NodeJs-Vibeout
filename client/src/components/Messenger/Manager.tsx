@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { IManageable, IProject } from "../../interfaces/messenger/Manager";
 
-import { State, Mode, IManageable, IProject } from "../interfaces/Manager";
+import useManagerProvider from "../../hooks/messenger/useManagerProvider";
+import useProjectProvider from "../../hooks/messenger/useProjectProvider";
 
 import Navbar from "./Manager/Navbar";
 import Form from "./Manager/Form";
@@ -9,32 +9,13 @@ import Project from "./Manager/Project";
 import Objective from "./Manager/Objective";
 
 export default function Manager({ room }: IManageable) {
-  const [projects, setProjects] = useState<IProject[]>([]);
-  const [project, setProject] = useState<IProject | undefined>(undefined);
-  const [state, setState] = useState<State>("PROJECTS");
-  const [mode, setMode] = useState<Mode>("VIEWING");
+  const { projects, state, mode, setState, setMode } = useManagerProvider(room);
+  const { project, onSelectProject } = useProjectProvider();
 
-  const handleSelectProject = (project: IProject | undefined) => {
+  const handleSelectProject = (project: IProject) => {
     setState("OBJECTIVES");
-    setProject(project);
+    onSelectProject(project);
   };
-
-  useEffect(() => {
-    const requestProjects = async () => {
-      if (room === undefined) return;
-
-      const response = await axios.post("http://localhost:8080/projects", {
-        room: room,
-      });
-
-      setState(response.data.length === 0 ? "DEFAULT" : "PROJECTS");
-      setMode(response.data.length === 0 ? "EDITING" : "VIEWING");
-
-      setProjects(response.data);
-    };
-
-    requestProjects();
-  }, [room]);
 
   const className = "manager";
 

@@ -1,74 +1,40 @@
 import { useState } from "react";
-import { useFormik } from "formik";
-import axios from "axios";
 
 import { IForm, Priority } from "../../../interfaces/messenger/Manager";
-import {
-  IManagerSchema,
-  ManagerValidation,
-} from "../../../interfaces/messenger/Schema";
+
+import useManagerForm from "../../../hooks/messenger/useManagerForm";
 
 import Input from "./Form/Input";
 import Option from "./Form/Option";
 
 export default function Form({ room, project, state, mode }: IForm) {
+  const { values, onSubmit, onChange } = useManagerForm(room, project, state);
   const [priority, setPriority] = useState<Priority | undefined>(undefined);
 
   const handleSetPriority = (event: React.MouseEvent<HTMLInputElement>) => {
     setPriority(event.currentTarget.value as Priority);
-    handleChange(event);
-  };
-
-  const initialValues: IManagerSchema = {
-    name: "",
-    description: "",
-    priority: undefined,
-  };
-
-  const { values, handleSubmit, handleChange } = useFormik<IManagerSchema>({
-    initialValues: initialValues,
-    validationSchema: ManagerValidation,
-    onSubmit: async () => {
-      state === "PROJECTS"
-        ? await handleCreateProject()
-        : await handleAddObjective();
-    },
-  });
-
-  const handleCreateProject = async () => {
-    await axios.post("http://localhost:8080/projects/create", {
-      room: room,
-      project: values,
-    });
-  };
-
-  const handleAddObjective = async () => {
-    await axios.post("http://localhost:8080/objectives/add", {
-      room: room,
-      project: project,
-      objective: values,
-    });
+    onChange(event);
   };
 
   const className = "manager-form";
 
   return (
     <div className={`${className}-wrapper ${mode.toLocaleLowerCase()}`}>
-      <form className={className} onSubmit={handleSubmit}>
+      <form className={className} onSubmit={onSubmit}>
         {state === "DEFAULT" && (
           <h4 className={`${className}-title`}>Create A Project</h4>
         )}
 
         <div className={`${className}-inputs`}>
           <Input
-            onChange={handleChange}
+            onChange={onChange}
             value={values.name}
             label="Name"
             name="name"
           />
 
           <Input
-            onChange={handleChange}
+            onChange={onChange}
             value={values.description}
             label="Description"
             name="description"

@@ -27,8 +27,6 @@ export interface IBubble {
 }
 
 export interface IController {
-  value: string;
   label: string;
-  onSetText: (text: string) => void;
-  onSendMessage: () => void;
+  onSendMessage: (text: string) => void;
 }

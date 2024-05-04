@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { IMessageable } from "../../interfaces/messenger/Message";
+import { getDate } from "../../utils/DateTime";
 
-import { IMessageable, IMessage } from "../../interfaces/messenger/Message";
-import { getDate, getTime } from "../../utils/DateTime";
+import useMessagesProvider from "../../hooks/messenger/useMessagesProvider";
 
 import Sender from "../../images/messages/sender.png";
 
@@ -10,29 +10,7 @@ import Controller from "./Messages/Controller";
 import Profile from "./Messages/Profile";
 
 export default function Messages({ chat, socket }: IMessageable) {
-  const [messages, setMessages] = useState<IMessage[]>([]);
-  const [text, setText] = useState<string>("");
-
-  const handleSendMessage = () => {
-    if (chat === undefined || text === "") return;
-
-    const message: IMessage = {
-      room: chat.room,
-      email: chat.email,
-      time: getTime(),
-      text: text,
-    };
-
-    socket.emit("sendMessage", message);
-    setMessages([...messages, message]);
-    setText("");
-  };
-
-  useEffect(() => {
-    socket.on("messages", (message) => {
-      setMessages([...messages, message]);
-    });
-  }, [socket, messages]);
+  const { messages, onSendMessage } = useMessagesProvider(chat, socket);
 
   const className = "messages";
 
@@ -66,12 +44,7 @@ export default function Messages({ chat, socket }: IMessageable) {
         </div>
       </div>
 
-      <Controller
-        value={text}
-        label="Message..."
-        onSetText={setText}
-        onSendMessage={handleSendMessage}
-      />
+      <Controller label="Message..." onSendMessage={onSendMessage} />
     </section>
   );
 }
