@@ -2,15 +2,13 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Home from "./pages/Home";
+import Register from "./pages/Register";
 import Messenger from "./pages/Messenger";
-
-import "./main.css";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
+    path: "/register",
+    element: <Register />,
   },
   {
     path: "/chats",

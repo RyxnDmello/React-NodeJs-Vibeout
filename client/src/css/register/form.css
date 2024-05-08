@@ -1,0 +1,132 @@
+/*-------------------------------------------------*/
+/*------------------ FORM STYLES ------------------*/
+/*-------------------------------------------------*/
+
+form {
+  grid-template-columns: auto;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+}
+
+.form-wrapper {
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: center;
+  display: grid;
+  width: 325px;
+  gap: 1rem;
+}
+
+/*---------------------------------------------*/
+/*--------------- HEADER STYLES ---------------*/
+/*---------------------------------------------*/
+
+.form-header {
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: center;
+  display: grid;
+}
+
+.form-title {
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  font-size: 2.5rem;
+  line-height: 1.25;
+  font-weight: 400;
+  color: #fff;
+}
+
+.form-headline {
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  color: #ffffff65;
+  line-height: 1.25;
+  font-weight: 200;
+}
+
+/*--------------------------------------------*/
+/*--------------- INPUT STYLES ---------------*/
+/*--------------------------------------------*/
+
+.form-inputs {
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: center;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.form-input {
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: center;
+  position: relative;
+  display: grid;
+}
+
+.form-input-field {
+  padding: 0.5rem 0.5rem 0.5rem 2.25rem;
+  font-family: "Poppins", sans-serif;
+  border: 2px solid #ffffff50;
+  background-color: transparent;
+  letter-spacing: 0.25px;
+  border-radius: 2.5px;
+  font-weight: 300;
+  font-size: 1rem;
+  color: #fff;
+  outline: none;
+}
+
+.form-input-field::placeholder {
+  color: #ffffff50;
+}
+
+.form-input-icon {
+  position: absolute;
+  margin: auto 0;
+  left: 0.85rem;
+  opacity: 0.35;
+  width: 18px;
+}
+
+/*-------------------------------------------*/
+/*-------------- BUTTON STYLES --------------*/
+/*-------------------------------------------*/
+
+.form-buttons {
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: center;
+  display: grid;
+}
+
+.form-button {
+  background: linear-gradient(45deg, #5a0096, #950043);
+  justify-content: space-between;
+  padding: 0.35rem 1.25rem;
+  border-radius: 2.5px;
+  align-items: center;
+  display: flex;
+  outline: none;
+  border: none;
+  gap: 0.5rem;
+}
+
+.form-button-label {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.25px;
+  font-weight: 300;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.form-button-icon {
+  width: 30px;
+}
+
+/*------------------------------------------*/
+/*--------------- END OF CSS ---------------*/
+/*------------------------------------------*/

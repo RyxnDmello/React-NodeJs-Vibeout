@@ -7,6 +7,8 @@ import Chats from "../components/Messenger/Chats";
 import Messages from "../components/Messenger/Messages";
 import Manager from "../components/Messenger/Manager";
 
+import "../css/messenger.css";
+
 const socket = io("http://localhost:8080");
 
 export default function App() {
