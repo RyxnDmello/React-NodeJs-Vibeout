@@ -2,30 +2,30 @@
 /*------------------ FORM STYLES ------------------*/
 /*-------------------------------------------------*/
 
+.form-wrapper {
+  justify-content: center;
+  grid-auto-flow: column;
+  align-items: center;
+  display: grid;
+}
+
 form {
   grid-template-columns: auto;
   justify-content: center;
   align-items: center;
   display: grid;
-}
-
-.form-wrapper {
-  grid-template-columns: auto;
-  justify-content: stretch;
-  align-items: center;
-  display: grid;
-  width: 325px;
   gap: 1rem;
 }
 
 /*---------------------------------------------*/
-/*--------------- HEADER STYLES ---------------*/
+/*------------- CREDENTIAL STYLES -------------*/
 /*---------------------------------------------*/
 
 .form-header {
   grid-template-columns: auto;
   justify-content: stretch;
   align-items: center;
+  margin-bottom: 1rem;
   display: grid;
 }
 
@@ -40,7 +40,6 @@ form {
 
 .form-headline {
   font-family: "Poppins", sans-serif;
-  margin-bottom: 0.5rem;
   text-align: center;
   color: #ffffff65;
   line-height: 1.25;
@@ -78,6 +77,11 @@ form {
   font-size: 1rem;
   color: #fff;
   outline: none;
+}
+
+.form-input-field::-webkit-outer-spin-button,
+.form-input-field::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
 
 .form-input-field::placeholder {
@@ -125,6 +129,56 @@ form {
 
 .form-button-icon {
   width: 30px;
+}
+
+/*--------------------------------------------*/
+/*-------------- PROFILE STYLES --------------*/
+/*--------------------------------------------*/
+
+.form-profile {
+  grid-template-columns: auto;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.form-profile-image {
+  border-radius: 100%;
+  width: 100px;
+}
+
+.form-profile-icon {
+  position: absolute;
+  right: -0.65rem;
+  opacity: 0.35;
+  top: -0.65rem;
+  width: 20px;
+}
+
+.form-profile-button {
+  font-family: "Poppins", sans-serif;
+  transition: color 250ms;
+  letter-spacing: 0.25px;
+  color: #ffffff65;
+  text-align: center;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+.form-profile-hidden {
+  display: none;
+}
+
+/*------------------------------------------*/
+/*--------------- TRANSITION ---------------*/
+/*------------------------------------------*/
+
+.form-profile-button:hover {
+  color: #fff;
 }
 
 /*------------------------------------------*/

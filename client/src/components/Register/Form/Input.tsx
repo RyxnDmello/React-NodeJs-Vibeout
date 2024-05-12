@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { IInput } from "../../../interfaces/register/Form";
 
 export default function Input({
   type,
@@ -24,13 +24,4 @@ export default function Input({
       />
     </div>
   );
-}
-
-interface IInput {
-  icon: string;
-  label: string;
-  name: string;
-  required?: boolean;
-  type: "text" | "number" | "email" | "password";
-  onChange: (event: ChangeEvent) => void;
 }

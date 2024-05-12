@@ -1,3 +1,5 @@
+import { IButton } from "../../../interfaces/register/Form";
+
 import Icon from "../../../images/buttons/arrow.svg";
 
 export default function Button({ label }: IButton) {
@@ -9,8 +11,4 @@ export default function Button({ label }: IButton) {
       <img className={`${className}-icon`} src={Icon} />
     </button>
   );
-}
-
-interface IButton {
-  label: string;
 }
