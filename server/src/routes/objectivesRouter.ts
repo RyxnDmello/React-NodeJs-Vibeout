@@ -6,6 +6,6 @@ const router: Router = Router();
 
 router.post("/add", add);
 router.post("/complete", complete);
-router.post("/delete", remove);
+router.delete("/delete", remove);
 
 export default router;

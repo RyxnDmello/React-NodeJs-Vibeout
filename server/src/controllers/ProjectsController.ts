@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { rooms } from "../data/rooms";
+import { rooms } from "../temp/rooms";
 import { IRoom } from "../interfaces/Manager";
 
 export const projects = (req: Request, res: Response) => {

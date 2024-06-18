@@ -1,13 +1,13 @@
 import dotenv from "dotenv";
 import Express, { Application } from "express";
-import { json, urlencoded } from "body-parser";
+import { urlencoded, json } from "body-parser";
 import { createServer } from "http";
 import { Server } from "socket.io";
 import cors from "cors";
 
-import chatsRouter from "./routes/Chats";
-import projectsRouter from "./routes/Projects";
-import objectivesRouter from "./routes/Objectives";
+import chatsRouter from "./routes/chatsRouter";
+import projectsRouter from "./routes/projectsRouter";
+import objectivesRouter from "./routes/objectivesRouter";
 
 dotenv.config();
 
@@ -16,8 +16,8 @@ const server = createServer(app);
 
 const io: Server = new Server(server, {
   cors: {
-    origin: process.env.CLIENT_CORS,
-    methods: ["GET", "POST"],
+    origin: process.env.CORS,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   },
 });
 
@@ -26,8 +26,8 @@ app.use(json());
 
 app.use(
   cors({
-    origin: process.env.CLIENT_CORS,
-    methods: ["GET", "POST"],
+    origin: process.env.CORS,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   })
 );
 
