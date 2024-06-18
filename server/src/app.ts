@@ -5,6 +5,9 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import cors from "cors";
 
+import connectMongoDB from "./database/DatabaseManager";
+
+import accountRouter from "./routes/accountRouter";
 import chatsRouter from "./routes/chatsRouter";
 import projectsRouter from "./routes/projectsRouter";
 import objectivesRouter from "./routes/objectivesRouter";
@@ -31,6 +34,9 @@ app.use(
   })
 );
 
+connectMongoDB();
+
+app.use("/account", accountRouter);
 app.use("/chats", chatsRouter);
 app.use("/projects", projectsRouter);
 app.use("/objectives", objectivesRouter);

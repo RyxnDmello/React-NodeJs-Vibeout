@@ -1,9 +1,9 @@
 import { Router } from "express";
 
-import { chats } from "../controllers/ChatsController";
+import { create } from "../controllers/AccountController";
 
 const router: Router = Router();
 
-router.get("/", chats);
+router.post("/create", create);
 
 export default router;
