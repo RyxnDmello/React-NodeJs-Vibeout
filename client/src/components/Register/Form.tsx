@@ -1,6 +1,7 @@
-import { inputs } from "../../models/register/Form";
-
 import useProfilePicker from "../../hooks/Register/useProfilePicker";
+import useRegisterForm from "../../hooks/Register/useRegisterForm";
+
+import { inputs } from "../../models/register/Form";
 
 import Input from "./Form/Input";
 import Button from "./Form/Button";
@@ -15,11 +16,13 @@ export default function Form() {
     onOpenAvatarPicker,
   } = useProfilePicker();
 
+  const { handleSubmit, handleChange } = useRegisterForm(image!);
+
   const className = "form";
 
   return (
     <div className={`${className}-wrapper`}>
-      <form className={className}>
+      <form className={className} onSubmit={handleSubmit}>
         <div className={`${className}-header`}>
           <h2 className={`${className}-title`}>Create Account</h2>
 
@@ -38,7 +41,7 @@ export default function Form() {
 
         <div className={`${className}-inputs`}>
           {inputs.map((input, i) => (
-            <Input key={i} {...input} onChange={() => {}} />
+            <Input key={i} {...input} onChange={handleChange} />
           ))}
         </div>
 

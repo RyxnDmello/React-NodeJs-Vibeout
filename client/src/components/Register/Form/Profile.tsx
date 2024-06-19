@@ -19,7 +19,7 @@ export default function Profile({
         src={image}
       />
 
-      <p className={`${className}-button`} onCanPlay={onOpenAvatarPicker}>
+      <p className={`${className}-button`} onClick={onOpenAvatarPicker}>
         Avatars
       </p>
 
