@@ -1,6 +1,10 @@
-import { IProfile } from "../../../interfaces/messenger/Message";
+interface ProfileProps {
+  image: string;
+  email: string;
+  username: string;
+}
 
-export default function Profile({ image, email, username }: IProfile) {
+export default function Profile({ image, email, username }: ProfileProps) {
   const className = "messages-profile";
 
   return (

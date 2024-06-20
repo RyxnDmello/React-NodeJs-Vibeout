@@ -2,39 +2,40 @@ import { useFormik } from "formik";
 import axios from "axios";
 
 import { IProject, State } from "../../interfaces/messenger/Manager";
-import {
-  IManagerSchema,
-  ManagerValidation,
-} from "../../interfaces/messenger/Schema";
+import { ManagerSchema, ValidationSchema } from "../../schema/ManagerSchema";
+
+const _api: string = import.meta.env.PROD
+  ? `${import.meta.env.VITE_SERVER_API}/api`
+  : "/api";
 
 export default function useManagerForm(
   room: string,
   project: IProject,
   state: State
 ) {
-  const initialValues: IManagerSchema = {
+  const initialValues: ManagerSchema = {
     name: "",
     description: "",
     priority: undefined,
   };
 
-  const { values, handleSubmit, handleChange } = useFormik<IManagerSchema>({
+  const { values, handleSubmit, handleChange } = useFormik<ManagerSchema>({
     initialValues: initialValues,
-    validationSchema: ManagerValidation,
+    validationSchema: ValidationSchema,
     onSubmit: async () => {
       state === "PROJECTS" ? await _onCreateProject() : await _onAddObjective();
     },
   });
 
   const _onCreateProject = async () => {
-    await axios.post("http://localhost:8080/projects/create", {
+    await axios.post(`${_api}/projects/create`, {
       room: room,
       project: values,
     });
   };
 
   const _onAddObjective = async () => {
-    await axios.post("http://localhost:8080/objectives/add", {
+    await axios.post(`${_api}/objectives/add`, {
       room: room,
       project: project,
       objective: values,

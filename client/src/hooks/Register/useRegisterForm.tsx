@@ -1,15 +1,16 @@
 import { useFormik } from "formik";
 import axios from "axios";
 
-import {
-  RegisterSchema,
-  RegisterValidationSchema,
-} from "../../interfaces/register/Schema";
+import { RegisterSchema, ValidationSchema } from "../../schema/RegisterSchema";
+
+const _api: string = import.meta.env.PROD
+  ? `${import.meta.env.VITE_SERVER_API}/api`
+  : "/api";
 
 export default function useRegisterForm(profile: string) {
   const onRegister = async () => {
     try {
-      await axios.post("http://localhost:8080/account/create", values);
+      await axios.post(`${_api}/account/create`, values);
     } catch (error) {
       console.log(error instanceof Error && error);
     }
@@ -26,9 +27,9 @@ export default function useRegisterForm(profile: string) {
 
   const { values, handleSubmit, handleChange } = useFormik<RegisterSchema>({
     initialValues: initialValues,
-    validationSchema: RegisterValidationSchema,
+    validationSchema: ValidationSchema,
     onSubmit: async () => await onRegister(),
   });
 
-  return { handleSubmit, handleChange };
+  return { onSubmit: handleSubmit, onChange: handleChange };
 }

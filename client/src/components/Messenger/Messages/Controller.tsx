@@ -2,9 +2,12 @@ import { useRef } from "react";
 
 import Send from "../../../images/buttons/send.svg";
 
-import { IController } from "../../../interfaces/messenger/Message";
+interface ControllerProps {
+  label: string;
+  onSendMessage: (text: string) => void;
+}
 
-export default function Input({ label, onSendMessage }: IController) {
+export default function Input({ label, onSendMessage }: ControllerProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSendMessage = () => {

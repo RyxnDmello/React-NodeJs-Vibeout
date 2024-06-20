@@ -1,6 +1,14 @@
-import { IProfile } from "../../../interfaces/register/Form";
+import { RefObject } from "react";
 
 import Icon from "../../../images/register/image.svg";
+
+interface ProfileProps {
+  image: string;
+  picker: RefObject<HTMLInputElement>;
+  onSelectImage: () => void;
+  onOpenImagePicker: () => void;
+  onOpenAvatarPicker: () => void;
+}
 
 export default function Profile({
   image,
@@ -8,7 +16,7 @@ export default function Profile({
   onSelectImage,
   onOpenImagePicker,
   onOpenAvatarPicker,
-}: IProfile) {
+}: ProfileProps) {
   const className = "form-profile";
 
   return (

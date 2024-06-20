@@ -1,4 +1,11 @@
-export default function Input({ label, name, value, onChange }: IInput) {
+interface InputProps {
+  label: string;
+  name: string;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export default function Input({ label, name, value, onChange }: InputProps) {
   return (
     <input
       className="manager-form-input"
@@ -9,11 +16,4 @@ export default function Input({ label, name, value, onChange }: IInput) {
       type="text"
     />
   );
-}
-
-interface IInput {
-  label: string;
-  name: string;
-  value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }

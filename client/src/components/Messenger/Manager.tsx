@@ -1,18 +1,22 @@
-import { IManageable, IProject } from "../../interfaces/messenger/Manager";
+import { Project } from "../../interfaces/Manager";
 
 import useManagerProvider from "../../hooks/messenger/useManagerProvider";
 import useProjectProvider from "../../hooks/messenger/useProjectProvider";
 
 import Navbar from "./Manager/Navbar";
 import Form from "./Manager/Form";
-import Project from "./Manager/Project";
-import Objective from "./Manager/Objective";
+import ProjectCard from "./Manager/ProjectCard";
+import ObjectiveCard from "./Manager/ObjectiveCard";
 
-export default function Manager({ room }: IManageable) {
+interface ManagerProps {
+  room?: string;
+}
+
+export default function Manager({ room }: ManagerProps) {
   const { projects, state, mode, setState, setMode } = useManagerProvider(room);
   const { project, onSelectProject } = useProjectProvider();
 
-  const handleSelectProject = (project: IProject) => {
+  const handleSelectProject = (project: Project) => {
     setState("OBJECTIVES");
     onSelectProject(project);
   };
@@ -44,7 +48,7 @@ export default function Manager({ room }: IManageable) {
             <div className={`${className}-stream`}>
               {state === "OBJECTIVES" &&
                 project?.objectives.map((objective) => (
-                  <Objective
+                  <ObjectiveCard
                     key={objective.oid}
                     room={room}
                     pid={project.pid}
@@ -54,7 +58,7 @@ export default function Manager({ room }: IManageable) {
 
               {state === "PROJECTS" &&
                 projects.map((project) => (
-                  <Project
+                  <ProjectCard
                     key={project.pid}
                     {...project}
                     onSelectProject={handleSelectProject}

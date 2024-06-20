@@ -1,13 +1,20 @@
 import { useState } from "react";
 
-import { IForm, Priority } from "../../../interfaces/messenger/Manager";
+import { Mode, State, Priority, IProject } from "../../../interfaces/Manager";
 
 import useManagerForm from "../../../hooks/messenger/useManagerForm";
 
 import Input from "./Form/Input";
 import Option from "./Form/Option";
 
-export default function Form({ room, project, state, mode }: IForm) {
+interface FormProps {
+  mode: Mode;
+  state: State;
+  room: string;
+  project: IProject;
+}
+
+export default function Form({ room, project, state, mode }: FormProps) {
   const { values, onSubmit, onChange } = useManagerForm(room, project, state);
   const [priority, setPriority] = useState<Priority | undefined>(undefined);
 
@@ -46,21 +53,21 @@ export default function Form({ room, project, state, mode }: IForm) {
 
           <div className={`${className}-priority-options`}>
             <Option
-              isSelected={priority === "high"}
+              active={priority === "high"}
               onSelect={handleSetPriority}
-              priority="high"
+              priority="HIGH"
             />
 
             <Option
-              isSelected={priority === "medium"}
+              active={priority === "medium"}
               onSelect={handleSetPriority}
-              priority="medium"
+              priority="MEDIUM"
             />
 
             <Option
-              isSelected={priority === "low"}
+              active={priority === "low"}
               onSelect={handleSetPriority}
-              priority="low"
+              priority="LOW"
             />
           </div>
         </div>

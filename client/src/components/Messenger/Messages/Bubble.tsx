@@ -1,6 +1,10 @@
-import { IBubble } from "../../../interfaces/messenger/Message";
+interface BubbleProps {
+  text: string;
+  time: string;
+  isSent: boolean;
+}
 
-export default function Bubble({ text, time, isSent }: IBubble) {
+export default function Bubble({ text, time, isSent }: BubbleProps) {
   const className = "messages-bubble";
 
   return (

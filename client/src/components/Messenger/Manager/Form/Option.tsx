@@ -1,21 +1,21 @@
-import { Priority } from "../../../../interfaces/messenger/Manager";
+import { Priority } from "../../../../interfaces/Manager";
 
-export default function Option({ priority, isSelected, onSelect }: IOption) {
+interface OptionProps {
+  priority: Priority;
+  active: boolean;
+  onSelect: (event: React.MouseEvent<HTMLInputElement>) => void;
+}
+
+export default function Option({ priority, active, onSelect }: OptionProps) {
   const className = "manager-form-priority-option";
 
   return (
     <input
-      className={`${className} ${priority} ${isSelected && "selected"}`}
+      className={`${className} ${priority} ${active && "selected"}`}
       onClick={onSelect}
       value={priority}
       name="priority"
       type="radio"
     />
   );
-}
-
-interface IOption {
-  priority: Priority;
-  isSelected: boolean;
-  onSelect: (event: React.MouseEvent<HTMLInputElement>) => void;
 }

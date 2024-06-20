@@ -1,8 +1,10 @@
-import { IButton } from "../../../interfaces/register/Form";
-
 import Icon from "../../../images/buttons/arrow.svg";
 
-export default function Button({ label }: IButton) {
+interface ButtonProps {
+  label: string;
+}
+
+export default function Button({ label }: ButtonProps) {
   const className = "form-button";
 
   return (

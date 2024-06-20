@@ -1,6 +1,11 @@
-import { ICard } from "../../../interfaces/messenger/Chat";
+import { Chat } from "../../../interfaces/Chat";
 
 import Profile from "../../../images/chats/profile.png";
+
+interface CardProps extends Chat {
+  isSelected: boolean;
+  onSelectCard: (chat: Chat) => void;
+}
 
 export default function Card({
   room,
@@ -8,7 +13,7 @@ export default function Card({
   username,
   isSelected,
   onSelectCard,
-}: ICard) {
+}: CardProps) {
   const className = "chats-card";
 
   const onHandleSelectCard = () => {

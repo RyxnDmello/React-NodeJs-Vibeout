@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import { IProject } from "../../interfaces/messenger/Manager";
+import { Project } from "../../interfaces/Manager";
 
 export default function useProjectProvider() {
-  const [project, setProject] = useState<IProject | undefined>(undefined);
+  const [project, setProject] = useState<Project | undefined>(undefined);
 
-  const onSelectProject = (project: IProject | undefined) => {
+  const onSelectProject = (project: Project | undefined) => {
     setProject(project);
   };
 

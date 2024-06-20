@@ -1,15 +1,19 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
-import { IProject } from "../../../interfaces/messenger/Manager";
+import { Project } from "../../../interfaces/Manager";
 
-export default function Project({
+interface ProjectCardProps extends Project {
+  onSelectProject: (project: Project) => void;
+}
+
+export default function ProjectCard({
   pid,
   name,
   about,
   priority,
   objectives,
   onSelectProject,
-}: IProjectCard) {
+}: ProjectCardProps) {
   const [percentage, setPercentage] = useState<number>(0);
   const progress = useRef<HTMLDivElement>(null);
 
@@ -53,8 +57,4 @@ export default function Project({
       </div>
     </div>
   );
-}
-
-interface IProjectCard extends IProject {
-  onSelectProject: (project: IProject) => void;
 }

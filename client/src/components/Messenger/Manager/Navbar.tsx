@@ -1,16 +1,23 @@
-import { INavbar } from "../../../interfaces/messenger/Manager";
+import { Mode, State } from "../../../interfaces/Manager";
 
 import Explore from "../../../images/manager/explore.svg";
 import Edit from "../../../images/manager/editing.svg";
 
 import Button from "./Navbar/Button";
 
+interface NavbarProps {
+  state: State;
+  mode: Mode;
+  onSwitchState: (state: State) => void;
+  onSwitchMode: (state: Mode) => void;
+}
+
 export default function Navbar({
   state,
   mode,
   onSwitchState,
   onSwitchMode,
-}: INavbar) {
+}: NavbarProps) {
   const className = "manager-navbar";
 
   const handleSwitchState = () => {

@@ -1,4 +1,4 @@
-import { IChatable } from "../../interfaces/messenger/Chat";
+import { Chat } from "../../interfaces/Chat";
 
 import useChatsProvider from "../../hooks/messenger/useChatsProvider";
 import useChatsFilter from "../../hooks/messenger/useChatsFilter";
@@ -6,7 +6,12 @@ import useChatsFilter from "../../hooks/messenger/useChatsFilter";
 import Logo from "../Common/Logo";
 import Card from "./Chats/Card";
 
-export default function Chats({ room, onSelectChat }: IChatable) {
+interface ChatsProps {
+  room?: string;
+  onSelectChat: (chat: Chat) => void;
+}
+
+export default function Chats({ room, onSelectChat }: ChatsProps) {
   const { filter, onFilterChats } = useChatsFilter();
   const { chats } = useChatsProvider();
 

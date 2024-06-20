@@ -1,13 +1,18 @@
 import axios from "axios";
 
-import { IObjective } from "../../../interfaces/messenger/Manager";
+import { Objective } from "../../../interfaces/Manager";
 
 import Complete from "../../../images/manager/complete.svg";
 import Delete from "../../../images/manager/delete.svg";
 
 import Button from "./Objective/Button";
 
-export default function Objective({
+interface ObjectiveCardProps extends Objective {
+  pid: string;
+  room: string;
+}
+
+export default function ObjectiveCard({
   pid,
   oid,
   room,
@@ -15,7 +20,7 @@ export default function Objective({
   description,
   priority,
   completed,
-}: IObjectiveCard) {
+}: ObjectiveCardProps) {
   const handleComplete = async () => {
     await axios.post("http://localhost:8080/objectives/complete", {
       pid: pid,
@@ -51,9 +56,4 @@ export default function Objective({
       </div>
     </div>
   );
-}
-
-interface IObjectiveCard extends IObjective {
-  pid: string;
-  room: string;
 }

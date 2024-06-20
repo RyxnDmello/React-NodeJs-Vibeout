@@ -1,4 +1,12 @@
-import { IInput } from "../../../interfaces/register/Form";
+import { ChangeEvent, HTMLInputTypeAttribute } from "react";
+
+export interface InputProps {
+  icon: string;
+  label: string;
+  name: string;
+  type: HTMLInputTypeAttribute;
+  onChange: (event: ChangeEvent) => void;
+}
 
 export default function Input({
   type,
@@ -6,8 +14,7 @@ export default function Input({
   label,
   name,
   onChange,
-  required = true,
-}: IInput) {
+}: InputProps) {
   const className = "form-input";
 
   return (
@@ -16,11 +23,11 @@ export default function Input({
 
       <input
         className={`${className}-field`}
-        required={required ?? true}
         onChange={onChange}
         placeholder={label}
         name={name}
         type={type}
+        required
       />
     </div>
   );

@@ -1,4 +1,9 @@
-export default function Button({ icon, onClick }: IButton) {
+interface ButtonProps {
+  icon: string;
+  onClick: () => void;
+}
+
+export default function Button({ icon, onClick }: ButtonProps) {
   const className = "manager-objective-button";
 
   return (
@@ -6,9 +11,4 @@ export default function Button({ icon, onClick }: IButton) {
       <img className={`${className}-icon`} src={icon} />
     </div>
   );
-}
-
-interface IButton {
-  icon: string;
-  onClick: () => void;
 }
