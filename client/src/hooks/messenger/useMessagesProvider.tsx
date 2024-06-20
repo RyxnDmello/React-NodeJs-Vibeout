@@ -1,25 +1,25 @@
 import { useState, useEffect } from "react";
 import { Socket } from "socket.io-client";
 
-import { IMessage } from "../../interfaces/messenger/Message";
-import { IChat } from "../../interfaces/messenger/Chat";
+import { Chat } from "../../interfaces/Chat";
+import { Message } from "../../interfaces/Message";
 
 import { getTime } from "../../utils/DateTime";
 
 export default function useMessagesProvider(
-  chat: IChat | undefined,
-  socket: Socket
+  socket: Socket,
+  chat: Chat | undefined
 ) {
-  const [messages, setMessages] = useState<IMessage[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
 
   const onSendMessage = (text: string) => {
-    if (chat === undefined || text === "") return;
+    if (chat === undefined || text.trim().length === 0) return;
 
-    const message: IMessage = {
+    const message: Message = {
       room: chat.room,
       email: chat.email,
       time: getTime(),
-      text: text,
+      text: text.trim(),
     };
 
     socket.emit("sendMessage", message);

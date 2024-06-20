@@ -13,9 +13,7 @@ export default function useProfilePicker() {
     setImage(URL.createObjectURL(picker.current!.files![0]));
   };
 
-  const onSelectAvatar = () => {
-    setImage(image);
-  };
+  const onSelectAvatar = () => setImage(image);
 
   return {
     image,

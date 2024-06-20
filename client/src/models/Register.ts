@@ -1,7 +1,7 @@
-import Username from "../../images/register/username.svg";
-import Email from "../../images/register/email.svg";
-import Number from "../../images/register/number.svg";
-import Password from "../../images/register/password.svg";
+import Username from "../images/register/username.svg";
+import Email from "../images/register/email.svg";
+import Number from "../images/register/number.svg";
+import Password from "../images/register/password.svg";
 
 export interface Input {
   icon: string;

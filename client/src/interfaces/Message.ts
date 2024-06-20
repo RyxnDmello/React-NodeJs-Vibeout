@@ -1,6 +1,6 @@
-export interface IMessage {
-  room?: string;
-  email?: string;
-  text: string;
+export interface Message {
+  room: string;
+  email: string;
   time: string;
+  text: string;
 }

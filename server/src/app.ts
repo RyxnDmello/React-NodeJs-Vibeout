@@ -36,10 +36,10 @@ app.use(
 
 connectMongoDB();
 
-app.use("/account", accountRouter);
-app.use("/chats", chatsRouter);
-app.use("/projects", projectsRouter);
-app.use("/objectives", objectivesRouter);
+app.use("/api/account", accountRouter);
+app.use("/api/chats", chatsRouter);
+app.use("/api/projects", projectsRouter);
+app.use("/api/objectives", objectivesRouter);
 
 io.on("connection", (socket) => {
   console.log(`User Connected: ${socket.id}`);

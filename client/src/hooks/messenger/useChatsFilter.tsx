@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-import { IChat } from "../../interfaces/messenger/Chat";
+import { Chat } from "../../interfaces/Chat";
 
 export default function useChatsFilter() {
-  const [filter, setFilter] = useState<IChat[]>([]);
+  const [filter, setFilter] = useState<Chat[]>([]);
 
-  const onFilterChats = (chats: IChat[], prompt: string) => {
-    const filter: IChat[] = chats.filter((chat) =>
+  const onFilterChats = (chats: Chat[], prompt: string) => {
+    const filter: Chat[] = chats.filter((chat) =>
       chat.username.toLowerCase().startsWith(prompt.toLowerCase())
     );
 

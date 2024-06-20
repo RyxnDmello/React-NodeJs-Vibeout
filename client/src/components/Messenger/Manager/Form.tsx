@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Mode, State, Priority, IProject } from "../../../interfaces/Manager";
+import { Project, Mode, State, Priority } from "../../../interfaces/Manager";
 
 import useManagerForm from "../../../hooks/messenger/useManagerForm";
 
@@ -11,7 +11,7 @@ interface FormProps {
   mode: Mode;
   state: State;
   room: string;
-  project: IProject;
+  project: Project;
 }
 
 export default function Form({ room, project, state, mode }: FormProps) {
@@ -53,19 +53,19 @@ export default function Form({ room, project, state, mode }: FormProps) {
 
           <div className={`${className}-priority-options`}>
             <Option
-              active={priority === "high"}
+              selected={priority === "HIGH"}
               onSelect={handleSetPriority}
               priority="HIGH"
             />
 
             <Option
-              active={priority === "medium"}
+              selected={priority === "MEDIUM"}
               onSelect={handleSetPriority}
               priority="MEDIUM"
             />
 
             <Option
-              active={priority === "low"}
+              selected={priority === "LOW"}
               onSelect={handleSetPriority}
               priority="LOW"
             />

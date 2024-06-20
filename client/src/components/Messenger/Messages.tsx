@@ -18,7 +18,7 @@ interface MessagesProps {
 }
 
 export default function Messages({ chat, socket }: MessagesProps) {
-  const { messages, onSendMessage } = useMessagesProvider(chat, socket);
+  const { messages, onSendMessage } = useMessagesProvider(socket, chat);
 
   const className = "messages";
 

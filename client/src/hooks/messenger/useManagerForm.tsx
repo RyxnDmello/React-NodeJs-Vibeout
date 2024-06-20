@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import axios from "axios";
 
-import { IProject, State } from "../../interfaces/messenger/Manager";
+import { Project, State } from "../../interfaces/Manager";
 import { ManagerSchema, ValidationSchema } from "../../schema/ManagerSchema";
 
 const _api: string = import.meta.env.PROD
@@ -10,7 +10,7 @@ const _api: string = import.meta.env.PROD
 
 export default function useManagerForm(
   room: string,
-  project: IProject,
+  project: Project,
   state: State
 ) {
   const initialValues: ManagerSchema = {

@@ -1,7 +1,4 @@
-import { useState } from "react";
-import io from "socket.io-client";
-
-import { Chat } from "../interfaces/Chat";
+import useRoom from "../hooks/messenger/useRoom";
 
 import Chats from "../components/Messenger/Chats";
 import Messages from "../components/Messenger/Messages";
@@ -9,15 +6,8 @@ import Manager from "../components/Messenger/Manager";
 
 import "../css/messenger.css";
 
-const socket = io("http://localhost:8080");
-
 export default function App() {
-  const [chat, setChat] = useState<Chat | undefined>();
-
-  const onSelectChat = (chat: Chat) => {
-    socket.emit("room", chat.room);
-    setChat(chat);
-  };
+  const { socket, chat, onSelectChat } = useRoom();
 
   return (
     <main>
