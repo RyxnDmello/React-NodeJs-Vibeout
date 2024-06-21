@@ -1,0 +1,18 @@
+.logo {
+  justify-content: center;
+  grid-auto-flow: column;
+  align-items: center;
+  display: grid;
+  gap: 0.5rem;
+
+  > img {
+    width: 32.5px;
+  }
+
+  > p {
+    font-family: "Truculenta", sans-serif;
+    font-size: 1.85rem;
+    font-weight: 300;
+    color: #fff;
+  }
+}

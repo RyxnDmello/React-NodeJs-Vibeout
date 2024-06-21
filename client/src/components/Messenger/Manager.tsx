@@ -8,6 +8,8 @@ import Form from "./Manager/Form";
 import ProjectCard from "./Manager/ProjectCard";
 import ObjectiveCard from "./Manager/ObjectiveCard";
 
+import styles from "./Manager.module.scss";
+
 interface ManagerProps {
   room?: string;
 }
@@ -21,13 +23,11 @@ export default function Manager({ room }: ManagerProps) {
     onSelectProject(project);
   };
 
-  const className = "manager";
-
   return (
-    <section id={className}>
-      <div className={`${className}-wrapper`}>
-        <div className={`${className}-header`}>
-          <h4 className={`${className}-header-title`}>Manager</h4>
+    <section id="manager" className={styles.manager}>
+      <div>
+        <div className={styles.header}>
+          <h4>Manager</h4>
         </div>
 
         {room && (
@@ -44,8 +44,8 @@ export default function Manager({ room }: ManagerProps) {
         )}
 
         {room && state !== "DEFAULT" && (
-          <div className={`${className}-stream-wrapper ${mode.toLowerCase()}`}>
-            <div className={`${className}-stream`}>
+          <div className={`${styles.stream} ${styles[mode.toLowerCase()]}`}>
+            <div>
               {state === "OBJECTIVES" &&
                 project?.objectives.map((objective) => (
                   <ObjectiveCard

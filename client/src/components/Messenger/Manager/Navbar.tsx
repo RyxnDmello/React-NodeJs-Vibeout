@@ -5,6 +5,8 @@ import Edit from "../../../images/manager/editing.svg";
 
 import Button from "./Navbar/Button";
 
+import styles from "./Navbar.module.scss";
+
 interface NavbarProps {
   state: State;
   mode: Mode;
@@ -18,8 +20,6 @@ export default function Navbar({
   onSwitchState,
   onSwitchMode,
 }: NavbarProps) {
-  const className = "manager-navbar";
-
   const handleSwitchState = () => {
     onSwitchState(state === "PROJECTS" ? "OBJECTIVES" : "PROJECTS");
     onSwitchMode("VIEWING");
@@ -30,10 +30,8 @@ export default function Navbar({
   };
 
   return (
-    <nav className={className}>
-      {state === "PROJECTS" && (
-        <h4 className={`${className}-title`}>Projects</h4>
-      )}
+    <nav className={styles.navbar}>
+      {state === "PROJECTS" && <h4>Projects</h4>}
 
       {state === "OBJECTIVES" && (
         <Button

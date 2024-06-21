@@ -1,0 +1,39 @@
+$high: #ff002baf;
+$highlighted-high: #ff0033;
+
+$medium: #0000ffaf;
+$highlighted-medium: #001eff;
+
+$low: #008f50;
+$highlighted-low: #00c06d;
+
+@mixin colors($high, $medium, $low) {
+  &.high {
+    background-color: var($high);
+  }
+
+  &.medium {
+    background-color: var($medium);
+  }
+
+  &.low {
+    background-color: var($low);
+  }
+}
+
+.priority {
+  transition: width 300ms, background-color 300ms;
+  border: 2px solid transparent;
+  border-radius: 40px;
+  appearance: none;
+  flex-grow: 1;
+  height: 20px;
+  width: 20px;
+
+  @include colors($high, $medium, $low);
+
+  &.selected {
+    width: 80px;
+    @include colors($highlighted-high, $highlighted-medium, $highlighted-low);
+  }
+}

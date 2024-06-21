@@ -1,11 +1,18 @@
 import { useState } from "react";
 
-import { Project, Mode, State, Priority } from "../../../interfaces/Manager";
+import {
+  Project,
+  Mode,
+  State,
+  Priority as P,
+} from "../../../interfaces/Manager";
 
 import useManagerForm from "../../../hooks/messenger/useManagerForm";
 
 import Input from "./Form/Input";
-import Option from "./Form/Option";
+import Priority from "./Form/Priority";
+
+import styles from "./Form.module.scss";
 
 interface FormProps {
   mode: Mode;
@@ -16,23 +23,19 @@ interface FormProps {
 
 export default function Form({ room, project, state, mode }: FormProps) {
   const { values, onSubmit, onChange } = useManagerForm(room, project, state);
-  const [priority, setPriority] = useState<Priority | undefined>(undefined);
+  const [priority, setPriority] = useState<P | undefined>(undefined);
 
   const handleSetPriority = (event: React.MouseEvent<HTMLInputElement>) => {
-    setPriority(event.currentTarget.value as Priority);
+    setPriority(event.currentTarget.value as P);
     onChange(event);
   };
 
-  const className = "manager-form";
-
   return (
-    <div className={`${className}-wrapper ${mode.toLocaleLowerCase()}`}>
-      <form className={className} onSubmit={onSubmit}>
-        {state === "DEFAULT" && (
-          <h4 className={`${className}-title`}>Create A Project</h4>
-        )}
+    <div className={`${styles.wrapper} ${styles[mode.toLocaleLowerCase()]}`}>
+      <form className={styles.form} onSubmit={onSubmit}>
+        {state === "DEFAULT" && <h4>Create A Project</h4>}
 
-        <div className={`${className}-inputs`}>
+        <div className={styles.inputs}>
           <Input
             onChange={onChange}
             value={values.name}
@@ -48,23 +51,23 @@ export default function Form({ room, project, state, mode }: FormProps) {
           />
         </div>
 
-        <div className={`${className}-priority`}>
-          <div className={`${className}-priority-title`}>Priority</div>
+        <div className={styles.priorities}>
+          <p>Priority</p>
 
-          <div className={`${className}-priority-options`}>
-            <Option
+          <div>
+            <Priority
               selected={priority === "HIGH"}
               onSelect={handleSetPriority}
               priority="HIGH"
             />
 
-            <Option
+            <Priority
               selected={priority === "MEDIUM"}
               onSelect={handleSetPriority}
               priority="MEDIUM"
             />
 
-            <Option
+            <Priority
               selected={priority === "LOW"}
               onSelect={handleSetPriority}
               priority="LOW"
@@ -72,10 +75,8 @@ export default function Form({ room, project, state, mode }: FormProps) {
           </div>
         </div>
 
-        <button className={`${className}-button`} type="submit">
-          <p className={`${className}-button-label`}>
-            Add {state === "PROJECTS" ? "Project" : "Objective"}
-          </p>
+        <button className={styles.button} type="submit">
+          <p>Add {state === "PROJECTS" ? "Project" : "Objective"}</p>
         </button>
       </form>
     </div>

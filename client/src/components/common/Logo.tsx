@@ -1,12 +1,12 @@
 import Icon from "../../images/logo.png";
 
-export default function Logo() {
-  const className = "logo";
+import styles from "./Logo.module.scss";
 
+export default function Logo() {
   return (
-    <div id={className}>
-      <img className={`${className}-icon`} src={Icon} />
-      <p className={`${className}-text`}>Vibeout</p>
+    <div className={styles.logo}>
+      <img src={Icon} />
+      <p>Vibeout</p>
     </div>
   );
 }

@@ -1,0 +1,34 @@
+.button {
+  justify-content: center;
+  grid-auto-flow: column;
+  align-items: center;
+  cursor: pointer;
+  display: grid;
+  gap: 0.5rem;
+
+  > img {
+    transition: opacity 300ms;
+    opacity: 0.4;
+    width: 25px;
+  }
+
+  > p {
+    font-family: "Poppins", sans-serif;
+    transition: color 300ms;
+    letter-spacing: 0.5px;
+    color: #ffffff65;
+    translate: 0 1.5px;
+    font-size: 1.25rem;
+    font-weight: 300;
+  }
+
+  &:hover {
+    > img {
+      opacity: 1;
+    }
+
+    > p {
+      color: #fff;
+    }
+  }
+}

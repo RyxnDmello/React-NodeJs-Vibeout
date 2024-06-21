@@ -7,6 +7,8 @@ import Delete from "../../../images/manager/delete.svg";
 
 import Button from "./Objective/Button";
 
+import styles from "./Objective.module.scss";
+
 interface ObjectiveCardProps extends Objective {
   pid: string;
   room: string;
@@ -37,22 +39,20 @@ export default function ObjectiveCard({
     });
   };
 
-  const className = "manager-objective";
-
   return (
-    <div className={`${className} ${completed && "completed"}`}>
-      <div className={`${className}-details`}>
-        <h4 className={`${className}-name`}>{name}</h4>
-        <p className={`${className}-description`}>{description}</p>
+    <div className={`${styles.objective} ${completed && styles.completed}`}>
+      <div className={styles.details}>
+        <h4>{name}</h4>
+        <p>{description}</p>
       </div>
 
-      <div className={`${className}-controller`}>
-        <div className={`${className}-buttons`}>
+      <div className={styles.controller}>
+        <div>
           {!completed && <Button icon={Complete} onClick={handleComplete} />}
           <Button icon={Delete} onClick={handleDelete} />
         </div>
 
-        <div className={`${className}-priority ${priority}`}></div>
+        <div className={`${styles.bar} ${styles[priority]}`}></div>
       </div>
     </div>
   );

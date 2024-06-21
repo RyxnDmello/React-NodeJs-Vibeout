@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 
 import { Project } from "../../../interfaces/Manager";
 
+import styles from "./Project.module.scss";
+
 interface ProjectCardProps extends Project {
   onSelectProject: (project: Project) => void;
 }
@@ -39,21 +41,19 @@ export default function ProjectCard({
     progress.current!.style.setProperty("--fill", `${percentage}%`);
   }, [objectives, percentage]);
 
-  const className = "manager-project";
-
   return (
-    <div className={`${className} ${priority}`} onClick={handleSelectProject}>
-      <div className={`${className}-details`}>
-        <h4 className={`${className}-name`}>{name}</h4>
-        <p className={`${className}-about`}>{about}</p>
+    <div
+      className={`${styles.project} ${styles[priority]}`}
+      onClick={handleSelectProject}
+    >
+      <div className={styles.details}>
+        <h4>{name}</h4>
+        <p>{about}</p>
       </div>
 
-      <div className={`${className}-progress`}>
-        <div ref={progress} className={`${className}-progress-bar`}></div>
-
-        <div className={`${className}-progress-value`}>
-          {percentage.toFixed()}%
-        </div>
+      <div className={styles.progress}>
+        <div ref={progress}></div>
+        <p>{percentage.toFixed()}%</p>
       </div>
     </div>
   );

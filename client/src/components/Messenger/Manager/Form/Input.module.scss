@@ -1,0 +1,23 @@
+.input {
+  font-family: "Poppins", sans-serif;
+  background-color: #ffffff10;
+  padding: 0.5rem 0.65rem;
+  letter-spacing: 0.5px;
+  border-radius: 2.5px;
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1;
+  color: #fff;
+  outline: none;
+  border: none;
+  resize: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &::placeholder {
+    color: #ffffffa0;
+    font-size: 0.85rem;
+  }
+}
