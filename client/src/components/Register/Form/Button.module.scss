@@ -1,0 +1,23 @@
+.button {
+  background: linear-gradient(45deg, #5a0096, #950043);
+  justify-content: space-between;
+  padding: 0.35rem 1.25rem;
+  border-radius: 2.5px;
+  align-items: center;
+  display: flex;
+  outline: none;
+  border: none;
+  gap: 0.5rem;
+
+  > p {
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 0.25px;
+    font-weight: 300;
+    font-size: 1rem;
+    color: #fff;
+  }
+
+  > img {
+    width: 30px;
+  }
+}

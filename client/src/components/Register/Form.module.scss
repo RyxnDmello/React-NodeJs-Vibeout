@@ -1,0 +1,54 @@
+.form {
+  justify-content: center;
+  grid-auto-flow: column;
+  align-items: center;
+  display: grid;
+
+  > form {
+    grid-template-columns: auto;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    gap: 1rem;
+  }
+}
+
+.header {
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: center;
+  margin-bottom: 1rem;
+  display: grid;
+
+  > h2 {
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    font-size: 2.5rem;
+    line-height: 1.25;
+    font-weight: 400;
+    color: #fff;
+  }
+
+  > p {
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    color: #ffffff65;
+    line-height: 1.25;
+    font-weight: 200;
+  }
+}
+
+.inputs {
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: center;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.buttons {
+  grid-template-columns: auto;
+  justify-content: stretch;
+  align-items: center;
+  display: grid;
+}

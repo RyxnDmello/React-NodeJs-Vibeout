@@ -8,9 +8,11 @@ import { Chat } from "../../interfaces/Chat";
 
 import useMessagesProvider from "../../hooks/messenger/useMessagesProvider";
 
+import Profile from "./Messages/Profile";
 import Bubble from "./Messages/Bubble";
 import Controller from "./Messages/Controller";
-import Profile from "./Messages/Profile";
+
+import styles from "./Messages.module.scss";
 
 interface MessagesProps {
   chat?: Chat;
@@ -20,11 +22,9 @@ interface MessagesProps {
 export default function Messages({ chat, socket }: MessagesProps) {
   const { messages, onSendMessage } = useMessagesProvider(socket, chat);
 
-  const className = "messages";
-
   return (
-    <section id={className}>
-      <div className={`${className}-header`}>
+    <section className={styles.messages}>
+      <div className={styles.header}>
         {chat ? (
           <Profile
             image={Sender}
@@ -32,22 +32,16 @@ export default function Messages({ chat, socket }: MessagesProps) {
             email={chat?.email}
           />
         ) : (
-          <h4 className={`${className}-header-title`}>Live Chat</h4>
+          <h4>Live Chat</h4>
         )}
       </div>
 
-      <div className={`${className}-bubbles-stream`}>
-        <div className={`${className}-bubbles`}>
-          {messages.length > 0 && (
-            <p className={`${className}-bubbles-date`}>{getDate()}</p>
-          )}
+      <div className={styles.stream}>
+        <div className={styles.bubbles}>
+          {messages.length > 0 && <p>{getDate()}</p>}
 
           {messages.map((message, i) => (
-            <Bubble
-              key={i}
-              {...message}
-              isSent={message.email === chat?.email}
-            />
+            <Bubble key={i} {...message} sent={message.email === chat?.email} />
           ))}
         </div>
       </div>

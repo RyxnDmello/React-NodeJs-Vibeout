@@ -1,16 +1,16 @@
 import Icon from "../../../images/buttons/arrow.svg";
 
+import styles from "./Button.module.scss";
+
 interface ButtonProps {
   label: string;
 }
 
 export default function Button({ label }: ButtonProps) {
-  const className = "form-button";
-
   return (
-    <button className={className} type="submit">
-      <p className={`${className}-label`}>{label}</p>
-      <img className={`${className}-icon`} src={Icon} />
+    <button className={styles.button} type="submit">
+      <p>{label}</p>
+      <img src={Icon} />
     </button>
   );
 }

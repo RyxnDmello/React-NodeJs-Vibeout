@@ -2,6 +2,8 @@ import { RefObject } from "react";
 
 import Icon from "../../../images/register/image.svg";
 
+import styles from "./Profile.module.scss";
+
 interface ProfileProps {
   image: string;
   picker: RefObject<HTMLInputElement>;
@@ -17,24 +19,12 @@ export default function Profile({
   onOpenImagePicker,
   onOpenAvatarPicker,
 }: ProfileProps) {
-  const className = "form-profile";
-
   return (
-    <div className={className}>
-      <img
-        className={`${className}-image`}
-        onClick={onOpenImagePicker}
-        src={image}
-      />
-
-      <p className={`${className}-button`} onClick={onOpenAvatarPicker}>
-        Avatars
-      </p>
-
-      <img className={`${className}-icon`} src={Icon} />
-
+    <div className={styles.profile}>
+      <img src={image} onClick={onOpenImagePicker} />
+      <p onClick={onOpenAvatarPicker}>Avatars</p>
+      <img src={Icon} />
       <input
-        className={`${className}-hidden`}
         onChange={onSelectImage}
         accept="image/*"
         ref={picker}

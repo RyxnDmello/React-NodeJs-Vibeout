@@ -1,5 +1,7 @@
 import { ChangeEvent, HTMLInputTypeAttribute } from "react";
 
+import styles from "./Input.module.scss";
+
 export interface InputProps {
   icon: string;
   label: string;
@@ -15,14 +17,10 @@ export default function Input({
   name,
   onChange,
 }: InputProps) {
-  const className = "form-input";
-
   return (
-    <div className={className}>
-      <img className={`${className}-icon`} src={icon} />
-
+    <div className={styles.input}>
+      <img src={icon} />
       <input
-        className={`${className}-field`}
         onChange={onChange}
         placeholder={label}
         name={name}

@@ -2,6 +2,8 @@ import { useRef } from "react";
 
 import Send from "../../../images/buttons/send.svg";
 
+import styles from "./Controller.module.scss";
+
 interface ControllerProps {
   label: string;
   onSendMessage: (text: string) => void;
@@ -15,14 +17,11 @@ export default function Input({ label, onSendMessage }: ControllerProps) {
     inputRef.current!.value = "";
   };
 
-  const className = "messages-controller";
-
   return (
-    <div className={`${className}-wrapper`}>
-      <div className={className}>
+    <div className={styles.wrapper}>
+      <div className={styles.controller}>
         <input
           ref={inputRef}
-          className={`${className}-input`}
           placeholder={label}
           autoCorrect="false"
           autoComplete="off"
@@ -30,8 +29,8 @@ export default function Input({ label, onSendMessage }: ControllerProps) {
           type="text"
         />
 
-        <div className={`${className}-icon`} onClick={handleSendMessage}>
-          <img className={`${className}-icon-image`} src={Send} />
+        <div onClick={handleSendMessage}>
+          <img src={Send} />
         </div>
       </div>
     </div>

@@ -6,6 +6,8 @@ import useChatsFilter from "../../hooks/messenger/useChatsFilter";
 import Logo from "../Common/Logo";
 import Card from "./Chats/Card";
 
+import styles from "./Chats.module.scss";
+
 interface ChatsProps {
   room?: string;
   onSelectChat: (chat: Chat) => void;
@@ -15,32 +17,29 @@ export default function Chats({ room, onSelectChat }: ChatsProps) {
   const { filter, onFilterChats } = useChatsFilter();
   const { chats } = useChatsProvider();
 
-  const className = "chats";
-
   return (
-    <section id={className}>
-      <div className={`${className}-wrapper`}>
-        <div className={`${className}-header`}>
+    <section className={styles.chats}>
+      <div>
+        <div className={styles.header}>
           <Logo />
         </div>
 
-        <form className={`${className}-search`} action="/search" method="post">
+        <form className={styles.search} action="/search" method="post">
           <input
             onChange={(event) => onFilterChats(chats, event.target.value)}
-            className={`${className}-search-bar`}
             placeholder="Search"
             name="search"
             type="text"
           />
         </form>
 
-        <div className={`${className}-cards-wrapper`}>
-          <div className={`${className}-cards`}>
+        <div className={styles.cards}>
+          <div>
             {(filter.length === 0 ? chats : filter).map((chat) => (
               <Card
                 {...chat}
                 key={chat.room}
-                isSelected={chat.room === room}
+                selected={chat.room === room}
                 onSelectCard={onSelectChat}
               />
             ))}

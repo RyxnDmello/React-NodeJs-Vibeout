@@ -34,7 +34,7 @@ app.use(
   })
 );
 
-connectMongoDB();
+// connectMongoDB();
 
 app.use("/api/account", accountRouter);
 app.use("/api/chats", chatsRouter);

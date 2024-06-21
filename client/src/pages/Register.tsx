@@ -1,7 +1,7 @@
 import Carousel from "../components/Register/Carousel";
 import Form from "../components/Register/Form";
 
-import "../css/register.css";
+import "../styles/register.scss";
 
 export default function Register() {
   return (

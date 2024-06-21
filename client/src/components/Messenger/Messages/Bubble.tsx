@@ -1,17 +1,17 @@
+import styles from "./Bubble.module.scss";
+
 interface BubbleProps {
   text: string;
   time: string;
-  isSent: boolean;
+  sent: boolean;
 }
 
-export default function Bubble({ text, time, isSent }: BubbleProps) {
-  const className = "messages-bubble";
-
+export default function Bubble({ text, time, sent }: BubbleProps) {
   return (
-    <div className={`${className}-wrapper ${isSent && "sent"}`}>
-      <div className={className}>
-        <p className={`${className}-text`}>{text}</p>
-        <p className={`${className}-time`}>{time}</p>
+    <div className={`${styles.bubble} ${sent && styles.sent}`}>
+      <div>
+        <p>{text}</p>
+        <p>{time}</p>
       </div>
     </div>
   );

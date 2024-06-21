@@ -1,0 +1,57 @@
+.bubble {
+  grid-template-columns: auto;
+  justify-content: start;
+  align-items: center;
+  display: grid;
+
+  > div {
+    grid-template-columns: auto;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    gap: 0.25rem;
+
+    > p:first-of-type {
+      font-family: "Poppins", sans-serif;
+      background-color: #ffffff15;
+      border-top-left-radius: 0px;
+      letter-spacing: 0.25px;
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      width: fit-content;
+      line-height: 1.4;
+      font-weight: 300;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    > p:last-of-type {
+      font-family: "Poppins", sans-serif;
+      letter-spacing: 0.5px;
+      color: #ffffffa0;
+      font-size: 0.7rem;
+      padding: 0 0.5rem;
+      text-align: left;
+      font-weight: 300;
+    }
+  }
+
+  &.sent {
+    justify-content: end;
+
+    > div {
+      > p:first-of-type {
+        background-color: #0000ffa0;
+        border-top-right-radius: 0px;
+      }
+
+      > p:last-of-type {
+        text-align: right;
+      }
+    }
+  }
+
+  &:not(.sent) > p:last-of-type {
+    text-align: left;
+  }
+}

@@ -2,8 +2,10 @@ import { Chat } from "../../../interfaces/Chat";
 
 import Profile from "../../../images/chats/profile.png";
 
+import styles from "./Card.module.scss";
+
 interface CardProps extends Chat {
-  isSelected: boolean;
+  selected: boolean;
   onSelectCard: (chat: Chat) => void;
 }
 
@@ -11,11 +13,9 @@ export default function Card({
   room,
   email,
   username,
-  isSelected,
+  selected,
   onSelectCard,
 }: CardProps) {
-  const className = "chats-card";
-
   const onHandleSelectCard = () => {
     onSelectCard({
       room: room,
@@ -27,15 +27,15 @@ export default function Card({
 
   return (
     <div
-      className={`${className}-wrapper ${isSelected && "selected"}`}
+      className={`${styles.wrapper} ${selected && styles.selected}`}
       onClick={onHandleSelectCard}
     >
-      <div className={className}>
-        <img className={`${className}-icon`} src={Profile} />
+      <div className={styles.card}>
+        <img src={Profile} />
 
-        <div className={`${className}-details`}>
-          <h2 className={`${className}-name`}>{username}</h2>
-          <p className={`${className}-email`}>{email}</p>
+        <div>
+          <h2>{username}</h2>
+          <p>{email}</p>
         </div>
       </div>
     </div>

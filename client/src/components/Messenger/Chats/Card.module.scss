@@ -1,0 +1,82 @@
+.wrapper {
+  transition: background-color 300ms;
+  grid-template-columns: auto;
+  padding: 1rem 0 1rem 2rem;
+  justify-content: left;
+  align-items: center;
+  position: relative;
+  display: grid;
+
+  &::after {
+    background-color: #ffffff15;
+    border-radius: 40px;
+    position: absolute;
+    bottom: -0.75px;
+    margin: 0 auto;
+    height: 1.5px;
+    content: "";
+    width: 25%;
+    right: 0;
+    left: 0;
+  }
+
+  &:last-of-type::after {
+    display: none;
+  }
+
+  &:hover {
+    background-color: #ffffff05;
+  }
+
+  &.selected {
+    background-color: #ffffff05;
+
+    &::before {
+      background-color: #0000ff;
+      position: absolute;
+      height: 100%;
+      content: "";
+      width: 4px;
+      left: 0;
+    }
+  }
+}
+
+.card {
+  justify-content: center;
+  grid-auto-flow: column;
+  align-items: center;
+  display: grid;
+  gap: 0.85rem;
+
+  > img {
+    border-radius: 100%;
+    object-fit: cover;
+    aspect-ratio: 1;
+    width: 60px;
+  }
+
+  > div {
+    grid-template-columns: auto;
+    justify-content: left;
+    align-items: center;
+    display: grid;
+    gap: 0.35rem;
+
+    > h2 {
+      font-family: "Poppins", sans-serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      line-height: 1;
+      color: #fff;
+    }
+
+    > p {
+      font-family: "Poppins", sans-serif;
+      color: #ffffff65;
+      font-size: 0.8rem;
+      font-weight: 300;
+      line-height: 1;
+    }
+  }
+}

@@ -4,7 +4,7 @@ import Chats from "../components/Messenger/Chats";
 import Messages from "../components/Messenger/Messages";
 import Manager from "../components/Messenger/Manager";
 
-import "../css/messenger.css";
+import "../styles/messenger.css";
 
 export default function App() {
   const { socket, chat, onSelectChat } = useRoom();
