@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Chat } from "../../interfaces/Chat";
 
-export default function useChatsFilter() {
+export default function useFilterChats() {
   const [filter, setFilter] = useState<Chat[]>([]);
 
   const onFilterChats = (chats: Chat[], prompt: string) => {

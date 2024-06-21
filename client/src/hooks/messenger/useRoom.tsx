@@ -1,7 +1,7 @@
 import { useState } from "react";
 import io from "socket.io-client";
 
-import { Chat } from "../interfaces/Chat";
+import { Chat } from "../../interfaces/Chat";
 
 const socket = io(import.meta.env.VITE_SERVER_API);
 

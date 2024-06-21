@@ -9,15 +9,15 @@ $highlighted-low: #00c06d;
 
 @mixin colors($high, $medium, $low) {
   &.high {
-    background-color: var($high);
+    background-color: $high;
   }
 
   &.medium {
-    background-color: var($medium);
+    background-color: $medium;
   }
 
   &.low {
-    background-color: var($low);
+    background-color: $low;
   }
 }
 

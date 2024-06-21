@@ -15,7 +15,7 @@ export default function Priority({
 }: OptionProps) {
   return (
     <input
-      className={`${styles.priority} ${styles[priority.toLocaleLowerCase()]} ${
+      className={`${styles.priority} ${styles[priority.toLowerCase()]} ${
         selected && styles.selected
       }`}
       onClick={onSelect}

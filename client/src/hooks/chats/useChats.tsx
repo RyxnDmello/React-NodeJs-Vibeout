@@ -7,7 +7,7 @@ const _api: string = import.meta.env.PROD
   ? `${import.meta.env.VITE_SERVER_API}/api`
   : "/api";
 
-export default function useChatsProvider() {
+export default function useChats() {
   const [chats, setChats] = useState<Chat[]>([]);
 
   useEffect(() => {

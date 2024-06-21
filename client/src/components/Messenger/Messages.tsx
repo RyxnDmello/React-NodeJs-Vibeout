@@ -6,7 +6,7 @@ import { getDate } from "../../utils/DateTime";
 
 import { Chat } from "../../interfaces/Chat";
 
-import useMessagesProvider from "../../hooks/messenger/useMessagesProvider";
+import useMessages from "../../hooks/messenger/useMessages";
 
 import Profile from "./Messages/Profile";
 import Bubble from "./Messages/Bubble";
@@ -20,7 +20,7 @@ interface MessagesProps {
 }
 
 export default function Messages({ chat, socket }: MessagesProps) {
-  const { messages, onSendMessage } = useMessagesProvider(socket, chat);
+  const { messages, onSendMessage } = useMessages(socket, chat);
 
   return (
     <section className={styles.messages}>

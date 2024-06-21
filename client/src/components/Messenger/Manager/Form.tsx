@@ -7,7 +7,7 @@ import {
   Priority as P,
 } from "../../../interfaces/Manager";
 
-import useManagerForm from "../../../hooks/messenger/useManagerForm";
+import useManagerForm from "../../../hooks/forms/useManagerForm";
 
 import Input from "./Form/Input";
 import Priority from "./Form/Priority";

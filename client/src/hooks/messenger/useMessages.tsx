@@ -6,7 +6,7 @@ import { Message } from "../../interfaces/Message";
 
 import { getTime } from "../../utils/DateTime";
 
-export default function useMessagesProvider(
+export default function useMessages(
   socket: Socket,
   chat: Chat | undefined
 ) {

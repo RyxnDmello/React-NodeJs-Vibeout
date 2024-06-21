@@ -1,7 +1,7 @@
 import { Chat } from "../../interfaces/Chat";
 
-import useChatsProvider from "../../hooks/messenger/useChatsProvider";
-import useChatsFilter from "../../hooks/messenger/useChatsFilter";
+import useChats from "../../hooks/chats/useChats";
+import useFilterChats from "../../hooks/chats/useFilterChats";
 
 import Logo from "../Common/Logo";
 import Card from "./Chats/Card";
@@ -14,8 +14,8 @@ interface ChatsProps {
 }
 
 export default function Chats({ room, onSelectChat }: ChatsProps) {
-  const { filter, onFilterChats } = useChatsFilter();
-  const { chats } = useChatsProvider();
+  const { filter, onFilterChats } = useFilterChats();
+  const { chats } = useChats();
 
   return (
     <section className={styles.chats}>

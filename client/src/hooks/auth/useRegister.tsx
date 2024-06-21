@@ -7,7 +7,7 @@ const _api: string = import.meta.env.PROD
   ? `${import.meta.env.VITE_SERVER_API}/api`
   : "/api";
 
-export default function useRegisterForm(profile: string) {
+export default function useRegister(profile: string) {
   const onRegister = async () => {
     try {
       await axios.post(`${_api}/account/create`, values);

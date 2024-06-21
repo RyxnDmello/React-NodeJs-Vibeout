@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from "react";
-
 import { Project } from "../../../interfaces/Manager";
+
+import useProgress from "../../../hooks/projects/useProgress";
 
 import styles from "./Project.module.scss";
 
@@ -16,8 +16,7 @@ export default function ProjectCard({
   objectives,
   onSelectProject,
 }: ProjectCardProps) {
-  const [percentage, setPercentage] = useState<number>(0);
-  const progress = useRef<HTMLDivElement>(null);
+  const { progressRef, percentage } = useProgress(objectives);
 
   const handleSelectProject = () => {
     onSelectProject({
@@ -28,18 +27,6 @@ export default function ProjectCard({
       priority,
     });
   };
-
-  useEffect(() => {
-    const completed: number = objectives.filter(
-      (objective) => objective.completed
-    ).length;
-
-    setPercentage(
-      objectives.length === 0 ? 0 : (completed / objectives.length) * 100
-    );
-
-    progress.current!.style.setProperty("--fill", `${percentage}%`);
-  }, [objectives, percentage]);
 
   return (
     <div
@@ -52,7 +39,7 @@ export default function ProjectCard({
       </div>
 
       <div className={styles.progress}>
-        <div ref={progress}></div>
+        <div ref={progressRef}></div>
         <p>{percentage.toFixed()}%</p>
       </div>
     </div>

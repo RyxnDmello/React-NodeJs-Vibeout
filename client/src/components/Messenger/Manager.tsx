@@ -1,7 +1,7 @@
 import { Project } from "../../interfaces/Manager";
 
-import useManagerProvider from "../../hooks/messenger/useManagerProvider";
-import useProjectProvider from "../../hooks/messenger/useProjectProvider";
+import useProjects from "../../hooks/projects/useProjects";
+import useSelectProject from "../../hooks/projects/useSelectProject";
 
 import Navbar from "./Manager/Navbar";
 import Form from "./Manager/Form";
@@ -15,8 +15,8 @@ interface ManagerProps {
 }
 
 export default function Manager({ room }: ManagerProps) {
-  const { projects, state, mode, setState, setMode } = useManagerProvider(room);
-  const { project, onSelectProject } = useProjectProvider();
+  const { projects, state, mode, setState, setMode } = useProjects(room);
+  const { project, onSelectProject } = useSelectProject();
 
   const handleSelectProject = (project: Project) => {
     setState("OBJECTIVES");

@@ -1,5 +1,5 @@
 import useProfilePicker from "../../hooks/register/useProfilePicker";
-import useRegisterForm from "../../hooks/register/useRegisterForm";
+import useRegister from "../../hooks/auth/useRegister";
 
 import { inputs } from "../../models/Register";
 
@@ -18,7 +18,7 @@ export default function Form() {
     onOpenAvatarPicker,
   } = useProfilePicker();
 
-  const { onSubmit, onChange } = useRegisterForm(image!);
+  const { onSubmit, onChange } = useRegister(image!);
 
   return (
     <div className={styles.form}>

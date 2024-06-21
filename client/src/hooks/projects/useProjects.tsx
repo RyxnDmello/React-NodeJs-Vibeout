@@ -8,7 +8,7 @@ const _api: string = import.meta.env.PROD
   ? `${import.meta.env.VITE_SERVER_API}/api`
   : "/api";
 
-export default function useManagerProvider(room: string | undefined) {
+export default function useProjects(room: string | undefined) {
   const [projects, setProjects] = useState<Project[]>([]);
   const [state, setState] = useState<State>("PROJECTS");
   const [mode, setMode] = useState<Mode>("VIEWING");
