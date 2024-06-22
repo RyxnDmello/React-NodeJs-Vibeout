@@ -1,8 +1,8 @@
 import accountModel from "../../models/AccountModel";
 
-import { Account } from "../../interfaces/Account";
+import { RegisterAccount } from "../../interfaces/Account";
 
-const createAccount = async (account: Account) => {
+const registerAccount = async (account: RegisterAccount) => {
   const dbAccount = await accountModel.findOne({
     email: account.email,
   });
@@ -19,9 +19,9 @@ const createAccount = async (account: Account) => {
 
   try {
     return await newAccount.save();
-  } catch {
+  } catch (error) {
     throw new Error("Database Crashed Unexpectedly");
   }
 };
 
-export default createAccount;
+export default registerAccount;

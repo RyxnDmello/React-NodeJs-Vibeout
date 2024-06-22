@@ -24,6 +24,8 @@ app.use(
   })
 );
 
+connectMongoDB();
+
 app.use("/api/account", accountRouter);
 app.use("/api/chats", chatsRouter);
 app.use("/api/projects", projectsRouter);

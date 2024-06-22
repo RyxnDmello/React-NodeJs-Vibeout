@@ -52,3 +52,18 @@
   align-items: center;
   display: grid;
 }
+
+.toggle {
+  font-family: "Poppins", sans-serif;
+  margin: 0.5rem auto 0 auto;
+  transition: color 250ms;
+  letter-spacing: 0.25px;
+  text-align: center;
+  width: fit-content;
+  color: #ffffff65;
+  font-weight: 300;
+
+  &:hover {
+    color: #fff;
+  }
+}

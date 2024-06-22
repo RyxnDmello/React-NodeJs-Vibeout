@@ -9,7 +9,7 @@ export interface RegisterSchema {
   retypePassword: string;
 }
 
-export const ValidationSchema: yup.AnyObject = yup.object().shape({
+export const validationSchema: yup.AnySchema = yup.object().shape({
   profile: yup.string().required(),
   username: yup.string().min(4).max(50).required(),
   email: yup.string().email().required(),

@@ -10,7 +10,7 @@ export interface Input {
   type: "text" | "number" | "email" | "password";
 }
 
-export const inputs: Input[] = [
+export const registerInputs: Input[] = [
   {
     icon: Username,
     label: "Username",
@@ -39,6 +39,21 @@ export const inputs: Input[] = [
     icon: Password,
     label: "Retype Password",
     name: "retypePassword",
+    type: "password",
+  },
+];
+
+export const loginInputs: Input[] = [
+  {
+    icon: Email,
+    label: "Email",
+    name: "email",
+    type: "email",
+  },
+  {
+    icon: Password,
+    label: "Password",
+    name: "password",
     type: "password",
   },
 ];

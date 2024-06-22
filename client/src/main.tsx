@@ -11,6 +11,10 @@ const router = createBrowserRouter([
     element: <Register />,
   },
   {
+    path: "/login",
+    element: <Register type="LOGIN" />,
+  },
+  {
     path: "/chats",
     element: <Messenger />,
   },
