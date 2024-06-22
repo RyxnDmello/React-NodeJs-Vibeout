@@ -1,8 +1,8 @@
 import accountModel from "../../models/AccountModel";
 
-import { IAccount } from "../../interfaces/Account";
+import { Account } from "../../interfaces/Account";
 
-const createAccount = async (account: IAccount) => {
+const createAccount = async (account: Account) => {
   const dbAccount = await accountModel.findOne({
     email: account.email,
   });
