@@ -1,0 +1,31 @@
+.reveal {
+  animation: reveal 350ms forwards;
+}
+
+.hide {
+  animation: hide 350ms forwards;
+}
+
+@keyframes reveal {
+  0% {
+    translate: 0 20px;
+    opacity: 0;
+  }
+
+  100% {
+    translate: 0 0;
+    opacity: 1;
+  }
+}
+
+@keyframes hide {
+  0% {
+    translate: 0 0;
+    opacity: 1;
+  }
+
+  100% {
+    translate: 0 20px;
+    opacity: 0;
+  }
+}

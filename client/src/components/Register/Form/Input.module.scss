@@ -16,6 +16,7 @@
   > input {
     padding: 0.5rem 0.5rem 0.5rem 2.25rem;
     font-family: "Poppins", sans-serif;
+    transition: border-color 300ms;
     border: 2px solid #ffffff50;
     background-color: transparent;
     letter-spacing: 0.25px;
@@ -24,6 +25,10 @@
     font-size: 1rem;
     color: #fff;
     outline: none;
+
+    &.error {
+      border-color: #af0025;
+    }
 
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {

@@ -1,5 +1,6 @@
+import { useState, useRef } from "react";
 import { useFormik } from "formik";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 import { LoginSchema, validationSchema } from "../../schema/LoginSchema";
 
@@ -8,12 +9,28 @@ const _api: string = import.meta.env.PROD
   : "/api";
 
 export default function useLogin() {
+  const [error, setError] = useState<string>("");
+  const errorRef = useRef<HTMLDivElement>(null);
+
   const onLogin = async () => {
     try {
-      axios.post(`${_api}/account/login`, { ...values });
-    } catch (error) {
-      console.log(error instanceof Error && error.message);
+      const response = await axios.post(`${_api}/account/login`, values);
+      console.log(response.data);
+    } catch (error: unknown) {
+      setError(error instanceof AxiosError && error.response!.data);
+      onErrorToast();
     }
+  };
+
+  const onErrorToast = () => {
+    errorRef.current?.classList.remove("hide");
+    errorRef.current?.classList.add("reveal");
+
+    setTimeout(() => {
+      errorRef.current?.classList.remove("reveal");
+      errorRef.current?.classList.add("hide");
+      handleReset({});
+    }, 5000);
   };
 
   const initialValues: LoginSchema = {
@@ -21,11 +38,20 @@ export default function useLogin() {
     password: "",
   };
 
-  const { values, handleSubmit, handleChange } = useFormik({
-    initialValues: initialValues,
-    validationSchema: validationSchema,
-    onSubmit: async () => await onLogin(),
-  });
+  const { values, errors, handleSubmit, handleChange, handleReset } = useFormik(
+    {
+      initialValues: initialValues,
+      validationSchema: validationSchema,
+      onSubmit: async () => await onLogin(),
+    }
+  );
 
-  return { onLoginSubmit: handleSubmit, onLoginChange: handleChange };
+  return {
+    loginErrorRef: errorRef,
+    loginFormValues: values,
+    loginFormErrors: errors,
+    loginResponseError: error,
+    onLoginSubmit: handleSubmit,
+    onLoginChange: handleChange,
+  };
 }

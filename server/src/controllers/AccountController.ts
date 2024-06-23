@@ -12,9 +12,7 @@ export const register = async (req: Request, res: Response) => {
       email: account.email,
     });
   } catch (error: unknown) {
-    res.status(404).json({
-      error: error instanceof Error && error.message,
-    });
+    res.status(404).send(error instanceof Error && error.message);
   }
 };
 
@@ -27,8 +25,6 @@ export const login = async (req: Request, res: Response) => {
       email: account.email,
     });
   } catch (error) {
-    res.status(404).json({
-      error: error instanceof Error && error.message,
-    });
+    res.status(404).send(error instanceof Error && error.message);
   }
 };
