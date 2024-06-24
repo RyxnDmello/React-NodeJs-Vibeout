@@ -47,11 +47,11 @@ export default function useLogin() {
   );
 
   return {
-    loginErrorRef: errorRef,
-    loginFormValues: values,
-    loginFormErrors: errors,
-    loginResponseError: error,
-    onLoginSubmit: handleSubmit,
-    onLoginChange: handleChange,
+    errorRef,
+    values,
+    errors,
+    error,
+    onSubmit: handleSubmit,
+    onChange: handleChange,
   };
 }

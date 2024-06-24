@@ -8,8 +8,6 @@ const _api: string = import.meta.env.PROD
   ? `${import.meta.env.VITE_SERVER_API}/api`
   : "/api";
 
-export type FormType = "REGISTER" | "LOGIN";
-
 export default function useRegister(profile: string) {
   const [error, setError] = useState<string>("");
   const errorRef = useRef<HTMLDivElement>(null);
@@ -52,11 +50,11 @@ export default function useRegister(profile: string) {
     });
 
   return {
-    registerFormValues: values,
-    registerErrorRef: errorRef,
-    registerFormErrors: errors,
-    registerResponseError: error,
-    onRegisterSubmit: handleSubmit,
-    onRegisterChange: handleChange,
+    values,
+    errorRef,
+    errors,
+    error,
+    onSubmit: handleSubmit,
+    onChange: handleChange,
   };
 }

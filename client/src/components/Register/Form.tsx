@@ -1,10 +1,13 @@
+import { FormEvent, RefObject } from "react";
+import { FormikValues, FormikErrors } from "formik";
 import { Link } from "react-router-dom";
 
 import useProfilePicker from "../../hooks/register/useProfilePicker";
-import useRegister, { FormType } from "../../hooks/auth/useRegister";
-import useLogin from "../../hooks/auth/useLogin";
 
-import { registerInputs, loginInputs } from "../../models/Register";
+import { Input as Inputs } from "../../models/Register";
+
+import { RegisterSchema } from "../../schema/RegisterSchema";
+import { LoginSchema } from "../../schema/LoginSchema";
 
 import Profile from "./Form/Profile";
 import Input from "./Form/Input";
@@ -14,10 +17,26 @@ import Error from "./Form/Error";
 import styles from "./Form.module.scss";
 
 interface FormProps {
-  type: FormType;
+  type: "REGISTER" | "LOGIN";
+  inputs: Inputs[];
+  error: string;
+  errorRef: RefObject<HTMLDivElement>;
+  values: FormikValues;
+  errors: FormikErrors<RegisterSchema | LoginSchema>;
+  onSubmit: (event?: FormEvent<HTMLFormElement>) => void;
+  onChange: (event: string | React.ChangeEvent) => void;
 }
 
-export default function Form({ type }: FormProps) {
+export default function Form({
+  inputs,
+  type,
+  error,
+  errorRef,
+  values,
+  errors,
+  onSubmit,
+  onChange,
+}: FormProps) {
   const {
     image,
     picker,
@@ -26,27 +45,9 @@ export default function Form({ type }: FormProps) {
     onOpenAvatarPicker,
   } = useProfilePicker();
 
-  const {
-    registerErrorRef,
-    registerFormValues,
-    registerFormErrors,
-    registerResponseError,
-    onRegisterSubmit,
-    onRegisterChange,
-  } = useRegister(image!);
-
-  const {
-    loginErrorRef,
-    loginFormValues,
-    loginFormErrors,
-    loginResponseError,
-    onLoginSubmit,
-    onLoginChange,
-  } = useLogin();
-
   return (
     <div className={styles.form}>
-      <form onSubmit={type === "REGISTER" ? onRegisterSubmit : onLoginSubmit}>
+      <form onSubmit={onSubmit}>
         <div className={styles.header}>
           <h2>{type === "REGISTER" ? "Create Account" : "Welcome Back!"}</h2>
           <p>Realtime Collaborative Development</p>
@@ -62,74 +63,39 @@ export default function Form({ type }: FormProps) {
           />
         )}
 
-        {type === "REGISTER" && (
-          <div className={styles.inputs}>
-            {registerInputs.map((input, i) => {
-              const value =
-                registerFormValues[
-                  `${input.name as keyof typeof registerFormValues}`
-                ];
+        <div className={styles.inputs}>
+          {inputs.map((input, index) => {
+            const error = errors[`${input.name as keyof typeof errors}`];
+            const value = values[`${input.name as keyof typeof values}`];
 
-              const error =
-                registerFormErrors[
-                  `${input.name as keyof typeof registerFormErrors}`
-                ];
+            return (
+              <Input
+                key={index}
+                {...input}
+                value={value}
+                error={!!error}
+                onChange={onChange}
+              />
+            );
+          })}
+        </div>
 
-              return (
-                <Input
-                  key={i}
-                  {...input}
-                  value={value}
-                  error={!!error}
-                  onChange={onRegisterChange}
-                />
-              );
-            })}
-          </div>
+        <Button
+          label={type === "REGISTER" ? "Create Account" : "Login Account"}
+          type="submit"
+        />
+
+        {type === "REGISTER" ? (
+          <Link className={styles.toggle} to={"/login"}>
+            Login To Your Account
+          </Link>
+        ) : (
+          <Link className={styles.toggle} to={"/register"}>
+            Create An Account
+          </Link>
         )}
 
-        {type === "LOGIN" && (
-          <div className={styles.inputs}>
-            {loginInputs.map((input, i) => {
-              const value =
-                loginFormValues[
-                  `${input.name as keyof typeof loginFormValues}`
-                ];
-
-              const error =
-                loginFormErrors[
-                  `${input.name as keyof typeof loginFormErrors}`
-                ];
-
-              return (
-                <Input
-                  key={i}
-                  {...input}
-                  value={value}
-                  error={!!error}
-                  onChange={onLoginChange}
-                />
-              );
-            })}
-          </div>
-        )}
-
-        <Button label="Create Account" type="submit" />
-
-        <Link
-          to={type === "REGISTER" ? "/login" : "/register"}
-          className={styles.toggle}
-        >
-          {type === "REGISTER" ? "Login To Your Account" : "Create An Account"}
-        </Link>
-
-        {type === "REGISTER" && (
-          <Error ref={registerErrorRef} message={registerResponseError} />
-        )}
-
-        {type === "LOGIN" && (
-          <Error ref={loginErrorRef} message={loginResponseError} />
-        )}
+        <Error ref={errorRef} error={error} />
       </form>
     </div>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Messenger from "./pages/Messenger";
 
@@ -12,7 +13,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Register type="LOGIN" />,
+    element: <Login />,
   },
   {
     path: "/chats",

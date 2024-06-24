@@ -1,19 +1,20 @@
-import { FormType } from "../hooks/auth/useRegister";
+import Avatar from "../images/register/avatar.png";
+import useRegister from "../hooks/auth/useRegister";
+
+import { register as inputs } from "../models/Register";
 
 import Carousel from "../components/Register/Carousel";
 import Form from "../components/Register/Form";
 
 import "../styles/register.scss";
 
-interface RegisterProps {
-  type?: FormType;
-}
+export default function Register() {
+  const register = useRegister(Avatar);
 
-export default function Register({ type = "REGISTER" }: RegisterProps) {
   return (
     <main>
       <Carousel />
-      <Form type={type} />
+      <Form type="REGISTER" {...register} inputs={inputs} />;
     </main>
   );
 }
