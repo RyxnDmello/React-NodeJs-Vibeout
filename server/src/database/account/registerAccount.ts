@@ -1,3 +1,5 @@
+import { hash } from "bcrypt";
+
 import accountModel from "../../models/AccountModel";
 
 import { RegisterAccount } from "../../interfaces/Account";
@@ -15,7 +17,12 @@ const registerAccount = async (account: RegisterAccount) => {
     throw new Error("Password Mismatch");
   }
 
-  const newAccount = new accountModel({ ...account });
+  const encryptedPassword = await hash(account.password, 12);
+
+  const newAccount = new accountModel({
+    ...account,
+    password: encryptedPassword,
+  });
 
   try {
     return await newAccount.save();

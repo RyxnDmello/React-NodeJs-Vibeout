@@ -14,7 +14,10 @@ export default function useRegister(profile: string) {
 
   const onRegister = async () => {
     try {
-      const response = await axios.post(`${_api}/account/register`, values);
+      const response = await axios.post(`${_api}/account/register`, {
+        ...values,
+        number: parseInt(values.number),
+      });
       console.log(response.data);
     } catch (error: unknown) {
       setError(error instanceof AxiosError && error.response?.data);
@@ -37,7 +40,7 @@ export default function useRegister(profile: string) {
     profile: profile,
     username: "",
     email: "",
-    number: 0,
+    number: "",
     password: "",
     retypePassword: "",
   };

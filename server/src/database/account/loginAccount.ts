@@ -1,3 +1,5 @@
+import { compare } from "bcrypt";
+
 import accountModel from "../../models/AccountModel";
 
 import { LoginAccount } from "../../interfaces/Account";
@@ -11,7 +13,7 @@ const loginAccount = async (account: LoginAccount) => {
     throw new Error("Account Does Not Exist");
   }
 
-  if (account.password !== dbAccount.password) {
+  if (!(await compare(account.password, dbAccount.password))) {
     throw new Error("Incorrect Password");
   }
 
