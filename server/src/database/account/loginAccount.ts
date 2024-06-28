@@ -3,6 +3,7 @@ import { compare } from "bcrypt";
 import accountModel from "../../models/AccountModel";
 
 import { LoginAccount } from "../../interfaces/Account";
+import { createAuthToken } from "../../utils/AuthToken";
 
 const loginAccount = async (account: LoginAccount) => {
   const dbAccount = await accountModel.findOne({
@@ -17,7 +18,13 @@ const loginAccount = async (account: LoginAccount) => {
     throw new Error("Incorrect Password");
   }
 
-  return dbAccount;
+  const token = createAuthToken(dbAccount._id.toString());
+
+  return {
+    username: dbAccount.username,
+    email: dbAccount.email,
+    token: token,
+  };
 };
 
 export default loginAccount;

@@ -3,6 +3,7 @@ import { hash } from "bcrypt";
 import accountModel from "../../models/AccountModel";
 
 import { RegisterAccount } from "../../interfaces/Account";
+import { createAuthToken } from "../../utils/AuthToken";
 
 const registerAccount = async (account: RegisterAccount) => {
   const dbAccount = await accountModel.findOne({
@@ -25,7 +26,14 @@ const registerAccount = async (account: RegisterAccount) => {
   });
 
   try {
-    return await newAccount.save();
+    const createdAccount = await newAccount.save();
+    const token = createAuthToken(createdAccount._id.toString());
+
+    return {
+      username: createdAccount.username,
+      email: createdAccount.email,
+      token: token,
+    };
   } catch (error) {
     throw new Error("Database Crashed Unexpectedly");
   }
