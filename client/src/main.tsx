@@ -6,6 +6,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Messenger from "./pages/Messenger";
 
+import AuthContextProvider from "./contexts/AuthContext";
+
 const router = createBrowserRouter([
   {
     path: "/register",
@@ -23,6 +25,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthContextProvider>
+      <RouterProvider router={router} />
+    </AuthContextProvider>
   </React.StrictMode>
 );

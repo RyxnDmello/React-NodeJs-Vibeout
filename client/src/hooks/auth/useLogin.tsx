@@ -2,6 +2,8 @@ import { useState, useRef } from "react";
 import { useFormik } from "formik";
 import axios, { AxiosError } from "axios";
 
+import useAuthContext from "./useAuthContext";
+
 import { LoginSchema, validationSchema } from "../../schema/LoginSchema";
 
 const _api: string = import.meta.env.PROD
@@ -9,13 +11,14 @@ const _api: string = import.meta.env.PROD
   : "/api";
 
 export default function useLogin() {
+  const { dispatch } = useAuthContext();
   const [error, setError] = useState<string>("");
   const errorRef = useRef<HTMLDivElement>(null);
 
   const onLogin = async () => {
     try {
       const response = await axios.post(`${_api}/account/login`, values);
-      console.log(response.data);
+      dispatch({ type: "AUTHENTICATE", payload: response.data });
     } catch (error: unknown) {
       setError(error instanceof AxiosError && error.response!.data);
       onErrorToast();

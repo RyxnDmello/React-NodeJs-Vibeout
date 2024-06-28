@@ -2,6 +2,8 @@ import { useRef, useState } from "react";
 import { useFormik } from "formik";
 import axios, { AxiosError } from "axios";
 
+import useAuthContext from "./useAuthContext";
+
 import { RegisterSchema, validationSchema } from "../../schema/RegisterSchema";
 
 const _api: string = import.meta.env.PROD
@@ -9,6 +11,7 @@ const _api: string = import.meta.env.PROD
   : "/api";
 
 export default function useRegister(profile: string) {
+  const { dispatch } = useAuthContext();
   const [error, setError] = useState<string>("");
   const errorRef = useRef<HTMLDivElement>(null);
 
@@ -18,7 +21,8 @@ export default function useRegister(profile: string) {
         ...values,
         number: parseInt(values.number),
       });
-      console.log(response.data);
+
+      dispatch!({ type: "AUTHENTICATE", payload: response.data });
     } catch (error: unknown) {
       setError(error instanceof AxiosError && error.response?.data);
       onErrorToast();
