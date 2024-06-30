@@ -24,7 +24,7 @@ export default function useRegister(profile: string) {
 
       dispatch!({ type: "AUTHENTICATE", payload: response.data });
     } catch (error: unknown) {
-      setError(error instanceof AxiosError && error.response?.data);
+      setError(error instanceof AxiosError && error.response?.data.error);
       onErrorToast();
     }
   };

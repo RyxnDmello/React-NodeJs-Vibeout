@@ -3,6 +3,7 @@ import { useReducer, createContext, PropsWithChildren, Dispatch } from "react";
 interface Account {
   username: string;
   email: string;
+  token: string;
 }
 
 interface AuthContext {

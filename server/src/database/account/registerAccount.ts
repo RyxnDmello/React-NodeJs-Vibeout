@@ -34,7 +34,13 @@ const registerAccount = async (account: RegisterAccount) => {
       email: createdAccount.email,
       token: token,
     };
-  } catch (error) {
+  } catch (error: unknown) {
+    const message = error instanceof Error && error.message;
+
+    if (message.toString().includes("11000")) {
+      throw new Error("The Number Is Already Taken");
+    }
+
     throw new Error("Database Crashed Unexpectedly");
   }
 };

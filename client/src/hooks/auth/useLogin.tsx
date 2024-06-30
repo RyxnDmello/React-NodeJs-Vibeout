@@ -20,7 +20,7 @@ export default function useLogin() {
       const response = await axios.post(`${_api}/account/login`, values);
       dispatch({ type: "AUTHENTICATE", payload: response.data });
     } catch (error: unknown) {
-      setError(error instanceof AxiosError && error.response!.data);
+      setError(error instanceof AxiosError && error.response!.data.error);
       onErrorToast();
     }
   };
