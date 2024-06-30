@@ -14,9 +14,9 @@ export default function useProjects(room: string | undefined) {
   const [mode, setMode] = useState<Mode>("VIEWING");
 
   useEffect(() => {
-    const requestProjects = async () => {
-      if (room === undefined) return;
+    if (room === undefined) return;
 
+    const loadProjects = async () => {
       const response = await axios.post(`${_api}/projects`, { room });
 
       setState(response.data.length === 0 ? "DEFAULT" : "PROJECTS");
@@ -25,7 +25,7 @@ export default function useProjects(room: string | undefined) {
       setProjects(response.data);
     };
 
-    requestProjects();
+    loadProjects();
   }, [room]);
 
   return { projects, state, mode, setState, setMode };

@@ -1,12 +1,13 @@
-import { Project } from "../../interfaces/Manager";
+import { useState } from "react";
+
+import { Project as _ } from "../../interfaces/Manager";
 
 import useProjects from "../../hooks/projects/useProjects";
-import useSelectProject from "../../hooks/projects/useSelectProject";
 
 import Navbar from "./Manager/Navbar";
 import Form from "./Manager/Form";
-import ProjectCard from "./Manager/ProjectCard";
-import ObjectiveCard from "./Manager/ObjectiveCard";
+import Project from "./Manager/Project";
+import Objective from "./Manager/Objective";
 
 import styles from "./Manager.module.scss";
 
@@ -16,11 +17,11 @@ interface ManagerProps {
 
 export default function Manager({ room }: ManagerProps) {
   const { projects, state, mode, setState, setMode } = useProjects(room);
-  const { project, onSelectProject } = useSelectProject();
+  const [project, setProject] = useState<_ | undefined>(undefined);
 
-  const handleSelectProject = (project: Project) => {
+  const handleSetProject = (project: _) => {
     setState("OBJECTIVES");
-    onSelectProject(project);
+    setProject(project);
   };
 
   return (
@@ -48,7 +49,7 @@ export default function Manager({ room }: ManagerProps) {
             <div>
               {state === "OBJECTIVES" &&
                 project?.objectives.map((objective) => (
-                  <ObjectiveCard
+                  <Objective
                     key={objective.oid}
                     room={room}
                     pid={project.pid}
@@ -58,10 +59,10 @@ export default function Manager({ room }: ManagerProps) {
 
               {state === "PROJECTS" &&
                 projects.map((project) => (
-                  <ProjectCard
+                  <Project
                     key={project.pid}
                     {...project}
-                    onSelectProject={handleSelectProject}
+                    onSelect={handleSetProject}
                   />
                 ))}
             </div>

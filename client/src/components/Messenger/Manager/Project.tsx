@@ -1,25 +1,25 @@
-import { Project } from "../../../interfaces/Manager";
+import { Project as _ } from "../../../interfaces/Manager";
 
 import useProgress from "../../../hooks/projects/useProgress";
 
 import styles from "./Project.module.scss";
 
-interface ProjectCardProps extends Project {
-  onSelectProject: (project: Project) => void;
+interface ProjectProps extends _ {
+  onSelect: (project: _) => void;
 }
 
-export default function ProjectCard({
+export default function Project({
   pid,
   name,
   about,
   priority,
   objectives,
-  onSelectProject,
-}: ProjectCardProps) {
+  onSelect,
+}: ProjectProps) {
   const { progressRef, percentage } = useProgress(objectives);
 
-  const handleSelectProject = () => {
-    onSelectProject({
+  const handleSelect = () => {
+    onSelect({
       pid,
       name,
       about,
@@ -31,7 +31,7 @@ export default function ProjectCard({
   return (
     <div
       className={`${styles.project} ${styles[priority]}`}
-      onClick={handleSelectProject}
+      onClick={handleSelect}
     >
       <div className={styles.details}>
         <h4>{name}</h4>
