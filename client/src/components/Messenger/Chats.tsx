@@ -1,16 +1,16 @@
-import { Chat } from "../../interfaces/Chat";
+import { Chat as _ } from "../../interfaces/Chat";
 
 import useChats from "../../hooks/chats/useChats";
 import useFilterChats from "../../hooks/chats/useFilterChats";
 
 import Logo from "../Common/Logo";
-import Card from "./Chats/Card";
+import Chat from "./Chats/Chat";
 
 import styles from "./Chats.module.scss";
 
 interface ChatsProps {
   room?: string;
-  onSelectChat: (chat: Chat) => void;
+  onSelectChat: (chat: _) => void;
 }
 
 export default function Chats({ room, onSelectChat }: ChatsProps) {
@@ -36,7 +36,7 @@ export default function Chats({ room, onSelectChat }: ChatsProps) {
         <div className={styles.cards}>
           <div>
             {(filter.length === 0 ? chats : filter).map((chat) => (
-              <Card
+              <Chat
                 {...chat}
                 key={chat.room}
                 selected={chat.room === room}

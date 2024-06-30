@@ -6,10 +6,7 @@ import { Message } from "../../interfaces/Message";
 
 import { getTime } from "../../utils/DateTime";
 
-export default function useMessages(
-  socket: Socket,
-  chat: Chat | undefined
-) {
+export default function useMessages(socket: Socket, chat: Chat | undefined) {
   const [messages, setMessages] = useState<Message[]>([]);
 
   const onSendMessage = (text: string) => {

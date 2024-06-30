@@ -11,9 +11,9 @@ const _api: string = import.meta.env.PROD
   : "/api";
 
 export default function useLogin() {
-  const { dispatch } = useAuthContext();
   const [error, setError] = useState<string>("");
   const errorRef = useRef<HTMLDivElement>(null);
+  const { dispatch } = useAuthContext();
 
   const onLogin = async () => {
     try {

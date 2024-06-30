@@ -1,21 +1,21 @@
-import { Chat } from "../../../interfaces/Chat";
+import { Chat as _ } from "../../../interfaces/Chat";
 
 import Profile from "../../../images/chats/profile.png";
 
-import styles from "./Card.module.scss";
+import styles from "./Chat.module.scss";
 
-interface CardProps extends Chat {
+interface ChatProps extends _ {
   selected: boolean;
-  onSelectCard: (chat: Chat) => void;
+  onSelectCard: (chat: _) => void;
 }
 
-export default function Card({
+export default function Chat({
   room,
   email,
   username,
   selected,
   onSelectCard,
-}: CardProps) {
+}: ChatProps) {
   const onHandleSelectCard = () => {
     onSelectCard({
       room: room,

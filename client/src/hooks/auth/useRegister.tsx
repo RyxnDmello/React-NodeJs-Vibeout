@@ -11,9 +11,9 @@ const _api: string = import.meta.env.PROD
   : "/api";
 
 export default function useRegister(profile: string) {
-  const { dispatch } = useAuthContext();
   const [error, setError] = useState<string>("");
   const errorRef = useRef<HTMLDivElement>(null);
+  const { dispatch } = useAuthContext();
 
   const onRegister = async () => {
     try {

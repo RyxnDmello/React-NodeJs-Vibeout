@@ -1,8 +1,7 @@
 import { Socket } from "socket.io-client";
-
-import Sender from "../../images/messages/sender.png";
-
 import { getDate } from "../../utils/DateTime";
+
+import SenderProfile from "../../images/messages/sender.png";
 
 import { Chat } from "../../interfaces/Chat";
 
@@ -27,9 +26,9 @@ export default function Messages({ chat, socket }: MessagesProps) {
       <div className={styles.header}>
         {chat ? (
           <Profile
-            image={Sender}
-            username={chat?.username}
-            email={chat?.email}
+            image={SenderProfile}
+            username={chat.username}
+            email={chat.email}
           />
         ) : (
           <h4>Live Chat</h4>
@@ -41,7 +40,7 @@ export default function Messages({ chat, socket }: MessagesProps) {
           {messages.length > 0 && <p>{getDate()}</p>}
 
           {messages.map((message, i) => (
-            <Bubble key={i} {...message} sent={message.email === chat?.email} />
+            <Bubble key={i} {...message} sent={message.email === chat!.email} />
           ))}
         </div>
       </div>

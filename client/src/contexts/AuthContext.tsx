@@ -5,20 +5,20 @@ interface Account {
   email: string;
 }
 
-interface AuthReducerAction {
-  type: AuthReducerType;
-  payload: AuthReducerState;
-}
-
 interface AuthContext {
-  state: AuthReducerState;
-  dispatch: Dispatch<AuthReducerAction>;
+  account: AuthState;
+  dispatch: Dispatch<AuthAction>;
 }
 
-type AuthReducerType = "AUTHENTICATE" | "LOGOUT";
-type AuthReducerState = Account | null;
+interface AuthAction {
+  type: AuthType;
+  payload: AuthState;
+}
 
-const authReducer = (state: AuthReducerState, action: AuthReducerAction) => {
+type AuthType = "AUTHENTICATE" | "LOGOUT";
+type AuthState = Account | null;
+
+const authReducer = (account: AuthState, action: AuthAction) => {
   switch (action.type) {
     case "AUTHENTICATE":
       return action.payload;
@@ -27,20 +27,20 @@ const authReducer = (state: AuthReducerState, action: AuthReducerAction) => {
       return null;
 
     default:
-      return state;
+      return account;
   }
 };
 
 export const AuthContext = createContext<AuthContext>({
-  state: null,
+  account: null,
   dispatch: () => {},
 });
 
 export default function AuthContextProvider({ children }: PropsWithChildren) {
-  const [state, dispatch] = useReducer(authReducer, null);
+  const [account, dispatch] = useReducer(authReducer, null);
 
   return (
-    <AuthContext.Provider value={{ state, dispatch }}>
+    <AuthContext.Provider value={{ account, dispatch }}>
       {children}
     </AuthContext.Provider>
   );

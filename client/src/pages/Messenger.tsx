@@ -1,3 +1,6 @@
+import { Navigate } from "react-router-dom";
+
+import useAuthContext from "../hooks/auth/useAuthContext";
 import useRoom from "../hooks/messenger/useRoom";
 
 import Chats from "../components/Messenger/Chats";
@@ -6,8 +9,13 @@ import Manager from "../components/Messenger/Manager";
 
 import "../styles/messenger.scss";
 
-export default function App() {
+export default function Messenger() {
+  const { account } = useAuthContext();
   const { socket, chat, onSelectChat } = useRoom();
+
+  if (account === null) {
+    return <Navigate to={"/login"} replace />;
+  }
 
   return (
     <main>
